@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <table border="1" cellpadding="10" width="100%" bgcolor="#eeeeee">
+            <tr>
+                <td>
+                    <label for="source">Source</label> <br />
+                    <input type="text" name="source" id="source" required />
+                </td>
+                <td>
+                    <label for="destination">Destination</label> <br />
+                    <input type="text" name="destination" id="destination" required />
+                </td>
+                <td>
+                    <label for="journeydate">Date</label> <br />
+                    <input type="date" name="journeydate" id="journeydate" required />
+                </td>
+                <td>
+                    <label for="seat">Seats</label><br />
+                    <select name="seat" id="seat">
+                        <option value="1">1 seat</option>
+                        <option value="2">2 seat</option>
+                        <option value="3">3 seat</option>
+                        <option value="4">4 seat</option>
+                        <option value="5">5 seat</option>
+                        <option value="6">6 seat</option>
+                    </select>
+                </td>
+                <td>
+                    <label for="">Bus Type</label> <br />
+                    <label for="express">
+                        <input type="checkbox" name="express" id="express" value="1" /> Express
+                    </label>
+                    <label for="ac">
+                        <input type="checkbox" name="ac" id="ac" value="2" /> Ac
+                    </label>
+                    <label for="volvo">
+                        <input type="checkbox" name="volvo" id="volvo" value="4" /> Volvo
+                    </label>
+                    <label for="sleeper">
+                        <input type="checkbox" name="sleeper" id="sleeper" value="8" /> Sleeper
+                    </label>
+
+                </td>
+                <td>
+                    <label for="">Select Gender</label> <br/> 
+                    <label for="male">
+                        <input type="radio" name="gender" id="male" value="1" /> Male
+                    </label>
+                     <label for="female">
+                        <input type="radio" name="gender" id="female" value="2" /> Female
+                    </label>
+                </td>
+                <td>
+                    <input type="submit" value="Search" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
