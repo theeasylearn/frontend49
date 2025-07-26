@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Details Form</title>
+</head>
+<body>
+    <form method="post" action="success.html">
+        <label for="pan">PAN Card Number: <br/>
+            XXXXX9999X
+        </label><br>
+        <input type="text" id="pan" name="pan" required
+        pattern="[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}"><br><br>
+
+        <label for="aadhar">Aadhar Card Number:</label><br>
+        <input type="text" id="aadhar" name="aadhar" required
+            pattern="[0-9]{12}"><br><br>
+
+        <label for="credit">Credit Card Number:</label><br>
+        <input type="text" id="credit" name="credit" required
+            pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" /><br><br>
+
+        <label for="cvv">CVV Number:</label><br>
+        <input type="text" id="cvv" name="cvv" required 
+        pattern="[0-9]{3}" /><br><br>
+
+        <label for="expiry">Expiry Date:</label><br>
+        <input type="text" id="expiry" name="expiry" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
