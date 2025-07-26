@@ -28,23 +28,15 @@
                 <th bgcolor="yellow">Compose Email</th>
             </tr>
             <tr>
-                <td bgcolor="#eeeeee">
-                    Email
+                <td>
+                    <input type="email" name="email" id="email" required
+                    placeholder="Enter your email address " />
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input type="email" name="email" id="email" required />
-                </td>
-            </tr>
-            <tr>
-                <td bgcolor="#eeeeee">
-                    Subject
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="text" name="subject" id="subject" required />
+                    <input type="text" name="subject" id="subject" required 
+                    placeholder="Enter email subject" />
                 </td>
             </tr>
             <tr>
@@ -54,17 +46,17 @@
             </tr>
             <tr>
                 <td>
-                    <input type="file" name="attachment" id="attachment" multiple />
+                    <input type="file" name="attachment" id="attachment" multiple
+                    accept=".doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf" />
                     <!-- dont forget to set enctype property in form tag -->
                     <!-- refer server configuration for upload limit -->
                 </td>
             </tr>
-            <tr>
-                <td bgcolor="#eeeeee">Address</td>
-            </tr>
+          
             <tr>
                 <td>
-                    <textarea name="address" id="address" required rows="10" cols="50"></textarea>
+                    <textarea name="address" id="address" required rows="10" cols="50"
+                    placeholder="your address"></textarea>
                 </td>
             </tr>
             <tr>
