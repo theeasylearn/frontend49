@@ -1,0 +1,44 @@
+use same html code structure used in 1_basic.html 
+
+Exercise 1 (Beginner Level)
+Tasks:
+1. Apply bold effect on the text inside the `<h1>` tag.
+2. Apply background-color `aliceblue` to the `<section>` tag.
+3. Apply padding of `10px` to the `<section>` tag.
+4. Apply border of `1px solid black` to the `<section>` tag.
+5. Apply font-size of `36px` to the `<h1>` tag.
+6. Apply text-align `center` to the `<h1>` tag.
+7. Apply font-weight `bold` to the `<p>` tag.
+8. Apply color `white` to the text inside the `<article>` tag.
+9. Apply line-height of `200%` to the `<p>` tag.
+
+Exercise 2 (Intermediate Level)
+Tasks:
+1. Apply italic effect on the text inside the `<footer>` tag.
+2. Apply border of `2px solid white` to the `<h1>` tag.
+3. Apply border-radius of `20px` to the `<h1>` tag.
+4. Apply box-shadow of `5px 5px 5px white` to the text inside the `<h1>` tag.
+5. Apply text-align `justify` to the `<p>` tag.
+6. Set line-height to `200%` and letter-spacing to `1px` in the `<p>` tag.
+7. Apply margin-bottom of `15px` to the `<article>` tag.
+8. Set background-color of `cadetblue` and padding of `10px` to the `<article>` tag.
+9. Apply text-indent of `100px` to the `<p>` tag.
+10. Apply word-spacing of `5px` to the `<p>` tag.
+
+Exercise 3 (Advanced Level)
+Tasks:
+1. Apply background-color of `aliceblue` to the `<section>` tag and padding of `10px`.
+2. Apply dotted border of `2px black` to the `<article>` tag.
+3. Apply color of `white` to the text inside `<article>`.
+4. Set text-indent of `100px` and margin-top of `20px` to the `<p>` tag.
+5. Set text-shadow of `3px 3px 3px black` to the text inside the `<h1>` tag.
+6. Apply margin-top of `20px` to the `<p>` tag.
+7. Apply text-align `right` to the `<footer>` tag.
+8. Set the font-style of `italic` to the text inside the `<footer>` tag.
+9. Apply border of `2px solid white` and padding of `10px` to the `<h1>` tag.
+10. Apply border-radius of `20px` to the `<h1>` tag for curved corners.
+11. Apply background-color of `darkcyan` to the `<h1>` tag.
+12. Apply box-shadow of `5px 5px 5px white` to the `<h1>` tag.
+13. Set margin-bottom of `15px` for the `<article>` tag.
+14. Set text-align `justify` for the `<p>` tag.
+15. Apply font-size of `18px` to the text in the `<p>` tag.
