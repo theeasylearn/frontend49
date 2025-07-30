@@ -1,0 +1,79 @@
+Exercise 1: Simple About Me Section
+Goal: Create an "About Me" section with just one highlighted paragraph.
+Instructions:
+1.	HTML
+     Make an HTML file.
+     Inside <body>, add:
+     <h1>: “About Me”
+     <p>: a few sentences describing yourself (or a fictional character).
+2.	CSS
+Only use the following properties:
+     Set the body:
+     background-color (e.g., #f2f2f2)
+     font-family (e.g., Arial, sans-serif)
+     
+     For h1:
+     color (e.g., #2e2e2e)
+     font-size (e.g., 2em)
+     margin (e.g., 20px 0)
+     text-align (e.g., center)
+     
+     For p:
+     color (e.g., #555)
+     font-size (e.g., 1.1em)
+     padding (e.g., 18px)
+     margin (e.g., 10px 0)
+     width (e.g., 70%)
+     background-color (e.g., #fff)
+     text-align (e.g., justify)
+----------------------------------------------------------------------
+Exercise 2: Two Simple Contact Cards
+Goal: Make two basic contact cards side-by-side.
+Instructions:
+1.	HTML
+     In <body>, add a <div> for each contact card.
+     Each <div> contains:
+     <h2>: Person’s Name
+     <p>: Phone number or email
+2.	CSS
+Use only allowed properties.
+     For body:
+     background-color (e.g., #ececec)
+     font-family (e.g., Tahoma, sans-serif)
+     For the contact card <div>:
+     background-color (e.g., #fafafa)
+     width (e.g., 240px)
+     color (e.g., #212121)
+     padding (e.g., 20px)
+     margin (e.g., 15px)
+     display inline by using style="display:inline-block;" in HTML
+     For h2 and p:
+     font-size (e.g., 1.2em)
+     text-align (e.g., center)
+------------------------------------------------------------------------
+
+Exercise 3: Basic Task List
+Goal: Display a basic list of tasks with clear text styles.
+Instructions:
+1.	HTML
+     Add a <h2>: “My Task List”
+     Below, add an unordered list (<ul>) with three <li> items.
+2.	CSS
+Use only:
+     For body:
+     background-color (e.g., #fffbe7)
+     font-family (e.g., Verdana, sans-serif)
+     For h2:
+     color (e.g., #683e27)
+     text-align (e.g., center)
+     For ul:
+     width (e.g., 300px)
+     margin (e.g., 24px auto)
+     padding (e.g., 12px)
+     background-color (e.g., #fff)
+     For li:
+     font-size (e.g., 1em)
+     color (e.g., #353535)
+     margin (e.g., 6px 0)
+     padding (e.g., 4px)
+     text-align (e.g., left)
