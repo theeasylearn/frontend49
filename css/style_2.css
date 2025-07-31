@@ -1,0 +1,32 @@
+*
+{
+    margin: 0px;
+    padding: 0px;
+    letter-spacing: 1px;
+    box-sizing: border-box;
+}
+#section1 
+{
+    background-color: aliceblue;
+    /* padding:10px; */
+}
+div 
+{
+    display: inline-block;
+    background-color: gainsboro;
+    height: 50px;
+    width: calc((100vw/2) - 4px) ;
+    border:2px solid red;
+}
+#section2 
+{
+    background-color: beige;
+    padding:10px;
+}
+#section2>a 
+{
+    display: block;
+    width: 200px;
+    padding:10px;
+    border: 2px solid black;
+}
