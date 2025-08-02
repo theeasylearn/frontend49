@@ -15,7 +15,6 @@ td
     width: 25%;
     height: 500px;
     border: 1px solid red;
-    vertical-align: text-top;
 }
 div 
 {
@@ -37,4 +36,16 @@ span
 .start
 {
     justify-content: start;
+}
+.end 
+{
+    justify-content: end;
+}
+.center 
+{
+    justify-content: center;
+}
+.space-between
+{
+    justify-content: space-between;
 }

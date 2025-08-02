@@ -1,0 +1,43 @@
+section {
+    background-color: aliceblue;
+    border: 1px solid black;
+    display: grid;
+
+    /* set no of columns */
+    grid-template-columns: 50% 10% 10% 10% 20%;
+    /* set no of rows */
+    grid-template-rows: repeat(5, 50px);
+}
+
+div {
+    border: 1px solid black;
+}
+
+/* select 1st five div tag */
+div:nth-child(-n+5) {
+    /* Your styles here */
+    background-color: lightblue;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+}
+
+div:nth-last-child(-n+4) {
+    /* Your styles here */
+    background-color: lightgreen;
+    text-align: right;
+}
+
+/* p after section */
+section+p {
+    /* Your styles here */
+    background-color: blue;
+    color: white;
+}
+
+p:has(+ section){
+    /* This selects section after any p, not the p before section */
+    /* Not suitable for your request */
+    background-color: blue;
+    color: white;
+}
