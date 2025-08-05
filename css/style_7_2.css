@@ -1,0 +1,48 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    letter-spacing: 1px;
+    box-sizing: border-box;
+}
+
+div {
+    font-size: 36px;
+    border: 1px solid black;
+}
+
+#site {
+    height: 100vh;
+    display: grid;
+    /* define how many rows and column per row */
+    grid-template-areas: "site_header site_header site_header"
+        "menu content sidebar"
+        "site_footer site_footer site_footer";
+    grid-template-rows: auto 70% auto;
+    grid-template-columns: 20% 60% 20%;
+}
+
+/* assign name to each and every part */
+#site_header {
+    grid-area: site_header;
+}
+
+#menu {
+    grid-area: menu;
+}
+
+#content {
+    grid-area: content;
+}
+
+#sidebar {
+    grid-area: sidebar;
+}
+
+#site_footer {
+    grid-area: site_footer;
+    display: flex;
+}
+
+#site_footer>div {
+    width: calc(100vw/2);
+}

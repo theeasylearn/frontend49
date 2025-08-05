@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            letter-spacing: 1px;
+            box-sizing: border-box;
+        }
+        section 
+        {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            background-color: aliceblue;
+            flex-wrap: wrap;
+            padding: 50px 0px; /* 1st for top bottom 2nd size for left right */
+        }
+        section>div 
+        {
+            width: calc((100vw/5) - 80px);
+            height: 100px;
+            background-color: antiquewhite;
+            border: 2px solid brown;
+        }
+        #one:hover 
+        {
+            transform: rotate(90deg);
+        }
+        #two:hover 
+        {
+            transform: scale(150%,150%);
+        }
+        #three:hover 
+        {
+            transform: translate(0px,-50px);
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div id="one"></div>
+        <div id="two"></div>
+        <div id="three"></div>
+        <div id="four"></div>
+        <div id="five"></div>
+    </section>
+</body>
+
+</html>
