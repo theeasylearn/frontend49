@@ -42,3 +42,14 @@ Tasks:
 13. Set margin-bottom of `15px` for the `<article>` tag.
 14. Set text-align `justify` for the `<p>` tag.
 15. Apply font-size of `18px` to the text in the `<p>` tag.
+
+
+--------------------------------------------------
+Create html & css code to display image as black white image when user hover on image slowely display image as color image 
+
+
+Create html & css code to display image as round shape image. when user hover on image rotate image 360 degree slowely 
+
+Create html & css code to display image as square image and zoom it 50% slowly but image size should not increase. 
+
+crate html + css code to display images like pinterest layout.
