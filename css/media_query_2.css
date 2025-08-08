@@ -1,0 +1,117 @@
+* {
+    letter-spacing: 1px;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #FFFFFF;
+    color: #1D1D1F;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
+}
+
+.btn-primary {
+    background-color: #0071E3;
+    color: #FFFFFF;
+    border-radius: 8px;
+    padding: 12px 20px;
+}
+
+.section-light {
+    background-color: #F5F5F7;
+}
+
+#site {
+    display: grid;
+}
+
+#site>div {
+    background-color: #F5F5F7;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+#banner {
+    grid-area: banner;
+}
+
+#product1 {
+    grid-area: product1;
+}
+
+#product2 {
+    grid-area: product2;
+}
+
+#product3 {
+    grid-area: product3;
+}
+
+#product4 {
+    grid-area: product4;
+}
+
+#offer_1 {
+    grid-area: offer_1;
+}
+
+#offer_2 {
+    grid-area: offer_2;
+}
+
+#brand_logo {
+    grid-area: brand_logo;
+}
+
+/*  ##Device = Most of the Smartphones Mobiles (Portrait) ##Screen = B/w 320px to 479px */
+@media (min-width: 320px) and (max-width: 767px) {
+
+    /* code in this block will be applied only if device width>320 and <480 */
+    #site {
+        grid-template-areas: "banner"
+            "product1"
+            "product2"
+            "product3"
+            "product4"
+            "offer_1"
+            "offer_2"
+            "brand_logo";
+        grid-template-rows: repeat(8, 100px);
+    }
+}
+
+
+/* ##Device = Tablets, Ipads (portrait) ##Screen = B/w 768px to 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    /* code in this block will be applied only if device width>768 and <1024 */
+    #site {
+        grid-template-areas: "banner banner"
+            "product1 product2"
+            "product3 product4"
+            "offer_1 offer_1"
+            "offer_2 offer_2"
+            "brand_logo brand_logo";
+        grid-template-rows: repeat(8, 100px);
+    }
+}
+
+/* ##Device = Laptops, Desktops ##Screen = B/w 1025px to 1280px*/
+@media (min-width: 1025px) {
+
+    /* code in this block will be applied only if device width>1025 and <1280 */
+    #site {
+        grid-template-areas: "banner banner banner banner"
+            "product1 product2 product3 product4"
+            "offer_1 offer_1 offer_2 offer_2"
+            "brand_logo brand_logo brand_logo brand_logo";
+        grid-template-rows: repeat(8, 100px);
+    }
+}
