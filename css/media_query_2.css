@@ -40,8 +40,33 @@ h3 {
 
 #banner {
     grid-area: banner;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+#banner>nav>ul {
+    display: flex;
+    list-style-type: none;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#banner>nav>ul>li:last-child
+{
+    margin-right: 10px;
+}
+
+#banner>nav>ul>li>a:link, #banner>nav>ul>li>a:visited 
+{
+    border: 1px solid black;
+    padding: 10px;
+    background-color: black;
+    color:white;
+    border-radius: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
 #product1 {
     grid-area: product1;
 }
@@ -69,7 +94,11 @@ h3 {
 #brand_logo {
     grid-area: brand_logo;
 }
-
+#menu 
+{
+    display: none; /* remove html element from page */
+    /* visibility: hidden; */
+}
 /*  ##Device = Most of the Smartphones Mobiles (Portrait) ##Screen = B/w 320px to 479px */
 @media (min-width: 320px) and (max-width: 767px) {
 
@@ -101,6 +130,19 @@ h3 {
             "brand_logo brand_logo";
         grid-template-rows: repeat(8, 100px);
     }
+     #banner>h3 
+    {
+        font-size: 20px;
+    }
+
+    #banner>nav
+    {
+        display: none;
+    }
+    #menu 
+    {
+        display: inline-block;
+    }
 }
 
 /* ##Device = Laptops, Desktops ##Screen = B/w 1025px to 1280px*/
@@ -112,6 +154,10 @@ h3 {
             "product1 product2 product3 product4"
             "offer_1 offer_1 offer_2 offer_2"
             "brand_logo brand_logo brand_logo brand_logo";
-        grid-template-rows: repeat(8, 100px);
+        grid-template-rows: repeat(8,100px);
+    }
+    #banner>h3 
+    {
+        font-size: 24px;
     }
 }
