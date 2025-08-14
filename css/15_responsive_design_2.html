@@ -1,42 +1,102 @@
-<!-- https://www.uxdesigninstitute.com/blog/wp-content/uploads/2023/04/242_responsive_grids_illustration_blog-1.png 
-    
-steps to create design
-------------------
-1) create html code (structure of the design)
-2) create css file and write non responsive css code 
-
--->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>The Easylearn Academy</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="media_query_2.css" />
 </head>
+
 <body>
     <div id="site">
         <div id="banner">
             <h3>THE EASYLEARN ACADEMY</h3>
-            <nav>
+            <nav class="desktop-nav">
                 <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">About us</a></li>
-                    <li><a href="">Products</a></li>
-                    <li><a href="">Services</a></li>
-                    <li><a href="">Contact us</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact us</a></li>
                 </ul>
             </nav>
-            <img id="menu" src="images/menu.png" alt="" />
+            <img id="menu" src="images/menu.png" alt="Menu" onclick="toggleMenu();" />
         </div>
-        <div id="product1"></div>
-        <div id="product2"></div>
-        <div id="product3"></div>
-        <div id="product4"></div>
-        <div id="offer_1"></div>
-        <div id="offer_2"></div>
-        <div id="brand_logo"></div>
+        <div id="mobile_menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact us</a></li>
+            </ul>
+        </div>
+        <div class="product" id="product1">
+            <h4>Product Name 1</h4>
+            <img src="https://picsum.photos/200" alt="Product 1">
+            <span>
+                <p>$99.99</p>
+                <button>Add to Cart</button>
+            </span>
+        </div>
+        <div class="product" id="product2">
+            <h4>Product Name 2</h4>
+            <img src="https://picsum.photos/200" alt="Product 2">
+            <span>
+                <p>$129.99</p>
+                <button>Add to Cart</button>
+            </span>
+        </div>
+        <div class="product" id="product3">
+            <h4>Product Name 3</h4>
+            <img src="https://picsum.photos/200" alt="Product 3">
+            <span>
+                <p>$79.99</p>
+                <button>Add to Cart</button>
+            </span>
+        </div>
+        <div class="product" id="product4">
+            <h4>Product Name 4</h4>
+            <img src="https://picsum.photos/200" alt="Product 4">
+            <span>
+                <p>$149.99</p>
+                <button>Add to Cart</button>
+            </span>
+        </div>
+        <div class="offer" id="offer_1">
+            <img src="https://picsum.photos/300/150" alt="Offer 1">
+            <p>Special Offer: Get 20% off your first purchase!</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="offer" id="offer_2">
+            <img src="https://picsum.photos/300/150" alt="Offer 2">
+            <p>Limited Time Deal: Free shipping on orders over $50!</p>
+            <a href="#">Read More</a>
+        </div>
+        <div id="brand_logo">
+            <img src="https://picsum.photos/100" alt="Brand 1">
+            <img src="https://picsum.photos/100" alt="Brand 2">
+            <img src="https://picsum.photos/100" alt="Brand 3">
+            <img src="https://picsum.photos/100" alt="Brand 4">
+            <img src="https://picsum.photos/100" alt="Brand 5">
+            <img src="https://picsum.photos/100" alt="Brand 6">
+            <img src="https://picsum.photos/100" alt="Brand 7">
+            <img src="https://picsum.photos/100" alt="Brand 8">
+            <img src="https://picsum.photos/100" alt="Brand 9">
+            <img src="https://picsum.photos/100" alt="Brand 10">
+        </div>
     </div>
+
+    <script>
+        let isDisplayed = false;
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobile_menu');
+            isDisplayed = !isDisplayed;
+            mobileMenu.style.display = isDisplayed ? 'block' : 'none';
+        }
+    </script>
 </body>
+
 </html>
