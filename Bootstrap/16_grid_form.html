@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header text-bg-danger">
+                        <h2>Matrimonial Registration</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <label for="relation" class="form-label">Select Relation</label>
+                                <select name="relation" id="relation" class="form-select">
+                                    <option value="">Self</option>
+                                    <option value="">Daughter</option>
+                                    <option value="">Son</option>
+                                    <option value="">Brother</option>
+                                    <option value="">Sister</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <label class="form-label" for="firstname">First name</label>
+                                <input type="text" class="form-control" id="firstname" name="firstname" required />
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <label class="form-label" for="lastname">Last name</label>
+                                <input type="text" class="form-control" id="lastname" name="lastname" required />
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div>Select Gender</div>
+                                <div class="form-check-inline">
+                                    <input type="radio" class="form-check-input" name="gender" id="male" value="1" />
+                                    <label for="male" class="form-check-label">Male</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input type="radio" class="form-check-input" name="gender" id="female" value="1" />
+                                    <label for="female" class="form-check-label">Female</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="form-label" for="birthdate">Birth date</label>
+                                <input type="date" class="form-control" id="birthdate" name="birthdate" required />
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required />
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <label for="mobile" class="form-label">Mobile</label>
+                                <input type="number" class="form-control" id="mobile" name="mobile" required />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-12 col-sm-4">
+                                <label for="religion" class="form-label">Select Religion</label>
+                                <select name="religion" id="religion" class="form-select">
+                                    <option value="">Hindu</option>
+                                    <option value="">Sikh</option>
+                                    <option value="">Musliam</option>
+                                    <option value="">Jain</option>
+
+                                </select>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <label for="communities" class="form-label">Select Community</label>
+                                <select name="communities" id="communities" class="form-select">
+                                    <option value="gujarati">Gujarati</option>
+                                    <option value="punjabi">Punjabi</option>
+                                    <option value="tamil">Tamil</option>
+                                    <option value="bengali">Bengali</option>
+                                    <option value="marathi">Marathi</option>
+                                    <option value="malayali">Malayali</option>
+                                    <option value="telugu">Telugu</option>
+
+                                    <option value="brahmin">Brahmin</option>
+                                    <option value="rajput">Rajput / Kshatriya</option>
+                                    <option value="vaishya">Vaishya / Baniya</option>
+                                    <option value="dalit">Dalit</option>
+
+                                    <option value="naga">Naga</option>
+                                    <option value="mizo">Mizo</option>
+                                    <option value="khasi">Khasi</option>
+                                    <option value="garo">Garo</option>
+                                    <option value="bhil">Bhil</option>
+                                    <option value="gond">Gond</option>
+                                    <option value="santhal">Santhal</option>
+                                    <option value="toda">Toda</option>
+                                    <option value="irula">Irula</option>
+                                </select>
+
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <label for="sub-communities" class="form-label">Select sub communities</label>
+                                <select name="sub-communities" id="sub-communities" class="form-select">
+                                    <!-- Religion-based -->
+                                    <option value="brahmin">Brahmin</option>
+                                    <option value="gaur-brahmin">Gaur Brahmin</option>
+                                    <option value="iyer">Iyer</option>
+                                    <option value="iyengar">Iyengar</option>
+                                    <option value="namboodiri">Namboodiri</option>
+                                    <option value="saraswat">Saraswat Brahmin</option>
+                                    <option value="rajput">Rajput</option>
+                                    <option value="chauhan">Chauhan</option>
+                                    <option value="rathore">Rathore</option>
+                                    <option value="sisodia">Sisodia</option>
+                                    <option value="solanki">Solanki</option>
+                                    <option value="vaishya">Vaishya</option>
+                                    <option value="agarwal">Agarwal</option>
+                                    <option value="oswal">Oswal</option>
+                                    <option value="maheshwari">Maheshwari</option>
+                                    <option value="dalit">Dalit</option>
+
+                                    <option value="muslim">Muslim</option>
+                                    <option value="sunni">Sunni</option>
+                                    <option value="shia">Shia</option>
+                                    <option value="mappila">Mappila</option>
+                                    <option value="ansari">Ansari</option>
+                                    <option value="qureshi">Qureshi</option>
+                                    <option value="bohra">Bohra</option>
+                                    <option value="khoja">Khoja</option>
+
+                                    <option value="christian">Christian</option>
+                                    <option value="syrian-christian">Syrian Christian</option>
+                                    <option value="goan-catholic">Goan Catholic</option>
+                                    <option value="anglo-indian">Anglo-Indian</option>
+                                    <option value="dalit-christian">Dalit Christian</option>
+                                    <option value="naga-christian">Naga Christian</option>
+
+                                    <option value="sikh">Sikh</option>
+                                    <option value="jat-sikh">Jat Sikh</option>
+                                    <option value="ramgarhia">Ramgarhia</option>
+                                    <option value="khatri-sikh">Khatri Sikh</option>
+                                    <option value="mazhabi-sikh">Mazhabi Sikh</option>
+
+                                    <option value="jain">Jain</option>
+                                    <option value="digambar">Digambar</option>
+                                    <option value="shwetambar">Shwetambar</option>
+                                    <option value="murtipujak">Murtipujak</option>
+                                    <option value="sthanakvasi">Sthanakvasi</option>
+                                    <option value="terapanthi">Terapanthi</option>
+
+                                    <!-- Language & Region -->
+                                    <option value="gujarati">Gujarati</option>
+                                    <option value="patidar">Patidar</option>
+                                    <option value="lohana">Lohana</option>
+                                    <option value="koli">Koli</option>
+                                    <option value="kachhi">Kachhi</option>
+
+                                    <option value="tamil">Tamil</option>
+                                    <option value="iyer">Iyer</option>
+                                    <option value="iyengar">Iyengar</option>
+                                    <option value="chettiar">Chettiar</option>
+                                    <option value="gounder">Gounder</option>
+                                    <option value="nadar">Nadar</option>
+
+                                    <option value="punjabi">Punjabi</option>
+                                    <option value="jat">Jat</option>
+                                    <option value="arora">Arora</option>
+                                    <option value="khatri">Khatri</option>
+                                    <option value="ramgarhia">Ramgarhia</option>
+
+                                    <!-- Tribes -->
+                                    <option value="naga">Naga</option>
+                                    <option value="angami">Angami</option>
+                                    <option value="ao">Ao</option>
+                                    <option value="sema">Sema</option>
+                                    <option value="lotha">Lotha</option>
+                                    <option value="konyak">Konyak</option>
+
+                                    <option value="bhil">Bhil</option>
+                                    <option value="vasava">Vasava</option>
+                                    <option value="tadvi">Tadvi</option>
+                                    <option value="pawra">Pawra</option>
+
+                                    <option value="mizo">Mizo</option>
+                                    <option value="khasi">Khasi</option>
+                                    <option value="garo">Garo</option>
+                                    <option value="gond">Gond</option>
+                                    <option value="santhal">Santhal</option>
+                                    <option value="toda">Toda</option>
+                                    <option value="irula">Irula</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-md-3"></div>
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <label for=""></label>
+                                <input type="text" class="form-control" id="" name="" required />
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-3"></div>
+                            <div class="col-12 col-sm-6 col-md-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <label for=""></label>
+                                <input type="text" class="form-control" id="" name="" required />
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <label for=""></label>
+                                <input type="text" class="form-control" id="" name="" required />
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-3"></div>
+                            <div class="col-12 col-sm-6 col-md-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-4 col-md-4 col-lg-2"></div>
+                            <div class="col-12 col-sm-4 col-md-4 col-lg-3">
+                                <label for=""></label>
+                                <input type="text" class="form-control" id="" name="" required />
+                            </div>
+                            <div class="col-12 col-sm-4 col-md-4 col-lg-2">
+                                <label for=""></label>
+                                <input type="text" class="form-control" id="" name="" required />
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+                                <label for=""></label>
+                                <input type="text" class="form-control" id="" name="" required />
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                                <label for=""></label>
+                                <input type="text" class="form-control" id="" name="" required />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js" />
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</body>
+
+</html>
