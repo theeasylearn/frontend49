@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header text-bg-danger">
+                        <h2>Matrimonial Registration</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="success.html" method="post">
+                            <div class="row mb-3">
+                                <div class="col-12 col-sm-6 col-md-3">
+                                    <label for="state" class="form-label">Select state</label>
+                                    <select name="state" id="state" class="form-control">
+                                        <option value="">select</option>
+                                        <option value="andhra-pradesh">Andhra Pradesh</option>
+                                        <option value="arunachal-pradesh">Arunachal Pradesh</option>
+                                        <option value="assam">Assam</option>
+                                        <option value="bihar">Bihar</option>
+                                        <option value="chhattisgarh">Chhattisgarh</option>
+                                        <option value="goa">Goa</option>
+                                        <option value="gujarat">Gujarat</option>
+                                        <option value="haryana">Haryana</option>
+                                        <option value="himachal-pradesh">Himachal Pradesh</option>
+                                        <option value="jharkhand">Jharkhand</option>
+                                        <option value="karnataka">Karnataka</option>
+                                        <option value="kerala">Kerala</option>
+                                        <option value="madhya-pradesh">Madhya Pradesh</option>
+                                        <option value="maharashtra">Maharashtra</option>
+                                        <option value="manipur">Manipur</option>
+                                        <option value="meghalaya">Meghalaya</option>
+                                        <option value="mizoram">Mizoram</option>
+                                        <option value="nagaland">Nagaland</option>
+                                        <option value="odisha">Odisha</option>
+                                        <option value="punjab">Punjab</option>
+                                        <option value="rajasthan">Rajasthan</option>
+                                        <option value="sikkim">Sikkim</option>
+                                        <option value="tamil-nadu">Tamil Nadu</option>
+                                        <option value="telangana">Telangana</option>
+                                        <option value="tripura">Tripura</option>
+                                        <option value="uttar-pradesh">Uttar Pradesh</option>
+                                        <option value="uttarakhand">Uttarakhand</option>
+                                        <option value="west-bengal">West Bengal</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-3">
+                                    <label for="city" class="form-label">City</label>
+                                    <input type="text" class="form-control" id="city" name="city" required />
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-3">
+                                    <label class="form-label">He Lives with his family ?</label>
+                                    <br />
+                                    <div class="form-check-inline">
+                                        <input type="radio" class="form-check-input" id="yes" name="family" value="yes"
+                                            required />
+                                        <label for="yes" class="form-check-label">Yes</label>
+                                    </div>
+                                    <div class="form-check-inline">
+                                        <input type="radio" class="form-check-input" id="no" name="family" value="no"
+                                            required />
+                                        <label for="no" class="form-check-label">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-3">
+                                    <label class="form-label">Martial status</label>
+                                    <br />
+                                    <div class="form-check-inline">
+                                        <input type="radio" class="form-check-input" id="married" name="martial_status"
+                                            value="yes" required />
+                                        <label for="married" class="form-check-label">Married</label>
+                                    </div>
+                                    <div class="form-check-inline">
+                                        <input type="radio" class="form-check-input" id="unmarried"
+                                            name="martial_status" value="no" required />
+                                        <label for="unmarried" class="form-check-label">Unmarried</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-12 col-sm-6 col-md-3">
+                                    <label for="height" class="form-label">Height</label>
+                                    <input type="number" class="form-control" id="height" name="height" required />
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-3">
+                                    <label for="weight" class="form-label">Weight</label>
+                                    <input type="number" class="form-control" id="weight" name="weight" required />
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-3">
+                                    <label for="diet" class="form-label">Select Diet</label>
+                                    <select name="diet" id="diet" class="form-select">
+                                        <option value="">-- Select Diet Type --</option>
+                                        <option value="vegetarian">Vegetarian (Veg)</option>
+                                        <option value="non-vegetarian">Non-Vegetarian (Non-Veg)</option>
+                                        <option value="eggetarian">Eggetarian (Egg included but no meat/fish)</option>
+                                        <option value="jain">Jain</option>
+                                        <option value="vegen">vegen</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-3">
+                                    <label for="skinColor" class="form-label">Select Skin color</label>
+                                    <select name="skinColor" id="skinColor" class="form-select">
+                                        <option value="">-- Select Skin Color --</option>
+                                        <option value="fair">Fair</option>
+                                        <option value="light">Light</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="olive">Olive</option>
+                                        <option value="brown">Brown</option>
+                                        <option value="dark">Dark</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-4 col-md-4 col-lg-2">
+
+                                    <label for="highestQualification" class="form-label">Highest Qualification</label>
+                                    <input type="text" class="form-control" id="highestQualification"
+                                        name="highestQualification" />
+                                </div>
+                                <div class="col-12 col-sm-4 col-md-4 col-lg-3">
+                                    <label for="collegeName" class="form-label">College Name</label>
+                                    <input type="text" class="form-control" id="collegeName" name="collegeName" />
+                                </div>
+                                <div class="col-12 col-sm-4 col-md-4 col-lg-2">
+                                    <label for="income" class="form-label">Annual Income</label>
+                                    <input type="number" class="form-control" id="income" name="income" />
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+                                    <label for="profession" class="form-label">Profession</label>
+                                    <input type="text" class="form-control" id="profession" name="profession" />
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                                    <label for="currentCompany" class="form-label">His Current Company Name</label>
+                                    <input type="text" class="form-control" id="currentCompany" name="currentCompany" />
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-6 offset-3">
+                                    <button type="submit" class="btn btn-danger w-100 btn-lg">Search Profile</button>
+                                </div>
+                            </div>  
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js" />
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+1st Row 
+    Select Relation
+    First name 
+    Last name
+    Gender 
+
+2nd row 
+    Date of Birth
+    Email
+    Mobile
+
+3rd row
+    Religion
+    Community
+    Sub-community
+
+4th row
+    State 
+    City 
+    He Lives with his family ?
+    Marital Status 
+
+5th row
+    Height
+    Weight
+    Diet
+    Skin color
+6th 
+    Highest Qualification 
+    College name 
+    Income           //yearly monthly (select one)
+    Profession
+    His current company name 
