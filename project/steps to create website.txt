@@ -1,0 +1,29 @@
+1) Topic search
+    for example lawyer, charted account, Beauti Parlor, Trust, School, Coaching class, Jawller, 
+
+2) search website related selected topic 
+    search 3 to 5 good website for reference 
+
+3) create webpage topic list 
+    Home, About us, Services, Pricing, Gallary, Videos, contact us 
+    
+4) create topic list for each page
+    Home 
+        Menu 
+        Carosel 
+        Introduction of company 
+        Products 
+        Services
+        Feedback
+        contact us 
+        footer 
+
+5) findout ready made design (theme) 
+
+6) download theme 
+
+7) make sample page(template page)
+
+8) create webpages using template and topic created in point 4
+
+9) make website live on github 
