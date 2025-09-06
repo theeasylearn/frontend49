@@ -23,4 +23,6 @@
 
 8) create webpages using template and topic created in point 4
 
-9) make website live on github 
+9) find content for each and every page 
+
+10) make website live on github 
