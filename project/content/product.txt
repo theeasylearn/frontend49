@@ -1,0 +1,55 @@
+Here are **8 sample products** for a beauty salon website, complete with name, price, weight, and description. I kept them realistic, professional, and salon-relevant:
+
+---
+
+**1. Herbal Glow Face Pack**
+
+* **Price:** ₹450
+* **Weight:** 100 g
+* **Description:** A natural blend of sandalwood, turmeric, and aloe vera that refreshes the skin, reduces dullness, and brings out a healthy glow.
+
+**2. Radiance Day Cream**
+
+* **Price:** ₹799
+* **Weight:** 50 g
+* **Description:** A lightweight daily cream enriched with SPF 30 to protect skin from sun damage while keeping it hydrated and radiant.
+
+**3. Nourishing Hair Oil**
+
+* **Price:** ₹650
+* **Weight:** 200 ml
+* **Description:** A blend of coconut, almond, and argan oil that strengthens hair from root to tip, reduces frizz, and promotes shine.
+
+**4. Hydrating Body Lotion**
+
+* **Price:** ₹550
+* **Weight:** 250 ml
+* **Description:** A non-greasy lotion infused with cocoa butter and vitamin E that deeply moisturizes dry skin and keeps it soft all day.
+
+**5. Revive Herbal Shampoo**
+
+* **Price:** ₹720
+* **Weight:** 300 ml
+* **Description:** Gentle, sulfate-free shampoo with neem and hibiscus extracts to cleanse the scalp, reduce dandruff, and improve hair texture.
+
+**6. Soft Touch Hand Cream**
+
+* **Price:** ₹299
+* **Weight:** 75 g
+* **Description:** A quick-absorbing cream with shea butter and almond oil that repairs dry hands and leaves them smooth and supple.
+
+**7. Refreshing Rose Toner**
+
+* **Price:** ₹380
+* **Weight:** 120 ml
+* **Description:** Alcohol-free toner made from pure rose water that balances skin pH, tightens pores, and gives a cooling effect.
+
+**8. Bridal Makeup Kit**
+
+* **Price:** ₹2,499
+* **Weight:** 1 Set
+* **Description:** A complete kit including foundation, compact, lipsticks, eyeshadow palette, and blush — perfect for brides-to-be and special occasions.
+
+---
+
+✨ Do you want me to also **format these 8 products into a Bootstrap product grid** (with images placeholders, price tags, and “Add to Cart” buttons) for your website?
