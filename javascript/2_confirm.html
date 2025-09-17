@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="success.html" onclick="return confirmSubscription();">Click to purchase annual subscription of 10000 Rs</a>
+
+    <script>
+        //create user defined function (UDF)
+        function confirmSubscription()
+        {
+            var response = confirm("Are you sure? you want to buy our subscription");
+            alert(response);
+            return response; 
+        }
+    </script>
+</body>
+</html>
