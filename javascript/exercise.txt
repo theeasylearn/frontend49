@@ -1,0 +1,6 @@
+1)  write a program to dynamically display Indian Rastra Geet when user click on button. use function and document.write method 
+
+2) write a program to display weekly choghadiya and table format when user click on button. use function and document.write method 
+
+3)  write a program to print current month calendar when user click on button use function and document.write method 
+

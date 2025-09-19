@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Prompt function and window.location property</h1>
+    <script>
+        //accept site name from user 
+        var SiteName = prompt("Enter your favourite site name",'http://www.google.com');
+        //console is also built in (implicit) object
+        console.log(SiteName);
+        console.log('India',10,3.14,true,false,'Asia');
+        console.error('India',10,3.14,true,false,'Asia');
+        console.info('India',10,3.14,true,false,'Asia');
+        console.warn('India',10,3.14,true,false,'Asia');
+        console.debug('India',10,3.14,true,false,'Asia');
+        window.location = SiteName;
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>using document.write method</h1>
+    <button type="button" onclick="PrintTable();">Generate Multiplication table</button>
+    <hr />
+    <script>
+        //create user defined function 
+        function PrintTable() {
+            console.log('printTable function called....');
+            // 5 x 1 = 5
+            // 5 x 2 = 10
+            // ............
+            // 5 x 10 = 50
+            var num = prompt("Enter one number", 1);
+            num = parseInt(num); //convert string into number because input is always string
+            var multiplier = 1;
+            var result = 0;
+
+
+            while(multiplier<=10)
+            { 
+                //loop body
+                result = num * multiplier; //5
+                document.write(`${num} x ${multiplier} = ${result} <br/>`);
+                multiplier = multiplier + 1;
+            }
+
+        }
+    </script>
+</body>
+
+</html>
