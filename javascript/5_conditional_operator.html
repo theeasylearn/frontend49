@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Conditional Operator</h1>
+    
+    <script>
+        //create date class object
+        let now = new Date();
+        let hours = now.getHours(); //getHours that return Hours 
+        let minutes = now.getMinutes();
+        console.log(hours, minutes);
+        let ampm = null;
+        // if (hours > 12) {
+        //     hours = hours - 12;
+        //     ampm = " PM";
+        // }
+        // else {
+        //     ampm = " AM";
+        // }
+        let temp = ":" + minutes;
+        document.write((hours>12)? (hours-12) +  temp + " PM": hours + temp + " AM");
+        //nesting is also possible
+        let day = null;
+        let dayofWeek = now.getDay();
+        day = (dayofWeek=== 1) ? "Monday" : (dayofWeek === 2) ? "Tuesday" : (dayofWeek === 3) ? "Wednesday" : (dayofWeek=== 4) ? "Thursday" : (dayofWeek=== 5) ? "Friday" : (dayofWeek=== 6) ? "Saturday" : "Sunday";
+        document.write("<br/>" + day);
+    </script>
+</body>
+
+</html>
