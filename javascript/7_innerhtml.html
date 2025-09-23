@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* define class */
+        .highlight {
+            background-color: yellow;
+            color: red;
+            font-size: large;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>innerhtml & className, style property</h1>
+    <table border="2" align="center" width="80%">
+        <tr>
+            <td width="33.33%">
+                <button type="button" onclick="changeText();">set Text</button>
+            </td>
+            <td width="33.33%">
+                <button type="button" onclick="changeClass();">change className</button>
+            </td>
+            <td width="33.33%">
+                <button type="button" onclick="changeStyle();">change style</button>
+            </td>
+        </tr>
+        <tr>
+            <td id="one"></td>
+            <td id="two"></td>
+            <td id="thee"></td>
+        </tr>
+
+    </table>
+    <script>
+        //create function
+        function changeText() {
+            console.log("change text function called...");
+            let aarti = `જય આદ્યા શક્તિ મા જય આદ્યા શક્તિ <br/>
+            અખંડ બ્રહ્માંડ નિપાવ્યાં, પડવે પ્રકટ્યા મા … ઓમ <br/><br/>
+
+            દ્વિતીયા બેય સ્વરૂપ, શિવ શક્તિ જાણું <br/>
+            બ્રહ્મા ગુણ તવ ગાયે, હરિ ગાયે હર મા … ઓમ <br/><br/>
+
+            તૃતિયા ત્રણ સ્વરૂપ, ત્રિભુવનમાં બેઠા <br/>
+            ત્રય થકી તરવેણી, તું તારિણી મા … ઓમ <br/><br/>
+
+            ચોથે ચતુરા મહાલક્ષ્મી મા, સચરાચર વ્યાપ્યા <br/>
+            ચાર ભૂજા ચૌ દિશ, પ્રકટ્યા દક્ષિણમાં … ઓમ <br/><br/>
+
+            પંચમે પંચ ઋષિ, પંચમી ગુણ પદ્મા <br/>
+            પંચ દેવ ત્યાં સોહે, પંચે તત્વોમાં … ઓમ <br/><br/>
+
+            ષષ્ઠી તું નારાયણી, મહિષાસુર માર્યો <br/>
+            નર નારીના રૂપે, વ્યાપ્યાં સઘળે મા … ઓમ <br/><br/>
+
+            સપ્તમી સપ્ત પાતાલ, સાવિત્રી-સંધ્યા <br/>
+            ગૌ ગંગા ગાયત્રી, ગૌરી ગીતા મા … ઓમ <br/><br/>
+
+            અષ્ટમી અષ્ટ ભુજા, આઈ આનંદા <br/>
+            સુર નર મુની વર જનમ્યા, દેવ દૈત્યોમાં … ઓમ<br/><br/>
+
+            નવમી નવકુળ નાગ, સેવે નવદુર્ગા<br/>
+            નવરાત્રીના પૂજન, શિવરાત્રીના અર્ચન, કીધા હર બ્રહ્મા … ઓમ<br/><br/>
+
+            દશમી દશ અવતાર, જય વિજયા દશમી <br/>
+            રામે રામ રમાડ્યા, રાવણ રોળ્યો મા … ઓમ<br/><br/>
+
+            એકાદશી અઘનાશિની, કાત્યાયની કામા<br/>
+            કામદુર્ગા કાલિકા, શ્યામા ને રામા … ઓમ<br/><br/>
+
+            બારસે બાળા રૂપ, બહુચરી અંબા મા<br/>
+            બટુક ભૈરવ સોહે, કાળ ભૈરવ સોહે, તારા છે તુજ મા … ઓમ<br/><br/>
+
+            તેરસે તુળજા રૂપ, તું તારુણી માતા<br/>
+            બ્રહ્મા વિષ્ણુ સદાશિવ, ગુણ તારા ગાતાં … ઓમ<br/><br/>
+
+            ચૌદશે ચૌદ સ્વરૂપ, ચંડી ચામુંડા<br/><br/>
+            ભાવ ભક્તિ કંઇ આપો, ચતુરાઇ કંઇ આપો, સિંહવાહીની મા … ઓમ<br/><br/>
+
+            પૂનમે કુંભ ભર્યો, સાંભળજો કરુણા<br/>
+            વશિષ્ઠ દેવે વખાણ્યા, માર્કંડ દેવે વખાણ્યા, ગાઈ શુભ કવિતા … ઓમ<br/><br/>
+
+            સંવત સોળ સત્તાવન, સોળસે બાવીસમાં<br/>
+            સંવત સોળે પ્રગટ્યા, રેવાને તીરે, મા ગંગાને તીરે … ઓમ<br/><br/>
+
+            ત્રંબાવટી નગરી, મા રૂપાવતી નગરી<br/>
+            સોળ સહસ્ત્ર ત્યાં સોહીએ, ક્ષમા કરો ગૌરી, મા દયા કરો ગૌરી … ઓમ<br/><br/>
+
+            શિવશક્તિની આરતી જે કોઇ ગાશે, જે ભાવે ગાશે<br/>
+            ભણે શિવાનંદ સ્વામી, સુખ-સંપત્તિ થાશે,<br/>
+            હર કૈલાસે જાશે, મા અંબા દુઃખ હરશે … ઓમ<br/><br/>
+
+            એ બે એક સ્વરૂપ, અંતર નવ ગણશો<br/>
+            ભોળા ભવાનીને ભજતાં, ભવસાગર તરશો … ઓમ`;
+            document.getElementById('one').innerHTML = aarti;
+            // display rastra geet in hindi in td tag whose is two 
+
+        }
+        function changeClass() {
+            console.log("change class function called...");
+            document.getElementById('one').className = "highlight";
+            // apply hightlight to td tag whose is two 
+        }
+        function changeStyle() {
+            console.log("change style function called...");
+            document.getElementById('one').style = "text-align:center;padding:10px;";
+            // apply style to td tag whose is three (apply border,change font) 
+
+        }
+    </script>
+</body>
+
+</html>
