@@ -4,3 +4,9 @@
 
 3)  write a program to print current month calendar when user click on button use function and document.write method 
 
+4) write a program to calculate EMI from given amount, Rate, Tenure (select tag)
+
+5) write a program to calculate BMI from given weight in kg and height in foot and inches.
+
+6) write a program to calculate GST on given amount and rate (radio button) as per revised standard in sept 2025. 
+
