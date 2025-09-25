@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        table {
+            width: 100vw;
+            height: calc(100vh - 100px);
+            border-collapse: collapse;
+        }
+
+        tr {
+            height: calc(100vh/6 - 100px);
+        }
+
+        td {
+            border: 2px solid black;
+            font-size: 3rem;
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>Sunday</td>
+                <td>Monday</td>
+                <td>Tuesday</td>
+                <td>Wednesday</td>
+                <td>Thursday</td>
+                <td>Friday</td>
+                <td>Saturday</td>
+            </tr>
+        </thead>
+        <tbody id="output">
+        </tbody>
+
+    </table>
+    <script>
+        //create function 
+        let generateCalendar = function () {
+            // alert('hi');
+            let content = ` <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+            </tr>`;
+            for(var count=1;count<=5;count++)
+            {
+                document.getElementById('output').innerHTML += content;
+            }
+
+        }
+
+        //calling function 
+        generateCalendar();
+    </script>
+</body>
+
+</html>
