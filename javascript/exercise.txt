@@ -10,3 +10,6 @@
 
 6) write a program to calculate GST on given amount and rate (radio button) as per revised standard in sept 2025. 
 
+7) MODIFY example 13_event_handling_2.html, accept player name for X & 0. evaluate & display winner name 
+
+8) MODIFY 7 exercise, and develop logic to play against computer, 

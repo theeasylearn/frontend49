@@ -1,68 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        * 
-        {
+        * {
             margin: 0px;
             padding: 0px;
             box-sizing: border-box;
 
         }
-        body 
-        {
-                height: 100vh;
-                display: flex;
-                align-items: center;
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
         }
-        section
-        {
+
+        section {
             background-color: aliceblue;
-            padding:20px;
+            padding: 20px;
             width: calc(100vw - 200px);
-            margin:auto;
+            margin: auto;
             height: calc(100vh - 200px);
             box-shadow: 15px 15px 7px gainsboro;
             display: flex;
-            flex-wrap:  wrap;
+            flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
         }
-        div 
-        {
+
+        div {
             height: 150px;
             width: 400px;
             background-color: cadetblue;
-            color:white;
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 200px;
         }
+
+        .highlight {
+            background-color: yellow;
+            color: red;
+        }
     </style>
 </head>
+
 <body>
     <section>
-        <div id="one" >-</div>
-        <div id="two" >-</div>
-        <div id="three" >-</div>
+        <div id="one">-</div>
+        <div id="two">-</div>
+        <div id="three">-</div>
 
-        <div id="four" >-</div>
-        <div id="five" >-</div>
-        <div id="six" >-</div>
+        <div id="four">-</div>
+        <div id="five">-</div>
+        <div id="six">-</div>
 
-        <div id="seven" >-</div>
-        <div id="eight" >-</div>
-        <div id="nine" >-</div>
+        <div id="seven">-</div>
+        <div id="eight">-</div>
+        <div id="nine">-</div>
     </section>
 
     <script>
-        //create list that has reference to all div 
+        //create list/array that has reference to all div 
         let divs = document.getElementsByTagName('div');
         console.log(divs);
+        var letter = 'X';
+        for(let index=0;index<divs.length;index++)
+        {
+            divs[index].onmouseover = function () {
+                console.log(this.id);
+                this.className = "highlight";
+            }
+            divs[index].onmouseout = function(){
+                 this.className = "";
+            }
+            divs[index].onclick = function(){
+                this.innerHTML = letter;
+                if(letter === 'X')
+                    letter = '0';
+                else 
+                    letter = 'X';
+            }
+        }
+
     </script>
 </body>
+
 </html>
