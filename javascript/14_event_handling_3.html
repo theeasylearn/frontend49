@@ -14,6 +14,11 @@
             width: 100%;
             font-size: x-large;
         }
+
+        .has-focus {
+            background-color: aliceblue;
+            border: 2px solid blue;
+        }
     </style>
 </head>
 
@@ -23,27 +28,41 @@
         <table border="2" width="30%" align="center" cellpadding="10">
             <tr>
                 <td width="80%">
-                    <input class="input" type="text" name="first_name" id="first_name" required />
+                    <input class="input" type="text" name="first_name" id="first_name" required
+                        placeholder="First name" />
                 </td>
-                <td>
+                <td id="info_first_name">
 
                 </td>
+                <td></td>
             </tr>
             <tr>
                 <td width="80%">
-                    <input class="input" type="text" name="last_name" id="last_name" required />
+                    <input class="input" type="text" name="last_name" id="last_name" required placeholder="last name" />
                 </td>
-                <td>
+                <td id="info_last_name">
 
                 </td>
+                <td></td>
             </tr>
             <tr>
                 <td width="80%">
-                    <input class="input" type="text" name="city" id="city" required />
+                    <input class="input" type="text" name="city" id="city" required placeholder="City"
+                        data-space="no" />
                 </td>
-                <td>
+                <td id="info_city">
 
                 </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td width="80%">
+                    <input class="input" type="number" name="pincode" id="pincode" required placeholder="Pincode" />
+                </td>
+                <td id="info_pincode">
+
+                </td>
+                <td></td>
             </tr>
             <tr>
                 <td colspan="2" align="center">
@@ -58,11 +77,34 @@
         var boxes = document.getElementsByClassName('input');
         console.log(boxes);
         var index = 0;
-        while(index<boxes.length)
-        {
+        while (index < boxes.length) {
             boxes[index].addEventListener('blur', function () {
-                alert(this.value);
+                console.log(this.value);
+                let tdID = 'info_' + this.id;
+                let dataSpace = this.getAttribute('data-space');
+                console.log(dataSpace);
+                if (this.value === '') {
+
+                    console.log(tdID);
+                    document.getElementById(tdID).innerHTML = `<img src='images/cross.png' />`
+                }
+                else if (dataSpace !== null && dataSpace == 'no' && this.value.indexOf(' ') >= 0) {
+                    document.getElementById(tdID).innerHTML = `<img src='images/cross.png' />`
+                }
+                else {
+                    document.getElementById(tdID).innerHTML = `<img src='images/tick.png' />`
+                }
+                this.classList.remove('has-focus');
             }, true);
+
+            boxes[index].addEventListener('focus', function () {
+                this.classList.add('has-focus'); //add class but do not replace class 
+            }, false);
+            boxes[index].addEventListener('input', function () {
+                let length = this.value.length;
+                let lastTD = this.parentNode.parentNode.getElementsByTagName('td')[2];
+                lastTD.innerHTML = length;
+            }, false);
             index++;
         }
 
