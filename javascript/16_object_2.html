@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>2nd way to create object</h1>
+    <table border="2" cellpadding="10">
+        <tr>
+            <td id="num1"></td>
+            <td id="num2"></td>
+        </tr>
+        <tr>
+            <td>Addition</td>
+            <td id="addition"></td>
+        </tr>
+    </table>
+    <b>use console</b>
+    <script>
+        var MyMath = new Object({
+            //property variable
+            num1: 0,
+            num2: 0,
+            getInput: function (num1, num2) {
+                this.num1 = num1;
+                this.num2 = num2;
+            },
+            display:function(){
+                document.getElementById('num1').innerHTML = this.num1;
+                document.getElementById('num2').innerHTML = this.num2;
+            },
+            add:function(){
+                //local variable 
+                let result = this.num1 + this.num2;
+                document.getElementById('addition').innerHTML = result;
+            }
+            //create function for subtraction, multiplication, division
+        });
+
+        //create object variable
+        var m1 = MyMath;
+        m1.getInput(10,20);
+        m1.display();
+        m1.add();
+        //we can access/change property variable outside object
+        var m2 = MyMath;
+        //change
+        m2.num1 = 100;
+        m2.num2 = 200;
+        //access
+        console.log(m2.num1,m2.num2);
+    </script>
+</body>
+
+</html>
