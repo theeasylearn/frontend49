@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>create object using 3rd way</h1>
+    <table border="1" align="center" align="center" cellpadding="10" width="75%">
+        <thead>
+            <tr>
+                <th width="8%">Sr No</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="output">
+
+        </tbody>
+    </table>
+    <script>
+        //create template/Object
+        function Product(name, price, quantity) {
+            //create property variable 
+            this.name = name,
+                this.price = price,
+                this.quantity = quantity
+            this.total = price * quantity,
+                this.add = function () {
+                    console.log(this.name + " " + this.price + " " + this.quantity + " " + this.total);
+                    let row = `<tr>
+                        <td></td>
+                        <td>${this.name}</td>
+                        <td>${this.price}</td>
+                        <td>${this.quantity}</td>
+                        <td>${this.total}</td>
+                    </tr>`;
+                    document.getElementById('output').innerHTML = row;
+                }
+        }
+        let p1 = new Product('IPhone 17', 80000, 2);
+        p1.add();
+    </script>
+</body>
+
+</html>
