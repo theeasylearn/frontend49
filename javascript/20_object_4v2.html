@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>4th way (ES6) way to create object</h1>
+            </div>
+        </div>
+        <div class="row" id="team">
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/20994dd270.js" crossorigin="anonymous"></script>
+    <script>
+        //create class 
+        class Player {
+            //create property variable inside constructor
+            constructor(name, runs, ball, four, six) {
+                //this function will be called automatically when we create object of class such functions are known as callback function 
+                this.name = name;
+                this.runs = runs;
+                this.ball = ball;
+                this.four = four;
+                this.six = six;
+            }
+            add() {
+                console.log(this); //it will display all properties of object
+                let card = ` <div class="col-lg-3">
+                <div class="card shadow">
+                    <div class="card-header text-bg-primary">
+                        <h3>${this.name}</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item "><b>Runs</b> ${this.runs}</li>
+                            <li class="list-group-item "><b>Ball</b> ${this.ball}</li>
+                            <li class="list-group-item "><b>Fours</b> ${this.four}</li>
+                            <li class="list-group-item "><b>Six</b> ${this.six}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>`;
+            document.getElementById('team').innerHTML = card;
+            }
+        }
+        //now create object using  class
+        //var object = new Class(values) 
+        var p1 = new Player("Virat Kohli", 100, 50, 7, 3); //it will run constructor automatically(implictly)
+        p1.add();
+
+        var p2 = new Player("Shubhnam Gill", 200, 100, 14, 8); //it will run constructor automatically(implictly)
+        p2.add();
+
+    </script>
+</body>
+
+</html>

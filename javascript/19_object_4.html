@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>4th way (ES6) way to create object</h1>
+    <b>use console</b>
+    <script>
+        //create class 
+        class Player {
+            //create property variable inside constructor
+            constructor(name, runs, ball, four, six) {
+                //this function will be called automatically when we create object of class such functions are known as callback function 
+                this.name = name;
+                this.runs = runs;
+                this.ball = ball;
+                this.four = four;
+                this.six = six;
+            }
+            add()
+            {
+                console.log(this); //it will display all properties of object
+            }
+        }
+        //now create object using class
+        //var object = new Class(values) 
+        var p1 = new Player("Virat Kohli",100,50,7,3); //it will run constructor automatically(implictly)
+        p1.add();
+
+        var p2 = new Player("Shubhnam Gill",200,100,14,8); //it will run constructor automatically(implictly)
+        p2.add();
+        
+    </script>
+</body>
+
+</html>
