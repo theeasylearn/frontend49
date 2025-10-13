@@ -11,19 +11,54 @@
 
 <body>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
+        <div class="row ">
+            <div class="col-12 bg-light shadow">
                 <h1>4th way (ES6) way to create object</h1>
             </div>
             <div class="col-12">
-                <div class="col-lg-2 bg-secondary">
-                    <div class="form">
-                        
-                    </div>
-                </div>
-                <div class="col-lg-10">
-                    <div class="row" id="team">
+                <div class="row">
+                    <div class="col-lg-2 bg-light vh-100 shadow">
+                        <form onsubmit="return addPlayer();">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                                <div class="invalid-feedback">Name is required.</div>
+                            </div>
 
+                            <div class="mb-3">
+                                <label for="runs" class="form-label">Runs</label>
+                                <input type="number" id="runs" name="runs" class="form-control" min="0" step="1"
+                                    required>
+                                <div class="invalid-feedback">Enter runs (0 or more).</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="balls" class="form-label">Balls</label>
+                                <input type="number" id="balls" name="balls" class="form-control" min="1" step="1"
+                                    required>
+                                <div class="invalid-feedback">Enter balls faced (at least 1).</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="fours" class="form-label">Fours</label>
+                                <input type="number" id="fours" name="fours" class="form-control" min="0" step="1"
+                                    required>
+                                <div class="invalid-feedback">Enter number of fours (0 or more).</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="six" class="form-label">Six</label>
+                                <input type="number" id="six" name="six" class="form-control" min="0" step="1" required>
+                                <div class="invalid-feedback">Enter number of sixes (0 or more).</div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                    <div class="col-lg-10 p-3">
+                        <div class="row" id="team">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -36,6 +71,21 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/20994dd270.js" crossorigin="anonymous"></script>
     <script>
+        function addPlayer() {
+
+            //create variables to store input
+            var name = document.getElementById('name').value;
+            var runs = document.getElementById('runs').value;
+            var balls = document.getElementById('balls').value;
+            var fours = document.getElementById('fours').value;
+            var six = document.getElementById('six').value;
+            //now create object using  class
+            //var object = new Class(values) 
+            var p1 = new Player(name, runs, balls, fours, six); //it will run constructor automatically(implictly)
+            p1.add();
+
+            return false;
+        }
         //create class 
         class Player {
             //create property variable inside constructor
@@ -49,10 +99,14 @@
             }
             add() {
                 console.log(this); //it will display all properties of object
-                let card = ` <div class="col-lg-3">
+                let card = ` <div class="col-lg-3 mb-3">
                 <div class="card shadow">
-                    <div class="card-header text-bg-primary">
-                        <h3>${this.name}</h3>
+                    <div class="card-header text-bg-primary d-flex justify-content-between">
+                        <h4>${this.name}</h4>
+                        <div>
+                            <i class="fa  fa-edit" ></i>
+                            <i class="fa  fa-trash"></i>
+                        </div>
                     </div>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
@@ -64,16 +118,11 @@
                     </div>
                 </div>
             </div>`;
-                document.getElementById('team').innerHTML = card;
+                document.getElementById('team').innerHTML += card;
             }
         }
-        //now create object using  class
-        //var object = new Class(values) 
-        var p1 = new Player("Virat Kohli", 100, 50, 7, 3); //it will run constructor automatically(implictly)
-        p1.add();
 
-        var p2 = new Player("Shubhnam Gill", 200, 100, 14, 8); //it will run constructor automatically(implictly)
-        p2.add();
+
 
     </script>
 </body>
