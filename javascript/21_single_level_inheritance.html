@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>single level inheritance</h1>
+
+    <div id="output"></div>
+    <script>
+        var output = document.getElementById('output');
+        //create base/parent class
+        class Person {
+            walk() {
+                output.innerHTML += `Person can walk <br/>`;
+            }
+            talk() {
+                output.innerHTML += `Person can talk <br/>`;
+            }
+        }
+        //create child/sub/derived class
+        class Student extends Person {
+            read() {
+                output.innerHTML += `Student can read <br/>`;
+            }
+            write() {
+                output.innerHTML += `Student can write <br/>`;
+            }
+            whatICanDo(){
+                //call parent class walk method
+                super.walk();
+                //call parent class talk method
+                super.talk();
+                //call same class method read
+                this.read();
+                //call same class method write 
+                this.write();
+            }
+        }
+
+        //create student class object
+        var s1 = new Student();
+        //call method of student class
+        s1.whatICanDo();
+    </script>
+</body>
+
+</html>
