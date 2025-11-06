@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>revision</h1>
+    <h2>Creating objects</h2>
+    <table border="2" align="center" cellpadding="10">
+        <tr>
+            <td>Addition</td>
+            <td id="one"></td>
+        </tr>
+        <tr>
+            <td>Subtraction</td>
+            <td id="two"></td>
+        </tr>
+        <tr>
+            <td>Multiplication</td>
+            <td id="three"></td>
+        </tr>
+        <tr>
+            <td>get maximum</td>
+            <td id="four"></td>
+        </tr>
+    </table>
+    <table border="1" cellpadding="10" width="80%">
+        <thead>
+            <tr>
+                <th>Sr No</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+
+        </thead>
+        <tbody id="shop">
+
+        </tbody>
+    </table>
+    <script>
+        //create object using 1st technique
+        var MyMath = {
+            //property variable
+            num1: 10,
+            num2: 3,
+            //methods
+            addition: function () {
+                //methods of object can directly access property variable of same object using this keyword
+                let result = this.num1 + this.num2;
+                document.getElementById('one').innerHTML = result;
+            }
+            //now add methods for subtraction,multiplication, division
+        }
+        //calling method
+        MyMath.addition();
+
+        //create method using 2nd technique
+        var MyMath2 = new Object({
+            num1: 10,
+            num2: 3,
+            //methods
+            subtraction: function () {
+                //methods of object can directly access property variable of same object using this keyword
+                let result = this.num1 - this.num2;
+                document.getElementById('two').innerHTML = result;
+            }
+        });
+
+        //create object variable using object
+        var m2 = MyMath2;
+        m2.subtraction();
+        var count = 1;
+        function Product(name, price, stock) {
+            this.name = name;
+            this.price = price;
+            this.stock = stock;
+            this.add = function () {
+                let output = `<tr>
+                <td>${count}</td>
+                <td>${this.name}</td>
+                <td>${this.price}</td>
+                <td>${this.stock}</td>
+                <td>${this.price * this.stock}</td>
+            </tr>`;
+                document.getElementById('shop').innerHTML += output;
+                count++;
+            }
+        }
+
+        //create object variable
+        let p1 = new Product("IPhone 17 pro max", 99999, 2);
+        p1.add();
+
+        let p2 = new Product("macbook pro", 100999, 5);
+        p2.add();
+    </script>
+</body>
+
+</html>
