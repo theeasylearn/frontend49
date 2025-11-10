@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>List Related methods</h1>
+    <b>use console to checkout</b>
+    <script>
+        //create list 
+        var countries = []; //empty list
+        //let us push values (at the end of list)
+        countries.push("Australia");
+        countries.push("Canada");
+        countries.push("England");
+        console.log(countries);         // ['Australia','Canada','England']
+        //let us push value at the begining of the list 
+        countries.unshift("India"); // ['India','Australia','Canada','England']
+        countries.unshift("China"); // ['China','India','Australia','Canada','England']
+        console.log(countries);
+        // let us remove value from the end of the list 
+        let removedCountry = countries.pop();
+        console.log(removedCountry);  // ['China','India','Australia','Canada']
+        //let us remove value from the begining 
+        removedCountry = countries.shift();   // ['India','Australia','Canada']
+        console.log(removedCountry); 
+        console.log(countries); // ['India','Australia','Canada']
+        countries.sort();
+        console.log(countries); // ['Australia','Canada','India']
+        countries.reverse();
+        console.log(countries); // ['India','Canada','Australia']
+        console.log("Position of Canada in list",countries.indexOf('Canada')); //1
+        console.log("Position of Canada in list",countries.indexOf('China')); //-1
+        console.log("has this list include England ",countries.includes('England'));
+        console.log("has this list include India ",countries.includes('India'));
+
+        var europe = ['France','Itlay','Germany'];
+        countries = countries.concat(europe);
+        console.log(countries);
+        //remove 2 countries from begining
+        countries.splice(0,2); //2 is not including
+        console.log(countries);
+        //list converted into string 
+        console.log(countries.join(" "));
+    </script>
+</body>
+</html>
