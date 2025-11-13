@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CDN (css/javascript files used via link of some server is called CDN(Content Delivery network)) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header text-bg-primary">
+                        <form action="" onsubmit="return filteredData();">
+                            <table>
+                                <tr>
+                                    <td width="74%">
+                                        <h1>Filter country</h1>
+                                    </td>
+                                    <td align="right">
+                                        <input type="text" id="data" class="form-control" placeholder="Filter Data" required />
+                                    </td>
+                                    <td align="right">
+                                        <select id="field" class="form-select">
+                                            <option value="">Select field</option>
+                                        </select>
+                                    </td>
+                                    <td align="right">
+                                        <input type="submit" class="btn btn-danger" value="Search" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    <div class="card-body">
+                        <table width="90%" class="table table-striped table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>name</th>
+                                    <th>capital</th>
+                                    <th>area</th>
+                                    <th>currency</th>
+                                    <th>timezone</th>
+                                    <th>continent</th>
+                                    <th>population</th>
+                                    <th>Language</th>
+                                    <th>callingCode</th>
+                                    <th>ind. Year</th>
+                                    <th>Religion</th>
+                                    <th>gdp</th>
+                                    <th>literacyRate</th>
+                                    <th>TLD</th>
+                                    <th>driving</th>
+                                    <th>Animal</th>
+                                </tr>
+
+                            </thead>
+                            <tbody id="output">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- this is also cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://kit.fontawesome.com/20994dd270.js" crossorigin="anonymous"></script>
+    <script>
+
+        function filteredData()
+        {
+            let data = document.getElementById('data').value;
+            // alert(data);
+            let filteredList = countries.filter((country) => {
+                if(country.continent === data)
+                    return country
+            });
+            displayCountries(filteredList);
+            return false;
+        }
+        function displayCountries(list) {
+            var temp = '';
+            list.map((country) => {
+                //object destructring
+                let {name,capital,area,currency,timezone,continent,population,officialLanguage,callingCode,independenceYear,majorReligion,gdp,literacyRate,internetTLD,drivingSide,nationalAnimal} = country;
+                temp += `   <tr>
+                                    <td>${name}</td>
+                                    <td>${capital}</td>
+                                    <td>${area}</td>
+                                    <td>${currency}</td>
+                                    <td>${timezone}</td>
+                                    <td>${continent}</td>
+                                    <td>${population}</td>
+                                    <td>${officialLanguage}</td>
+                                    <td>${callingCode}</td>
+                                    <td>${independenceYear}</td>
+                                    <td>${majorReligion}</td>
+                                    <td>${gdp}</td>
+                                    <td>${literacyRate}</td>
+                                    <td>${internetTLD}</td>
+                                    <td>${drivingSide}</td>
+                                    <td>${nationalAnimal}</td>
+                                </tr>`;
+
+            });
+            document.getElementById('output').innerHTML = temp;
+        }
+        const countries = [
+            {
+                name: "India",
+                capital: "New Delhi",
+                area: "3,287,263 sq km",
+                currency: "Indian Rupee (INR)",
+                timezone: "IST (UTC+5:30)",
+                continent: "Asia",
+                population: "1.4 billion",
+                officialLanguage: "Hindi",
+                callingCode: "+91",
+                independenceYear: 1947,
+                majorReligion: "Hinduism",
+                gdp: "3.73 trillion USD",
+                literacyRate: "77.7%",
+                internetTLD: ".in",
+                drivingSide: "Left",
+                nationalAnimal: "Bengal Tiger"
+            },
+            {
+                name: "United States",
+                capital: "Washington, D.C.",
+                area: "9,833,520 sq km",
+                currency: "US Dollar (USD)",
+                timezone: "Multiple (EST to PST)",
+                continent: "North America",
+                population: "331 million",
+                officialLanguage: "English",
+                callingCode: "+1",
+                independenceYear: 1776,
+                majorReligion: "Christianity",
+                gdp: "25.44 trillion USD",
+                literacyRate: "99%",
+                internetTLD: ".us",
+                drivingSide: "Right",
+                nationalAnimal: "Bald Eagle"
+            },
+            {
+                name: "China",
+                capital: "Beijing",
+                area: "9,596,961 sq km",
+                currency: "Renminbi (Yuan)",
+                timezone: "CST (UTC+8)",
+                continent: "Asia",
+                population: "1.41 billion",
+                officialLanguage: "Mandarin",
+                callingCode: "+86",
+                independenceYear: 1949,
+                majorReligion: "Buddhism",
+                gdp: "17.96 trillion USD",
+                literacyRate: "96.8%",
+                internetTLD: ".cn",
+                drivingSide: "Right",
+                nationalAnimal: "Giant Panda"
+            },
+            {
+                name: "Japan",
+                capital: "Tokyo",
+                area: "377,975 sq km",
+                currency: "Yen (JPY)",
+                timezone: "JST (UTC+9)",
+                continent: "Asia",
+                population: "125.8 million",
+                officialLanguage: "Japanese",
+                callingCode: "+81",
+                independenceYear: '660 BC',
+                majorReligion: "Shinto & Buddhism",
+                gdp: "4.23 trillion USD",
+                literacyRate: "99%",
+                internetTLD: ".jp",
+                drivingSide: "Left",
+                nationalAnimal: "Green Pheasant"
+            },
+            {
+                name: "Germany",
+                capital: "Berlin",
+                area: "357,022 sq km",
+                currency: "Euro (EUR)",
+                timezone: "CET (UTC+1)",
+                continent: "Europe",
+                population: "83.2 million",
+                officialLanguage: "German",
+                callingCode: "+49",
+                independenceYear: 1871,
+                majorReligion: "Christianity",
+                gdp: "4.31 trillion USD",
+                literacyRate: "99%",
+                internetTLD: ".de",
+                drivingSide: "Right",
+                nationalAnimal: "Federal Eagle"
+            },
+            {
+                name: "United Kingdom",
+                capital: "London",
+                area: "243,610 sq km",
+                currency: "Pound Sterling (GBP)",
+                timezone: "GMT (UTC+0)",
+                continent: "Europe",
+                population: "67 million",
+                officialLanguage: "English",
+                callingCode: "+44",
+                independenceYear: "N/A",
+                majorReligion: "Christianity",
+                gdp: "3.13 trillion USD",
+                literacyRate: "99%",
+                internetTLD: ".uk",
+                drivingSide: "Left",
+                nationalAnimal: "Lion"
+            },
+            {
+                name: "France",
+                capital: "Paris",
+                area: "643,801 sq km",
+                currency: "Euro (EUR)",
+                timezone: "CET (UTC+1)",
+                continent: "Europe",
+                population: "67.5 million",
+                officialLanguage: "French",
+                callingCode: "+33",
+                independenceYear: 843,
+                majorReligion: "Christianity",
+                gdp: "3.05 trillion USD",
+                literacyRate: "99%",
+                internetTLD: ".fr",
+                drivingSide: "Right",
+                nationalAnimal: "Gallic Rooster"
+            },
+            {
+                name: "Brazil",
+                capital: "Brasília",
+                area: "8,515,767 sq km",
+                currency: "Brazilian Real (BRL)",
+                timezone: "BRT (UTC−3)",
+                continent: "South America",
+                population: "213 million",
+                officialLanguage: "Portuguese",
+                callingCode: "+55",
+                independenceYear: 1822,
+                majorReligion: "Christianity",
+                gdp: "2.08 trillion USD",
+                literacyRate: "93.2%",
+                internetTLD: ".br",
+                drivingSide: "Right",
+                nationalAnimal: "Jaguar"
+            },
+            {
+                name: "Russia",
+                capital: "Moscow",
+                area: "17,098,242 sq km",
+                currency: "Russian Ruble (RUB)",
+                timezone: "Multiple (UTC+2 to +12)",
+                continent: "Europe/Asia",
+                population: "146 million",
+                officialLanguage: "Russian",
+                callingCode: "+7",
+                independenceYear: 1991,
+                majorReligion: "Christianity",
+                gdp: "1.78 trillion USD",
+                literacyRate: "99.7%",
+                internetTLD: ".ru",
+                drivingSide: "Right",
+                nationalAnimal: "Brown Bear"
+            },
+            {
+                name: "Australia",
+                capital: "Canberra",
+                area: "7,692,024 sq km",
+                currency: "Australian Dollar (AUD)",
+                timezone: "AEST (UTC+10)",
+                continent: "Australia",
+                population: "25.7 million",
+                officialLanguage: "English",
+                callingCode: "+61",
+                independenceYear: 1901,
+                majorReligion: "Christianity",
+                gdp: "1.61 trillion USD",
+                literacyRate: "99%",
+                internetTLD: ".au",
+                drivingSide: "Left",
+                nationalAnimal: "Red Kangaroo"
+            },
+
+        ];
+        displayCountries(countries);
+
+    </script>
+</body>
+
+</html>
