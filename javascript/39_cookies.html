@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>working with cookies in another file</h1>
+    <input type="button" value="increase count" onclick="increaseCount()" />
+    <h2 id="output"></h2>
+    <script src="cookies.js"></script>
+    <script>
+        var count = 0;
+        var temp = getCookie('count');
+        if (temp !== '')
+            count = temp;
+        
+        document.getElementById('output').innerHTML = count;
+        //arrow function
+        let increaseCount = () => {
+            // alert('increase count');
+            count++;
+            setCookie('count', count, 365);
+            document.getElementById('output').innerHTML = count;
+        }
+
+    </script>
+</body>
+
+</html>

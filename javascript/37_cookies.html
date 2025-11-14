@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>working with cookies</h1>
+    <b>use console to check output</b>
+    <script src="cookies.js"></script>
+    <script>
+        //create cookies 
+        setCookie('name', 'the easylearn academy', 365);
+        setCookie('year', 2025, 36500);
+        setCookie('pi', 3.14, 3650);
+
+        //get cookies 
+        console.log(getCookie('name'));
+        console.log(getCookie('year'));
+        console.log(getCookie('pi'));
+
+        //change value 
+        setCookie('year', 2026, 100);
+
+        //delete cookie
+        setCookie('pi', '', -10);
+        console.log(getCookie('name'));
+        console.log(getCookie('year'));
+        console.log(getCookie('pi'));
+
+    </script>
+</body>
+
+</html>
