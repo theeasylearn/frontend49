@@ -1,0 +1,6 @@
+1) Create nodejs server that return basic information about below city using only html 
+        bhavnagar
+        ahmedabad
+        baroda
+        surat 
+        rajkot
