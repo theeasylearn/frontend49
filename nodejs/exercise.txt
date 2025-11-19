@@ -4,3 +4,10 @@
         baroda
         surat 
         rajkot
+2) Create nodejs server that returns 100 dishes as json array of object. 
+        each dish has name, weight, price, ingridents
+
+3) create local module currency.js that has below function
+        toDollar(rupees) return dollar of given rupees
+        toPound(rupees) return pound of given rupees
+        toEuro(rupees) return euro of given rupees
