@@ -9,8 +9,6 @@ function handleRequest(request,response)
         response.write(password + " " + hashedPassword);
         response.end();
     });
-    
-    
 }
 var server = http.createServer((request,response) => handleRequest(request,response));
 //server start
