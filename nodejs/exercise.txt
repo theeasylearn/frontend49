@@ -11,3 +11,10 @@
         toDollar(rupees) return dollar of given rupees
         toPound(rupees) return pound of given rupees
         toEuro(rupees) return euro of given rupees
+
+4) create nodejs exam that return 
+        all product when request is received for products
+        filtered product whose price less then given value for example product?lower=1000
+        filtered product whose price greater then given value for example product?upper=1000
+        filtered product whose price between given range for example product?lower=1000&upper=5000
+
