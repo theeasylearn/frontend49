@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Fun & Dine</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{
+            font-family:Georgia,serif;
+            background:#fff8f0;
+            color:#333;
+            height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+        }
+        nav{
+            background:#8B0000;
+            padding:1rem 0;
+            position:fixed;
+            width:100%;
+            top:0;
+            z-index:1000;
+        }
+        .nav-container{
+            max-width:1200px;
+            margin:auto;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:0 2rem;
+        }
+        .logo{
+            font-size:2rem;
+            color:#ffd700;
+            font-weight:bold;
+        }
+        .nav-links a{
+            color:white;
+            text-decoration:none;
+            margin:0 15px;
+            font-weight:bold;
+        }
+        .nav-links a:hover{color:#ffd700;}
+
+        .error-container{
+            max-width:700px;
+            padding:2rem;
+        }
+        .error-code{
+            font-size:12rem;
+            font-weight:bold;
+            color:#8B0000;
+            text-shadow:5px 5px 15px rgba(139,0,0,0.2);
+            margin-bottom:20px;
+        }
+        h1{
+            font-size:3rem;
+            color:#8B0000;
+            margin:20px 0;
+        }
+        p{
+            font-size:1.3rem;
+            margin:20px 0;
+            color:#555;
+        }
+        .btn{
+            display:inline-block;
+            background:#ffd700;
+            color:#8B0000;
+            padding:15px 40px;
+            border-radius:50px;
+            text-decoration:none;
+            font-weight:bold;
+            font-size:1.2rem;
+            margin:20px 10px;
+            transition:0.3s;
+        }
+        .btn:hover{
+            background:white;
+            transform:scale(1.1);
+        }
+        .fun-image{
+            margin:40px 0;
+        }
+        .fun-image img{
+            max-width:300px;
+            border-radius:20px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.2);
+        }
+        footer{
+            position:fixed;
+            bottom:0;
+            width:100%;
+            background:#2c0b0b;
+            color:#ffd700;
+            text-align:center;
+            padding:15px;
+            font-size:0.9rem;
+        }
+        @media(max-width:768px){
+            .error-code{font-size:8rem;}
+            h1{font-size:2.2rem;}
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Fun & Dine</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="recipe.html">Recipe</a>
+                <a href="testimonials.html">Testimonials</a>
+                <a href="marriage-hall.html">Book Marriage Hall</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <h1>Oops! Page Not Found</h1>
+        <p>Looks like this page took a tasty break or went to enjoy some biryani!</p>
+        <p>Don't worry — our delicious food and marriage hall are still here!</p>
+
+        <div class="fun-image">
+            <img src="https://source.unsplash.com/random/600x400/?indian-food,confused" alt="Funny food">
+        </div>
+
+        <a href="index.html" class="btn">← Back to Home</a>
+        <a href="menu.html" class="btn">View Menu Instead</a>
+    </div>
+
+    <footer>
+        © 2025 Fun & Dine • Call: +91 98765 43210
+    </footer>
+
+</body>
+</html>
