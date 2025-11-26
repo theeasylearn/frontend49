@@ -18,3 +18,11 @@
         filtered product whose price greater then given value for example product?upper=1000
         filtered product whose price between given range for example product?lower=1000&upper=5000
 
+5) create web page that accept below details
+        Product Name 
+        Product Price 
+        Product weight
+        product Description (text area )
+        product size (select)
+store that data into file products.txt using nodejs and fs module. 
+
