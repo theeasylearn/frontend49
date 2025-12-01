@@ -26,3 +26,6 @@
         product size (select)
 store that data into file products.txt using nodejs and fs module. 
 
+6) create multi page website for nursery(flowers) using express js 
+        at least 6 pages 
+        developed using bootstrap 
