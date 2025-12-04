@@ -25,7 +25,10 @@
         product Description (text area )
         product size (select)
 store that data into file products.txt using nodejs and fs module. 
-
 6) create multi page website for nursery(flowers) using express js 
         at least 6 pages 
         developed using bootstrap 
+7) create API that works upon list of object (JSON) that will create/update/delete/fetch account data.
+        account should have account id (auto generated), name, balance, mobile,email 
+8) create API that works upon list of object (JSON) that will create/update/delete/fetch Product 
+        Product should have id(auto generated) name, price, quantity, weight, Size, Description
