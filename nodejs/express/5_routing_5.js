@@ -99,7 +99,6 @@ var data = [
     { "source": "Ahmedabad", "destination": "Surat", "journeyType": "sleeper", "departureTime": "23:50", "price": 290 },
     { "source": "Surat", "destination": "Bhavnagar", "journeyType": "express", "departureTime": "11:20", "price": 355 },
     { "source": "Baroda", "destination": "Jamnagar", "journeyType": "AC", "departureTime": "18:55", "price": 470 },
-
     { "source": "Bhavnagar", "destination": "Baroda", "journeyType": "gujarat nagari", "departureTime": "13:15", "price": 260 },
     { "source": "Jamnagar", "destination": "Surat", "journeyType": "sleeper", "departureTime": "21:40", "price": 315 },
     { "source": "Rajkot", "destination": "Ahmedabad", "journeyType": "express", "departureTime": "06:00", "price": 185 },
@@ -120,6 +119,49 @@ var data = [
     { "source": "Rajkot", "destination": "Baroda", "journeyType": "gujarat nagari", "departureTime": "13:50", "price": 230 },
     { "source": "Bhuj", "destination": "Surat", "journeyType": "sleeper", "departureTime": "21:10", "price": 285 }
 ];
+
+function getTravelInfo(request, response, mode) {
+    if (mode === 0) {
+        response.json(data);
+    }
+    else if (mode === 1) {
+        let { from, to } = request.params;
+        response.send(`${from} ${to}`);
+    }
+    else if (mode === 2) {
+        let { from, to, type } = request.params;
+        response.send(`${from} ${to} ${type}`);
+    }
+    else if (mode === 3) {
+        let { from, to, lower_price } = request.params;
+        response.send(`${from} ${to} ${lower_price}`);
+    }
+    else if (mode === 4) {
+        let { from, to, lower_price, upper_price } = request.params;
+        response.send(`${from} ${to} ${lower_price}${upper_price}`);
+    }
+
+}
+//get all bus routes 
+//http://localhost:5000/travel
+app.get("/travel/", (req, res) => getTravelInfo(req, res, 0));
+
+//get all bus routes between given source & destination
+//http://localhost:5000/travel/bhavnagar/ahmedabad
+app.get("/travel{/:from}{/:to}", (req, res) => getTravelInfo(req, res, 1));
+
+//get all bus routes between given source & destination & journeyType
+//http://localhost:5000/travel/bhavnagar/ahmedabad/ac
+//http://localhost:5000/travel/bhavnagar/ahmedabad/express
+app.get("/travel{/:from}{/:to}{/:type}", (req, res) => getTravelInfo(req, res, 2));
+
+//get all bus routes between given source & destination & below price
+//http://localhost:5000/travel/bhavnagar/ahmedabad/500
+app.get("/travel{/:from}{/:to}{/:lower_price}", (req, res) => getTravelInfo(req, res, 3));
+
+//get all bus routes between given source & destination & between given price range
+//http://localhost:5000/travel/bhavnagar/ahmedabad/500/1000
+app.get("/travel{/:from}{/:to}{/:lower_price}{/:upper_price}", (req, res) => getTravelInfo(req, res, 4));
 
 app.listen(5000);
 console.log('ready to accept request');
