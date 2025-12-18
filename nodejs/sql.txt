@@ -1,0 +1,486 @@
+how to create table 
+--------------------------------------
+syntax 
+create table <tablename> (
+    fieldname datatype(size) [constraint],
+    fieldname2 datatype(size) [constraint],
+    fieldname3 datatype(size) [constraint]
+);
+
+example
+------------------------
+create table person (
+    id integer primary key auto_increment,
+    fullname varchar(125) not null, 
+    dob date not null, 
+    email varchar(128) not null unique, 
+    mobile varchar(12) not null unique, 
+    weight float(5,2) not null check (weight>0.0)
+)
+
+how to remove table 
+syntax 
+drop table <tablename>
+
+example 
+drop table person
+
+drop table command remove both data and table 
+
+how to empty table?
+------------------------------
+syntax 
+truncate table <tablename>
+
+example 
+truncate table person 
+
+how to insert new record into table 
+--------------------------------------------------
+1st version syntax 
+insert into <tablename> values (value-1,value-2,value3);
+here you must know how many fields table has and datatype of each field. you must give value for all the fields 
+
+example
+insert into person values (0,'mayank santwani','2000-12-31','mayank@gmail.com','1234567890',50.25)
+
+2nd version  example 
+-----------------------
+insert into <tablename> (field-1,field-2,field-3) values (value-1,value-2,value-3)
+
+insert into person (fullname,dob,email,mobile,weight) values ('mohit sukheja','1950-05-01','mohit@gmail.com','2345678910',48.22)
+
+how to delete row from table 
+----------------------------------------
+delete all row 
+    syntax 
+        delete from <tablename>
+    example 
+        delete from person  
+
+    delete few rows (as per condition)
+    delete person whose id is 1 
+    
+    example 
+    delete from person where id = 1
+    
+    delete person whose email is diya.patel12@gmail.com
+    delete from person where email = 'diya.patel12@gmail.com'
+    delete person whose weight is below 41 kg 
+    delete from person where weight<41.00
+    
+how to delete all row and reset id 
+-----------------------------------
+    syntax 
+        truncate table <tablename>
+    example 
+        truncate table person
+
+how to update all rows 
+---------------------------
+we can update one or more field in single update statement.
+
+update tablename set field-name-1 = value, [field-name-2 =value]
+
+example
+update all person's salary, set salary to 50000
+update person set salary=50000
+
+update all person'salary by 999 rupees
+update person set salary = salary + 999
+
+
+
+how to update specific rows 
+-----------------------------
+update tablename set field-name-1 = value, [field-name-2 =value] where condition
+
+example
+update email,name,weight  of person whose name is Diya patel 
+
+update person set email='diya_ankit_patel@gmail.com',fullname='Diya Ankit Patel',weight=50.99 where fullname='diya patel'
+
+update salary by 10000 of person whose id is below 5
+update person set salary=salary+10000 where id<5
+
+update salary by decrease it by 10% of person whose id between 6 to 10
+update person set salary = salary * 0.90  where id>=6 and id<=10
+
+update salary to 100000 of those employee whose birth date in 2005
+update person set salary=100000 where dob>='2005-01-01' and dob<='2005-12-31'
+
+
+
+how to fetch data from table(s)?
+-----------------------------------
+to fetch data from table(s), we use select sql command. select command is read only sql command, it can not change/update date into table
+
+
+select *|<fieldnames> from tablesname [where condition] [group by fieldname ] [having condition] [order by fieldname] [limit offset]
+
+fetch all fields & rows from customers 
+select * from customers
+
+fetch 1st 50 customers detail 
+select * from customers limit 0,50
+
+fetch next 50 customers detail 
+select * from customers limit 50,50
+
+fetch next 25 customers detail 
+select * from customers limit 100,25
+
+fetch specific field(s)
+fetch customerNumber,customerName,city,country,state,creditLimit of all customers
+select customerNumber,customerName,city,country,state,creditLimit from customers
+
+
+fetch only rows as per condition (filtering)
+
+fetch customerNumber,customerName,city,country,state,creditLimit of those customer who are from usa.
+select customerNumber,customerName,city,country,state,creditLimit from customers where country='usa'
+
+fetch 1st 10 customer's customerNumber,customerName,city,country,state,creditLimit of those customer who are from usa.
+select customerNumber,customerName,city,country,state,creditLimit from customers where country='usa' limit 0,10
+
+
+
+fetch customerNumber,customerName,city,country,state,creditLimit of those customer who are from usa or france or spain or australia
+
+select customerNumber,customerName,city,country,state,creditLimit from customers where country='usa' or country='france' or country='spain' or country='australia'
+
+or 
+
+select customerNumber,customerName,city,country,state,creditLimit from customers where country in ('usa','france','spain','australia')
+
+fetch customerNumber,customerName,city,country,state,creditLimit of those customer who are from not living in usa, france, spain, australia
+
+select customerNumber,customerName,city,country,state,creditLimit from customers where country !=
+'usa' and country !='france' and country !='spain' and country!='australia'
+
+OR 
+
+select customerNumber,customerName,city,country,state,creditLimit from customers where country  not in ('usa','france','spain','australia')
+
+fetch customerNumber,customerName,creditLimit of those customer whose credit limit is between 1 and 3 lakh 
+
+select customerNumber,customerName,creditLimit from customers where creditLimit>=100000 and creditLimit<=300000
+
+OR 
+
+select customerNumber,customerName,creditLimit from customers where creditLimit between 100000 and 300000
+
+
+fetch customerNumber,customerName,creditLimit of those customer whose credit limit is between below lakh or greater then 3 lakh
+
+select customerNumber,customerName,creditLimit from customers where creditLimit<100000 or creditLimit>300000
+
+
+fetch customerNumber & name of those customer whose name contains wheels 
+
+select customerNumber,customerName from customers where name like '%wheels%'
+
+
+fetch customerNumber & name of those customer whose name start with wheels 
+select customerNumber,customerName from customers where customerName like 'wheels%'
+
+fetch customerNumber & name of those customer whose name ends with wheels 
+select customerNumber,customerName from customers where customerName like '%wheels'
+
+fetch payment detail of those customers who have made payment in 2005
+select * from payments where paymentdate >='2005-01-01' and paymentdate<='2005-12-31'
+ or 
+select * from payments where paymentdate between '2005-01-01' and '2005-12-31'
+or 
+select * from payments where left(paymentdate,4) = '2005'
+
+how to display data in particular field's sequence (order)
+
+by default any select sql command without order by clause, always display data in order of insertion means old row will be displayed first and new row will be displayed last.
+to display in specific seuquence we should use order by clause followed by field name. 
+display customernumber,customername from customers customer name ascending order (a to z) 
+select customernumber,customername from customers order by customerName
+
+
+display customernumber,customername from customers customer name descending order  (z to a)
+select customernumber,customername from customers order by customerName descending
+
+select customerNumber,customerName,city,country,state from customer table  and display it 1st country then state wise and then city wise
+
+select customerNumber,customerName,city,country,state from customers order by country,state,city
+
+fetch customerNumber,customerName,city,country,state,creditLimit of those customer who are from not living in usa, france, spain, australia and display it creditLimit wise desending order 
+
+select customerNumber,customerName,city,country,state,creditLimit from customers where country not in ('Australia','usa','france','spain') order by creditLimit desc
+
+fetch top 10 customers customer creditlimit wise in descending order 
+
+select * from customers order by creditLimit desc limit 0,10
+
+fetch top 10 payments of year 2005
+
+select * from payments where paymentdate between '2005-01-01' and '2005-12-31'  order by amount desc limit 0,10;
+ 
+select customerNumber,customerName,country of 1st five customers from USA.
+
+select customerNumber,customerName,country from customers where country='usa' limit 0,5
+
+fetch last customer data 
+select * from customers order by customerNumber desc limit 0,1
+
+fetch 2nd 3rd and 4th last customer data 
+select * from customers order by customerNumber desc limit 1,3
+
+fetch 10 payments detail with least payment amount
+select * from payments order by amount limit 0,10
+
+aggrigate function
+-----------------------------------------------
+function that work upon numeric field of table and always return single value is called aggrigate function
+
+sum()
+it always return sum of numeric fields value 
+example
+findout total payment amount
+select sum(amount) as total from payments  
+
+avg()
+it always return average of numeric fields value 
+example
+findout average payment amount 
+select avg(amount) as average_payment from payments  
+
+min()
+it always return minimum of numeric fields value 
+example
+findout least payment amount 
+select min(amount) as minimum_payment from payments  
+
+max()
+it always return maximum of numeric fields value 
+example
+findout maximum payment amount 
+select max(amount) as maximum_payment from payments  
+
+count()
+it count no of values in table 
+example 
+findout no of payments company received
+select count(*) as no_of_payment from payments;
+
+findout how many customer company has 
+select count(*) as no_of_customers from customers;
+
+findout total no of orders company received
+select count(*) as no_of_orders from orders;
+
+Caution
+---------------------------------
+never use normal field along with aggrigate function. otherwise there will misleading output.
+example 
+findout customerNumber who has made minimum payment 
+select customerNumber,min(amount) as minimum_payment from payments  
+
+
+-------------------------------------
+we can also where and other statement with aggrigate function 
+
+findout total payment amount paid by customerNumber 112
+select sum(amount) from payments where customerNumber=112
+
+findout no of payments, and average payment amount & total payment amount paid by customerNumber 113
+select count(*) as no_of_payment, avg(amount) as average_payment, sum(amount) as total from payments where customerNumber=112
+
+findout total payment, no of payment received in 2005
+select sum(amount) as total_payment, count(*) as no_of_payment from payments where paymentdate>='2005-01-01' and paymentdate<='2005-12-31'
+
+OR 
+select sum(amount) as total_payment, count(*) as no_of_payment from payments where left(paymentdate,4)=2005
+
+OR 
+
+select sum(amount) as total_payment, count(*) as no_of_payment from payments where paymentdate between '2005-01-01' and '2005-12-31'
+
+
+findout no of cancelled orders 
+select count(*) as cancelled_orders from orders where status='cancelled'
+
+group by 
+-------------------------
+    group by clause is when we want to get sub total/group on repetative fields value.
+    group by clause should be used with aggrigate function 
+    field we use with group clause should be also displayed
+
+findout no of orders cancelled, shipped, Disputed, in process etc 
+select status,count(*) from orders group by status
+
+findout no of customers from each country, show them in descending order 
+select country, count(*) from customers group by country order by count(*) desc
+
+findout total payment amount paid by each customers 
+select customerNumber,sum(amount) from payments group by customerNumber
+
+findout total payment amount made in each year 
+select left(paymentdate,4),sum(amount) from payments group by left(paymentdate,4)
+or 
+SELECT YEAR(paymentdate) AS payment_year, SUM(amount) AS total_amount FROM payments
+GROUP BY YEAR(paymentdate);
+
+findout no of orders received by each customers and display them in descending order 
+select customerNumber,count(*) from orders group by customerNumber desc count(*)
+
+display top 10 customer by payments 
+select customerNumber,sum(amount) from payments group by customerNumber order by sum(amount) desc limit 0,10;
+
+display top 10 customer by orders count 
+select customerNumber, count(*) from orders group by customerNumber order by count(*) desc limit 0,10 
+
+having 
+--------------------------------------------------------------------------------
+having clause is used to give condition of aggrigate functions group by value. 
+having caluse is always used only when select statement has aggrigate functions group by clause. 
+
+fetch customerNumber and total  payment amount of those customer who have paid more then 500000 total
+select customerNumber,sum(amount) from payments group by customerNumber having sum(amount)>500000
+
+
+fetch country and no of customers from country where customers count is above 10 and display them in descending order of count
+select country,count(*) from customers  group by country having count(*)>10 order by count(*)
+
+fetch no of order of each customers whose no of orders less then 5
+select count(*),customerNumber from orders group by customerNumber having count(*)<5
+
+
+how to fetch data from multiple tables. 
+
+when we fetch data from multiple tables then it is called join operations between tables. there are many type of join we can use between tables 
+
+1) equi/Inner join 
+    we want to fetch data from multiple tables based upon common fields between tables it is called equi join. here it fetch only matching value from both tables 
+
+2) Left join 
+   we want to fetch data from two tables, we want to fetch all rows from left side table and we want to fetch only matching rows from right side tables based upon common field 
+
+3) Right join 
+   we want to fetch data from two tables, we want to fetch all rows from right side table and we want to fetch only matching rows from left side tables based upon common field 
+
+4) full join 
+    we want to fetch all rows from two tables without giving any condition on common fields at that time we use full join. it do cartisan product operation on both tables.
+
+
+examples 
+1) fetch customerNumber,customerName and his payment detail. 
+select customerNumber,customerName from customers
+select * from payments 
+
+let us merge above sql statement 
+select c.customerNumber,customerName,paymentdate,checknumber,amount from customers c, payments p where c.customerNumber=p.customerNumber
+
+
+2) fetch customerNumber,customerName,country and his order detail 
+select customerNumber,customerName,country from customers
+select orderNumber,orderDate,requiredDate,shippedDate,status from orders 
+let us merge them 
+
+select c.customerNumber,customerName,country,orderNumber,orderDate,requiredDate,shippedDate,status from customers c, orders o  where c.customerNumber= o.customerNumber
+
+3) fetch customerNumber,customerName,country and his shipped order detail of usa customers 
+select c.customerNumber,customerName,country,orderNumber,orderDate,requiredDate,shippedDate,status from customers c, orders o  where c.customerNumber= o.customerNumber and country='usa' and status='shipped'
+
+
+4)  fetch customerNumber,customerName,country, orderNumber, orderDate, Status and item detail of orders & product name
+select customerNumber,customerName,country from customers
+select orderNumber,orderDate,status from orders 
+select productCode,quantityOrdered,priceEach from orderdetails 
+select productName from products 
+
+let us merge them 
+
+select c.customerNumber,customerName,country,o.orderNumber,orderDate,status,p.productCode,productName,quantityOrdered,priceEach from customers c, orders o, orderdetails od, products p where c.customerNumber=o.customerNumber and o.orderNumber=od.orderNumber and p.productCode=od.productCode
+
+findout customerNumber and customerName of those customer who have ordered 1940s Ford truck
+select customerNumber,customerName from customers
+select 1 from orders 
+select 1 from orderdetails 
+select productName from products 
+
+select c.customerNumber,customerName,productName from customers c, orders o, orderdetails od, products p 
+where c.customerNumber=o.customerNumber and o.orderNumber=od.orderNumber and od.productCode=p.productCode and productName = '1940s Ford truck'
+
+
+left join examples
+---------------------------
+fetch customerNumber,customerName of those customer who has never given any orders 
+
+select customerNumber,customerName from customers
+select orderNumber from orders 
+
+select c.customerNumber,customername,orderNumber from customers c left join orders o on c.customerNumber = o.customerNumber where orderNumber is NULL;
+
+fetch customerNumber,customerName of those customer who has never given any any payments 
+select customerNumber,customerName from customers
+select checknumber from payments 
+
+select c.customerNumber,customerName from customers c left join payments p on c.customerNumber=p.customerNumber where checknumber is NULL 
+
+display product which has been never ordered 
+select productCode,productName from products p 
+select orderNumber from orderdetails od 
+
+select p.productCode,productName,orderNumber from products p left join orderdetails od on p.productCode=od.productCode where orderNumber is NULL 
+
+Right Join 
+findout orders in which customerNumber is not valid 
+select customerNumber from orders 0 
+select customerName from customers c
+
+select customerName,o.customerNumber from customers c right join orders o on c.customerNumber = o.customerNumber where customerName is NULL;
+
+we want to display each customername and product name he can ordered 
+select customerName from customers c 
+select productName from products p 
+
+let us join them 
+select customerName,productName from customers c, products p  
+
+fetch details of customers who has given orders but never paid.
+fetch customers(customerNumber,customerName) who has given orders 
+select customerNumber,customerName from customers 
+select orderNumber from orders o 
+
+join 
+select c.customerNumber,customerName,orderNumber from customers c, orders o  where c.customerNumber=o.customerNumber
+
+
+now let us fetch payment 
+select amount from payments p 
+
+join 
+
+select c.customerNumber,customerName,amount from customers c INNER JOIN orders o  ON c.customerNumber=o.customerNumber LEFT JOIN payments p on c.customerNumber = p.customerNumber WHERE amount is NULL GROUP BY c.customerNumber, customerName
+
+fetch customerNumber,customerName,total received payments and total pending payment
+
+1st get receive payment total 
+select customerNumber,customerName from customers c
+select customerNumber,sum(amount) from payments p group by customerNumber
+
+total payment amount 
+
+select c.customerNumber,customerName,sum(amount) from customers c inner join payments p on c.customerNumber=p.customerNumber group by c.customerNumber;
+
+2nd get customerNumber and name and total order amount 
+select customerNumber,customerName from customers c
+select orderNumber from orders o 
+select orderNumber,sum(quantityOrdered * priceEach) from orderdetails d group by orderNumber
+
+select o.customerNumber,o.orderNumber,sum(quantityOrdered * priceEach) from orders o inner join orderdetails od on o.orderNumber=od.orderNumber group by o.orderNumber
+
+let us join both sql join statement 
+
+select o.customerNumber,sum(quantityOrdered * priceEach) as 'total order amount',sum(amount) as 'total payments'  from orders o inner join orderdetails od on o.orderNumber=od.orderNumber inner join payments p on o.customerNumber = p.customerNumber group by o.customerNumber
+
+select o.customerNumber,sum(quantityOrdered * priceEach) as 'total order amount',sum(amount) as 'total payments', sum(quantityOrdered * priceEach) - sum(amount) as difference   from orders o inner join orderdetails od on o.orderNumber=od.orderNumber inner join payments p on o.customerNumber = p.customerNumber group by o.customerNumber
+
+
+
