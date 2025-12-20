@@ -242,19 +242,20 @@ sum()
 it always return sum of numeric fields value 
 example
 findout total payment amount
-select sum(amount) as total from payments  
+select sum(amount) from payments 
 
 avg()
 it always return average of numeric fields value 
+
 example
 findout average payment amount 
-select avg(amount) as average_payment from payments  
+select avg(amount) as average_payment from payments
 
 min()
 it always return minimum of numeric fields value 
 example
 findout least payment amount 
-select min(amount) as minimum_payment from payments  
+select min(amount) as minimum_payment from payments
 
 max()
 it always return maximum of numeric fields value 
@@ -265,8 +266,9 @@ select max(amount) as maximum_payment from payments
 count()
 it count no of values in table 
 example 
-findout no of payments company received
-select count(*) as no_of_payment from payments;
+findout how many products company has 
+select count(*) as 'total_products' from products;
+
 
 findout how many customer company has 
 select count(*) as no_of_customers from customers;
@@ -276,34 +278,31 @@ select count(*) as no_of_orders from orders;
 
 Caution
 ---------------------------------
-never use normal field along with aggrigate function. otherwise there will misleading output.
+never use normal field along with aggrigate function. otherwise there will provide misleading output.
 example 
 findout customerNumber who has made minimum payment 
 select customerNumber,min(amount) as minimum_payment from payments  
 
-
 -------------------------------------
 we can also where and other statement with aggrigate function 
-
 findout total payment amount paid by customerNumber 112
-select sum(amount) from payments where customerNumber=112
 
+select sum(amount) from payments where customerNumber = 112
+
+findout no of payments, and average payment amount & total payment amount paid by customerNumber 114
+select count(*) as 'no_of_payment', avg(amount) as average_amount, sum(amount) as 'total_amount' from payments where customerNumber=114
+
+handling null 
 findout no of payments, and average payment amount & total payment amount paid by customerNumber 113
-select count(*) as no_of_payment, avg(amount) as average_payment, sum(amount) as total from payments where customerNumber=112
+select count(*) as 'no_of_payment', ifnull(avg(amount),0) as average_amount, COALESCE(sum(amount),0) as 'total_amount' from payments where customerNumber=113;
+
 
 findout total payment, no of payment received in 2005
-select sum(amount) as total_payment, count(*) as no_of_payment from payments where paymentdate>='2005-01-01' and paymentdate<='2005-12-31'
-
-OR 
-select sum(amount) as total_payment, count(*) as no_of_payment from payments where left(paymentdate,4)=2005
-
-OR 
-
-select sum(amount) as total_payment, count(*) as no_of_payment from payments where paymentdate between '2005-01-01' and '2005-12-31'
+select ifnull(sum(amount),0) as total ,count(*) as 'no_of_payment' from payments where paymentdate between '2005-01-01' and '2005-12-31'
 
 
 findout no of cancelled orders 
-select count(*) as cancelled_orders from orders where status='cancelled'
+select count(*) as 'cancelled_orders' from orders where status='cancelled'
 
 group by 
 -------------------------
@@ -315,25 +314,22 @@ findout no of orders cancelled, shipped, Disputed, in process etc
 select status,count(*) from orders group by status
 
 findout no of customers from each country, show them in descending order 
-select country, count(*) from customers group by country order by count(*) desc
+select count(*), country from customers group by country order by count(*) desc 
 
 findout total payment amount paid by each customers 
 select customerNumber,sum(amount) from payments group by customerNumber
 
 findout total payment amount made in each year 
-select left(paymentdate,4),sum(amount) from payments group by left(paymentdate,4)
-or 
-SELECT YEAR(paymentdate) AS payment_year, SUM(amount) AS total_amount FROM payments
-GROUP BY YEAR(paymentdate);
+select sum(amount),left(paymentdate,4) from payments group by left(paymentdate,4)
 
 findout no of orders received by each customers and display them in descending order 
-select customerNumber,count(*) from orders group by customerNumber desc count(*)
+select customerNumber,count(*) from orders group by customerNumber order by count(*) desc;
 
 display top 10 customer by payments 
-select customerNumber,sum(amount) from payments group by customerNumber order by sum(amount) desc limit 0,10;
+select customerNumber,sum(amount) from payments group by customerNumber order by sum(amount) desc limit 0,10
 
 display top 10 customer by orders count 
-select customerNumber, count(*) from orders group by customerNumber order by count(*) desc limit 0,10 
+select count(*),customerNumber from orders group by customerNumber order by count(*) desc limit 0,10
 
 having 
 --------------------------------------------------------------------------------
