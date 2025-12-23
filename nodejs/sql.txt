@@ -346,13 +346,13 @@ select country,count(*) from customers group by country having count(*)>10 order
 fetch no of order of each customers whose no of orders less then 5
 select customerNumber,count(*) from orders group by customerNumber having count(*)<5
 --------------------------------------------------------------------------------------------
-
 how to fetch data from multiple tables. 
 
 when we fetch data from multiple tables then it is called join operations between tables. there are many type of join we can use between tables 
 
 Ram 
     A,B,C,D 
+
 Shyam 
     C,D,E,F 
 
@@ -360,7 +360,7 @@ Shyam
     when we want to fetch data from multiple tables based upon common fields between tables it is called equi join. here it fetch only matching value from both tables 
 
 2) Left join 
-   we want to fetch data from two tables, we want to fetch all rows from left side table and we want to fetch only matching rows from right side tables based upon common field 
+   we want to fetch data from two tables, we want to fetch all rows from left side table where we want to fetch only matching rows from right side tables based upon common field 
 
 3) Right join 
    we want to fetch data from two tables, we want to fetch all rows from right side table and we want to fetch only matching rows from left side tables based upon common field 
@@ -391,45 +391,39 @@ select * from orders o where status='shipped'
 select c.customerNumber,customerName,country,o.* from customers c,orders o where country='usa' and status='shipped' and c.customerNumber=o.customerNumber
 
 4)  fetch customerNumber,customerName,country, orderNumber, orderDate, Status and item detail of orders & product name
+
 select customerNumber,customerName,country from customers
-select orderNumber,orderDate,status from orders 
-select productCode,quantityOrdered,priceEach from orderdetails 
-select productName from products 
+select orderNumber,orderDate,status from orders o
+select orderNumber,productCode from orderdetails od
+select productName from products p 
 
 let us merge them 
-
-select c.customerNumber,customerName,country,o.orderNumber,orderDate,status,p.productCode,productName,quantityOrdered,priceEach from customers c, orders o, orderdetails od, products p where c.customerNumber=o.customerNumber and o.orderNumber=od.orderNumber and p.productCode=od.productCode
+select c.customerNumber,customerName,country,o.orderNumber,orderDate,status,od.productCode,productName  from customers c, orders o,orderdetails od,products p where c.customerNumber=o.customerNumber and o.orderNumber=od.orderNumber and p.productCode=od.productCode
 
 findout customerNumber and customerName of those customer who have ordered 1940s Ford truck
 select customerNumber,customerName from customers
-select 1 from orders 
-select 1 from orderdetails 
-select productName from products 
+select * from products where productName='1940s Ford truck'
 
-select c.customerNumber,customerName,productName from customers c, orders o, orderdetails od, products p 
-where c.customerNumber=o.customerNumber and o.orderNumber=od.orderNumber and od.productCode=p.productCode and productName = '1940s Ford truck'
+select c.customerNumber,customerName,productName from customers c, products p,orderdetails od, orders o where productName='1940s Ford truck' and c.customerNumber=o.customerNumber and o.orderNumber = od.orderNumber and od.productCode=p.productCode
 
 
 left join examples
 ---------------------------
 fetch customerNumber,customerName of those customer who has never given any orders 
+select customerNumber,customerName  from customers c 
+select orderNumber from orders o 
 
-select customerNumber,customerName from customers
-select orderNumber from orders 
+select c.customerNumber,customerName,orderNumber  from customers c left join orders o on c.customerNumber=o.customerNumber where orderNumber is null
 
-select c.customerNumber,customername,orderNumber from customers c left join orders o on c.customerNumber = o.customerNumber where orderNumber is NULL;
+fetch customerNumber,customerName of those customer who has never given any payments 
 
-fetch customerNumber,customerName of those customer who has never given any any payments 
-select customerNumber,customerName from customers
-select checknumber from payments 
-
-select c.customerNumber,customerName from customers c left join payments p on c.customerNumber=p.customerNumber where checknumber is NULL 
 
 display product which has been never ordered 
 select productCode,productName from products p 
-select orderNumber from orderdetails od 
+select orderNumber from orderdetails od
 
-select p.productCode,productName,orderNumber from products p left join orderdetails od on p.productCode=od.productCode where orderNumber is NULL 
+select  p.productCode,productName,orderNumber from products p left join orderdetails od on p.productCode=od.productCode where orderNumber is null 
+
 
 Right Join 
 findout orders in which customerNumber is not valid 
