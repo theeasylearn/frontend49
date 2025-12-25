@@ -478,5 +478,42 @@ select o.customerNumber,sum(quantityOrdered * priceEach) as 'total order amount'
 
 select o.customerNumber,sum(quantityOrdered * priceEach) as 'total order amount',sum(amount) as 'total payments', sum(quantityOrdered * priceEach) - sum(amount) as difference   from orders o inner join orderdetails od on o.orderNumber=od.orderNumber inner join payments p on o.customerNumber = p.customerNumber group by o.customerNumber
 
+sub query
+---------------------------------------
+sub query means when we use one select statement inside another select statement. select statement which display fields is called outer query and select statement inside 1st select statement is called sub query 
 
+findout & display details of work mates of employee Andy.
+
+select officecode from employees e where firstname='Andy'
+select * from employees e where officecode=6
+
+select * from employees e where officecode=(select officecode from employees e where firstname='Andy') and firstname!='Andy'
+
+findout all customers name,country,state,city of those customers who in same country as Mini Wheels
+select customerName,country,state,city from customers 
+select country from customers where customername='Mini wheels'
+
+select customerName,country,state,city from customers where country = (select country from customers where customername='Mini wheels') and customerName!='Mini wheels'
+
+
+findout customerNumber, and total payment amount of those customers who have made below total payment of customerNumber 112
+select customerNumber,sum(amount) as 'total_payments' from payments group by customerNumber
+select sum(amount) from payments where customerNumber=112
+
+select customerNumber,sum(amount) as 'total_payments' from payments  group by customerNumber having sum(amount)< (select sum(amount) from payments where customerNumber=112)
+
+findout customerNumber,customername,no of orders of those customers who have given more orders then Mini Wheels 
+select customerNumber,customerName from customers c 
+select customerNumber,count(*) from orders o group by customerNumber
+
+select customerNumber from customers where customername='mini wheels'
+select count(*) from orders where customerNumber=129
+
+select count(*) from customers c,orders o where customername='mini wheels' and c.customerNumber=o.customerNumber
+
+select c.customerNumber,customerName,count(o.customerNumber) from customers c, orders o where c.customerNumber=o.customerNumber group by o.customerNumber; 
+
+
+select c.customerNumber,customerName,count(o.customerNumber) from customers c, orders o where c.customerNumber=o.customerNumber group by o.customerNumber having count(o.customerNumber)>(select count(*) from customers c,orders o where customername='mini wheels' and c.customerNumber=o.customerNumber
+); 
 
