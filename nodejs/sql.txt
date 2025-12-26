@@ -517,3 +517,16 @@ select c.customerNumber,customerName,count(o.customerNumber) from customers c, o
 select c.customerNumber,customerName,count(o.customerNumber) from customers c, orders o where c.customerNumber=o.customerNumber group by o.customerNumber having count(o.customerNumber)>(select count(*) from customers c,orders o where customername='mini wheels' and c.customerNumber=o.customerNumber
 ); 
 
+
+findout customerNumber,customerName and pending payment amount of each customers
+1) select customerNumber,customerName from customers c
+2) select customerNumber,orderNumber from orders o
+3) select orderNumber,sum(quantityOrdered*priceEach) as order_amount from orderdetails od group by orderNumber
+4) select customerNumber,sum(amount) from payments p group by customerNumber
+
+let us combine 2 and 3 statement
+select customerNumber,sum(quantityOrdered*priceEach) as order_amount from orderdetails od,orders o where o.orderNumber=od.orderNumber group by customerNumber
+
+now let us combine above sql statement with 4 sql statement 
+select c.customerName,city,state,country,o.customerNumber,sum(quantityOrdered*priceEach)- sum(amount) as remaining_amount from orderdetails od,orders o,payments p,customers c  where o.orderNumber=od.orderNumber and o.customerNumber=p.customerNumber and c.customerNumber=o.customerNumber group by o.customerNumber;
+
