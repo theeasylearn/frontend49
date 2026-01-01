@@ -10,21 +10,51 @@ app.use(bodyParser.json());
 const CATEGORY_ROUTE = "/category";
 
 //fetch all categories
-app.get(CATEGORY_ROUTE, function (request, response) {
-    let start = 0;
+app.get(CATEGORY_ROUTE + '/:start?', function (request, response) {
+    let start = 0; //assume start is not provided when calling api
+    if (request.params.start !== undefined) {
+        start = parseInt(request.params.start);
+    }
     let count = 20;
     //create sql statement
-    let sql = `select id,name,photo,detail from category order by id desc limit ${start},${count}`;
-    connection.con.query(sql, function (error, table, fields) {
-        response.json(table);
+    let sql = `select id,name,photo,detail from category order by id desc limit ?,?`;
+    let values = [start, count];
+    connection.con.query(sql, values, function (error, table, fields) {
+        if (error) {
+            console.log(error);
+        }
+        else {
+            response.json(table);
+        }
+
     });
 });
 
 //insert new category
 app.post(CATEGORY_ROUTE, function (request, response) {
     console.log(request.body);
-});
+    let { name, photo, detail } = request.body;
+    if (name === undefined || photo === undefined || detail === undefined) {
+        response.json([{ 'error': 'input missing' }]);
+    }
+    else {
+        var sql = "insert into category (name,photo,detail) values(?,?,?)";
+        let values = [name, photo, detail];
+        //run sql statement
+        connection.con.query(sql, values, function (error, result) {
+            if (error) // error!=null means there is some issue/error in executing sql 
+            {
+                response.json([{ 'error': 'oops, something went wrong, please after sometimes' }]);
+                //log error into file
+            }
+            else {
+                response.json([{ 'error': 'no' }, { 'success': 'yes' }, { 'message': 'category inserted' }]);
+            }
 
+        });
+    }
+
+});
 //update existing category
 app.put(CATEGORY_ROUTE, function (request, response) {
     console.log(request.body);
