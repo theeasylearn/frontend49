@@ -17,7 +17,7 @@ app.get(CATEGORY_ROUTE + '/:start?', function (request, response) {
     }
     let count = 20;
     //create sql statement
-    let sql = `select id,name,photo,detail from category order by id desc limit ?,?`;
+    let sql = `select id,name,photo,detail from category where is_deleted=0 order by id desc limit ?,?`;
     let values = [start, count];
     connection.con.query(sql, values, function (error, table, fields) {
         if (error) {
@@ -26,7 +26,6 @@ app.get(CATEGORY_ROUTE + '/:start?', function (request, response) {
         else {
             response.json(table);
         }
-
     });
 });
 
@@ -44,7 +43,7 @@ app.post(CATEGORY_ROUTE, function (request, response) {
         connection.con.query(sql, values, function (error, result) {
             if (error) // error!=null means there is some issue/error in executing sql 
             {
-                response.json([{ 'error': 'oops, something went wrong, please after sometimes' }]);
+                response.json([{ 'error': 'oops, something went wrong, please try after sometimes' }]);
                 //log error into file
             }
             else {
@@ -58,11 +57,54 @@ app.post(CATEGORY_ROUTE, function (request, response) {
 //update existing category
 app.put(CATEGORY_ROUTE, function (request, response) {
     console.log(request.body);
+    let { title, photo, detail, id } = request.body;
+    if (title === undefined || photo === undefined || detail === undefined || id === undefined) {
+        response.json([{ 'error': 'input missing' }]);
+    }
+    else {
+        var sql = "update category set name=?,photo=?,detail=? where id=?";
+        let values = [title, photo, detail, id];
+        //run sql statement
+        connection.con.query(sql, values, function (error, result) {
+            if (error) // error!=null means there is some issue/error in executing sql 
+                response.json([{ 'error': 'oops, something went wrong, please try after sometimes' }]);
+            else {
+                if (result.affectedRows == 0) {
+                    response.json([{ 'error': 'no' }, { 'success': 'no' }, { 'message': 'category not found' }]);
+                }
+                else {
+                    response.json([{ 'error': 'no' }, { 'success': 'yes' }, { 'message': 'category updated' }]);
+                }
+            }
+        });
+    }
+
 });
 
 //delete existing category 
 app.delete(CATEGORY_ROUTE, function (request, response) {
     console.log(request.body);
+    let id = request.body.id;
+    if (id === undefined) {
+        response.json([{ 'error': 'input missing' }]);
+    }
+    else {
+        var sql = "update category set is_deleted=? where id=?";
+        let values = [1, id];
+        //run sql statement
+        connection.con.query(sql, values, function (error, result) {
+            if (error) // error!=null means there is some issue/error in executing sql 
+                response.json([{ 'error': 'oops, something went wrong, please try after sometimes' }]);
+            else {
+                if (result.affectedRows == 0) {
+                    response.json([{ 'error': 'no' }, { 'success': 'no' }, { 'message': 'category not found' }]);
+                }
+                else {
+                    response.json([{ 'error': 'no' }, { 'success': 'yes' }, { 'message': 'category deleted' }]);
+                }
+            }
+        });
+    }
 });
 
 const PORTNO = 5000;
