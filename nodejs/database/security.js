@@ -12,11 +12,12 @@ var security = {
     },
     comparePassword: async function (password, hashedPassword) {
         try {
-            if (await argon2.verify(hashedPassword,password)) {
-                console.log('password match')
+            if (await argon2.verify(hashedPassword, password)) {
+                console.log('password match');
+                return true
             } else {
                 console.log('invalid password')
-
+                return false;
             }
         } catch (err) {
             // internal failure

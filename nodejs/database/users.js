@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 //define routes 
 const USERS_ROUTE = "/users";
 //post route 
-app.post(USERS_ROUTE, function (request, response) {
+app.post(USERS_ROUTE + "/register", function (request, response) {
     var { email, mobile, password } = request.body;
     if (email === undefined || mobile === undefined || password === undefined) {
         response.json([{ 'error': 'input missing' }]);
@@ -39,6 +39,72 @@ app.post(USERS_ROUTE, function (request, response) {
 
     }
 });
+
+//localhost:5000/users/email=ankit@gmail.com&password=123123
+//post route
+app.post(USERS_ROUTE + "/login", function (request, response) {
+    let email = request.body.email;
+    let password = request.body.password
+    if (email === undefined || password === undefined) {
+        response.json([{ 'error': 'input missing' }]);
+    }
+    else {
+        let sql = "select id,password from users where email=?"
+        let values = [email];
+        connection.con.query(sql, values, function (error, result) {
+            if (error) {
+                response.json([{ 'error': 'oops, something went wrong, please try after sometimes' }]);
+            }
+            else {
+                if (result.length == 0) {
+                    response.json([{ 'error': 'no' }, { 'success': 'no' }, { 'message': 'invalid email address' }]);
+                }
+                else {
+                    let hashedPassword = result[0]['password'];
+                    security.comparePassword(password, hashedPassword).then((isPasswordMatched) => {
+                        if (isPasswordMatched == false) {
+                            response.json([{ 'error': 'no' }, { 'success': 'no' }, { 'message': 'invalid password' }]);
+                        }
+                        else {
+                            response.json([{ 'error': 'no' }, { 'success': 'yes' }, { 'message': 'login successful' }, { 'id': result[0]['id'] }]);
+                        }
+                    });
+
+                }
+            }
+        });
+    }
+
+});
+
+//change password
+//localhost:5000/users/email=ankit@gmail.com&password=123123
+app.post(USERS_ROUTE + "/change_password", function (request, response) {
+    let { id, password, new_password } = request.body;
+    if (id === undefined || password === undefined) {
+        response.json([{ 'error': 'input missing' }]);
+    }
+    else {
+        let sql = "select password from users where id=?";
+        connection.con.query(sql, [id], function (error, result) {
+            if (result.length === 0) {
+                response.json([{ 'error': 'no' }, { 'success': 'no' }, { 'message': 'password changed process failed' }]);
+            }
+            else {
+                let hashedPassword = result[0]['password'];
+                security.comparePassword(password, hashedPassword).then((isPasswordMatched) => {
+                    if (isPasswordMatched === false) {
+                        response.json([{ 'error': 'no' }, { 'success': 'no' }, { 'message': 'invalid password' }]);
+                    }
+                    else {
+                        
+                    }
+                });
+            }
+        });
+    }
+});
+
 const PORTNO = 5000;
 app.listen(PORTNO);
 console.log('ready to accept request');
