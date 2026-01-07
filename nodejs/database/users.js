@@ -81,7 +81,7 @@ app.post(USERS_ROUTE + "/login", function (request, response) {
 //localhost:5000/users/email=ankit@gmail.com&password=123123
 app.post(USERS_ROUTE + "/change_password", function (request, response) {
     let { id, password, new_password } = request.body;
-    if (id === undefined || password === undefined) {
+    if (id === undefined || password === undefined || new_password === undefined) {
         response.json([{ 'error': 'input missing' }]);
     }
     else {
@@ -97,7 +97,20 @@ app.post(USERS_ROUTE + "/change_password", function (request, response) {
                         response.json([{ 'error': 'no' }, { 'success': 'no' }, { 'message': 'invalid password' }]);
                     }
                     else {
-                        
+                        //hash new passsword
+                        security.getHashPassword(new_password).then((newHashedPassword) => {
+                            //store new password into users table using id 
+                            sql = "update users set password = ? where id = ?";
+                            values = [newHashedPassword, id]
+                            connection.con.query(sql, values, function (e, res) {
+                                if (e !== null) {
+                                    response.json([{ 'error': 'oops, something went wrong, please try after sometimes' }]);
+                                }
+                                else {
+                                    response.json([{ 'error': 'no' }, { 'success': 'yes' }, { 'message': 'password changed successfully' }]);
+                                }
+                            });
+                        });
                     }
                 });
             }
@@ -105,6 +118,49 @@ app.post(USERS_ROUTE + "/change_password", function (request, response) {
     }
 });
 
+//forgot password
+// steps 
+// first we give email
+app.post(USERS_ROUTE + "/recover_password", function (request, response) {
+    let email = request.body.email;
+    if (email === undefined) {
+        response.json([{ 'error': 'input missing' }]);
+    }
+    else {
+        //system check email exists in table or not 
+        let sql = "select id from users where email = ?"
+        connection.con.query(sql, [email], function (error, result) {
+            if (error) {
+                response.json([{ 'error': 'oops, something went wrong, please try after sometimes' }]);
+            }
+            else {
+                if (result.length === 0) {
+                    //email not found
+                    response.json([{ 'error': 'no' }, { 'success': 'no' }, { 'message': 'email not found' }]);
+                }
+                else {
+                    // if email found, system should send new random password on registered email address
+                    let randomePassword = security.generateRandomgPassword(10)
+                    //hash new password
+                    //update newpassword into table using email
+                    security.getHashPassword(randomePassword).then((hashedPassword) => {
+                        sql = "update users set password = ? where email = ?";
+                        values = [hashedPassword, email];
+                        connection.con.query(sql, values, function (e, res) {
+                            if (e !== null) {
+                                response.json([{ 'error': 'oops, something went wrong, please try after sometimes' }]);
+                            }
+                            else {
+                                response.json([{ 'error': 'no' }, { 'success': 'yes' }, { 'message': 'password recovery instruction has been sent to you' }]);
+                            }
+                        });
+                    });
+                    
+                }
+            }
+        });
+    }
+});
 const PORTNO = 5000;
 app.listen(PORTNO);
 console.log('ready to accept request');
