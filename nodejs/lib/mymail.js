@@ -3,3 +3,4 @@ module.exports.SendEmail = function (receiver, subject, message) {
     console.log(receiver, subject, message);
     
 }
+// szch exvm gzqd khzc 

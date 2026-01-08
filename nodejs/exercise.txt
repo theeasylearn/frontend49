@@ -32,3 +32,41 @@ store that data into file products.txt using nodejs and fs module.
         account should have account id (auto generated), name, balance, mobile,email 
 8) create API that works upon list of object (JSON) that will create/update/delete/fetch Product 
         Product should have id(auto generated) name, price, quantity, weight, Size, Description
+----------------------------------------------------------------------------------------------------
+API 
+        Product 
+                Add, edit, delete, view, search products
+        table 
+                id,category,title,detail,price,stock,weight,size,photo,islive,isdeleted
+
+        orders
+                view, process, search, Bill generate,print orders
+        table 
+                1 cart
+                        id,productid,quantity,price,userid,billid
+                2 bill
+                        pincode,shipping (exercise)
+                id,userid,billdate,amount,paymentmode,paymentstatus,fullname,address1,address2,city,pincode,mobile,remarks,orderstatus
+        //checkout 
+        //process
+        //check all the items in order are in stock or not 
+        //calculate total bill amount 
+        //reduce the stock of items given in order 
+        insert new record into bill table 
+        userid,billdate,amount,paymentmode,fullname,address1,address2,city,pincode,mobile,remarks
+        //update cart 
+        Users management   (class)      
+        view, search, shopping history, send mail, block & unblock   
+        users
+                id,email,mobile,password,created_at,islive,isdeleted
+        Dashboard (class)
+       
+        -----------------------------------------------	
+        register, login, logout, change password, recover account
+        browse products (shop), manage cart, place orders 
+
+        (excercise)
+                wishlist
+        pincode check 
+        view history & download bill 
+        rating and reviews 

@@ -1,16 +1,8 @@
-var express = require('express');
 var connection = require('./connection');
-var bodyParser = require('body-parser');
 var security = require('./security.js');
 var MyEmail = require('./MyEmail.js');
-var app = express();
-//define middleware (required to access input via post/put/delete method)
-app.use(express.urlencoded({ 'extended': true }));
-app.use(bodyParser.json());
-//define routes 
-const USERS_ROUTE = "/users";
 //post route 
-app.post(USERS_ROUTE + "/register", function (request, response) {
+function register(request, response) {
     var { email, mobile, password } = request.body;
     if (email === undefined || mobile === undefined || password === undefined) {
         response.json([{ 'error': 'input missing' }]);
@@ -39,11 +31,8 @@ app.post(USERS_ROUTE + "/register", function (request, response) {
         });
 
     }
-});
-
-//localhost:5000/users/email=ankit@gmail.com&password=123123
-//post route
-app.post(USERS_ROUTE + "/login", function (request, response) {
+}
+function login(request, response) {
     let email = request.body.email;
     let password = request.body.password
     if (email === undefined || password === undefined) {
@@ -76,11 +65,8 @@ app.post(USERS_ROUTE + "/login", function (request, response) {
         });
     }
 
-});
-
-//change password
-//localhost:5000/users/email=ankit@gmail.com&password=123123
-app.post(USERS_ROUTE + "/change_password", function (request, response) {
+}
+function change_password(request, response) {
     let { id, password, new_password } = request.body;
     if (id === undefined || password === undefined || new_password === undefined) {
         response.json([{ 'error': 'input missing' }]);
@@ -117,12 +103,9 @@ app.post(USERS_ROUTE + "/change_password", function (request, response) {
             }
         });
     }
-});
+}
 
-//forgot password
-// steps 
-// first we give email
-app.post(USERS_ROUTE + "/recover_password", function (request, response) {
+function forgot_password(request, response) {
     let email = request.body.email;
     if (email === undefined) {
         response.json([{ 'error': 'input missing' }]);
@@ -167,8 +150,9 @@ app.post(USERS_ROUTE + "/recover_password", function (request, response) {
             }
         });
     }
-});
-const PORTNO = 5000;
-app.listen(PORTNO);
-console.log('ready to accept request');
+}
 
+module.exports.register = register;
+module.exports.login = login;
+module.exports.change_password = change_password;
+module.exports.forgot_password = forgot_password;
