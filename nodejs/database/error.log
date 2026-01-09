@@ -1,0 +1,2 @@
+
+Info = insert category has error at 09-01-26 07:31:45 PM, Code = ER_NO_SUCH_TABLE Error No 1146 sql = insert into category11 (name,photo,detail) values('abc','abc.jpg','hello') message Table 'frontend49.category11' doesn't exist
