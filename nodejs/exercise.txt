@@ -70,3 +70,9 @@ API
         pincode check 
         view history & download bill 
         rating and reviews 
+
+--------------------------
+pug 
+1) create pug file to display IPL point table 
+2) create pug file to display your resume 
+3) create pug file to display 5 student 3 subject marks 
