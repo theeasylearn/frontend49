@@ -1,0 +1,24 @@
+doctype html 
+html 
+    head 
+        title  example of loop 
+    body 
+        h1  2nd example of loop <hr/>
+        table(border=2,cellpadding=10,align='center',width='50%')
+            tr 
+                th Sr No
+                th Name 
+                th Color 
+                th Taste 
+                th Weight 
+                th Season 
+                th Country 
+            each item,index in data 
+                tr 
+                    td  #{index}
+                    td  #{item.name}
+                    td  #{item.color}
+                    td  #{item.taste}
+                    td  #{item.weight}
+                    td  #{item.season}
+                    td  #{item.country}
