@@ -1,42 +1,21 @@
-doctype html
-// book-hall.html (Book Hall Page)
-html(lang='en')
-  head
-    meta(charset='UTF-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    title Shrejii Restaurant - Book Hall
-  body
-    header
-      h1 Shrejii Restaurant
-      nav
-        ul
-          li
-            a(href='index.html') Home
-          li
-            a(href='about.html') About Us
-          li
-            a(href='menu.html') Menu
-          li
-            a(href='book-hall.html') Book Hall
-          li
-            a(href='testimonials.html') Testimonials
-    main
-      section
-        h2 Book Our Hall
-        p
-          | Our spacious hall is perfect for events, parties, and gatherings. Contact us to book!
-        form
-          label(for='name') Name:
-          input#name(type='text', name='name')
-          br
-          label(for='email') Email:
-          input#email(type='email', name='email')
-          br
-          label(for='date') Date:
-          input#date(type='date', name='date')
-          br
-          input(type='submit', value='Submit')
-        p
-          | Note: This is a static form for demonstration. In a real website, it would need backend processing.
-    footer
-      p &copy; 2026 Shrejii Restaurant. All rights reserved.
+include header.pug
+main
+  section
+    h2 Book Our Hall
+    p
+      | Our spacious hall is perfect for events, parties, and gatherings. Contact us to book!
+    form
+      label(for='name') Name:
+      input#name(type='text', name='name')
+      br
+      label(for='email') Email:
+      input#email(type='email', name='email')
+      br
+      label(for='date') Date:
+      input#date(type='date', name='date')
+      br
+      input(type='submit', value='Submit')
+    p
+      | Note: This is a static form for demonstration. In a real website, it would need backend processing.
+footer
+  p &copy; 2026 Shrejii Restaurant. All rights reserved.

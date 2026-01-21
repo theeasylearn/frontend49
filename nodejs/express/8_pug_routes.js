@@ -150,5 +150,26 @@ app.get('/loop3',function(request,response){
         data : basket
     });
 });
+
+app.get('/aboutus',function(request,response){
+    response.render('aboutus');
+});
+
+app.get('/bookhall',function(request,response){
+    response.render('bookhall');
+});
+
+app.get('/home',function(request,response){
+    response.render('home');
+});
+
+app.get('/testimonials',function(request,response){
+    response.render('testimonials');
+});
+
+app.get('/menu',function(request,response){
+    response.render('menu');
+});
+
 app.listen(5000);
 console.log('ready...');

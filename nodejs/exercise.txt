@@ -76,3 +76,10 @@ pug
 1) create pug file to display IPL point table 
 2) create pug file to display your resume 
 3) create pug file to display 5 student 3 subject marks 
+
+Create website for college using pug which should below pages (create pug files that contains common code for all below files, include it in all pugs files using include statement)
+  home 
+  about us 
+  Courses (10 courses)
+  alumini (10 alumini)
+  contact us 
