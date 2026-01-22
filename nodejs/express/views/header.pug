@@ -1,22 +1,26 @@
 doctype html
-// about.html (About Us Page)
+// about.html
 html(lang='en')
   head
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title Shrejii Restaurant - About Us
-  body
-    header
-      h1 Shrejii Restaurant
-      nav
-        ul
-          li
-            a(href='/home') Home
-          li
-            a(href='/aboutus') About Us
-          li
-            a(href='/menu') Menu
-          li
-            a(href='/bookhall') Book Hall
-          li
-            a(href='/testimonials') Testimonials
+    link(href='/css/bootstrap.min.css', rel='stylesheet')
+  body.bg-light
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      .container
+        a.navbar-brand.fw-bold(href='index.html') Shrejii Restaurant
+        button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarNav.collapse.navbar-collapse
+          ul.navbar-nav.ms-auto
+            li.nav-item
+              a.nav-link(href='index.html') Home
+            li.nav-item
+              a.nav-link.active(href='about.html') About Us
+            li.nav-item
+              a.nav-link(href='menu.html') Menu
+            li.nav-item
+              a.nav-link(href='book-hall.html') Book Hall
+            li.nav-item
+              a.nav-link(href='testimonials.html') Testimonials

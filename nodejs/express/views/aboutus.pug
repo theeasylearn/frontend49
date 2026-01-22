@@ -1,10 +1,17 @@
-include header.pug
-main
-  section
-    h2 About Us
-    p
-      | Shrejii Restaurant was founded in 2020 with a passion for delivering high-quality, traditional cuisine. Our team of expert chefs uses fresh ingredients to create dishes that delight the senses.
-    p
-      | We pride ourselves on our commitment to customer satisfaction and creating a welcoming atmosphere for all.
-footer
-  p &copy; 2026 Shrejii Restaurant. All rights reserved.
+include header.pug 
+section.py-5
+  .container
+    .row.align-items-center
+      .col-lg-6.mb-5.mb-lg-0
+        h1.display-4.fw-bold.mb-4 About Shrejii Restaurant
+        p.lead.mb-4
+          | Since 2020, Shrejii Restaurant has been serving heartfelt, delicious food with love and tradition.
+        p
+          | We believe food is more than just a meal &mdash; it&apos;s an experience, a memory, a celebration. Our journey began with a simple dream: to bring authentic home-style flavors to every table while maintaining the highest standards of quality and hygiene.
+        p
+          | Today, we continue that tradition with pride, serving families, friends, and food lovers from Bhavnagar and beyond.
+      .col-lg-6
+        img.img-fluid.rounded.shadow-lg(src='https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80', alt='Restaurant interior')
+footer.bg-dark.text-white.text-center.py-4.mt-5
+  p.mb-0 &copy; 2026 Shrejii Restaurant. All rights reserved.
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', integrity='sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz', crossorigin='anonymous')

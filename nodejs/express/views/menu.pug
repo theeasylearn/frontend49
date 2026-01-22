@@ -1,18 +1,52 @@
-include header.pug
-main
-  section
-    h2 Our Menu
-    h3 Appetizers
-    ul
-      li Spring Rolls - $5.99
-      li Garlic Bread - $4.99
-    h3 Main Courses
-    ul
-      li Butter Chicken - $12.99
-      li Vegetable Stir Fry - $10.99
-    h3 Desserts
-    ul
-      li Chocolate Cake - $6.99
-      li Ice Cream - $4.99
-footer
-  p &copy; 2026 Shrejii Restaurant. All rights reserved.
+include header.pug 
+section.py-5
+  .container
+    h1.text-center.display-4.fw-bold.mb-5 Our Menu
+    .row.g-4
+      // Starters
+      .col-12
+        h2.text-center.mb-4.border-bottom.pb-2 Starters
+      .col-md-6.col-lg-4
+        .card.h-100.shadow-sm
+          img.card-img-top(src='https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', alt='Paneer Tikka')
+          .card-body
+            h5.card-title Paneer Tikka
+            p.card-text Marinated cottage cheese grilled to perfection
+            p.fw-bold.text-success &#x20B9; 280
+      .col-md-6.col-lg-4
+        .card.h-100.shadow-sm
+          img.card-img-top(src='https://images.unsplash.com/photo-1627308595318-8d3b7c6d0d2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', alt='Chicken Seekh Kebab')
+          .card-body
+            h5.card-title Chicken Seekh Kebab
+            p.card-text Minced chicken with aromatic spices
+            p.fw-bold.text-success &#x20B9; 320
+      // Main Course
+      .col-12.mt-5
+        h2.text-center.mb-4.border-bottom.pb-2 Main Course
+      .col-md-6.col-lg-4
+        .card.h-100.shadow-sm
+          img.card-img-top(src='https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', alt='Butter Chicken')
+          .card-body
+            h5.card-title Butter Chicken
+            p.card-text Tender chicken in rich tomato-butter gravy
+            p.fw-bold.text-success &#x20B9; 380
+      .col-md-6.col-lg-4
+        .card.h-100.shadow-sm
+          img.card-img-top(src='https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', alt='Dal Makhani')
+          .card-body
+            h5.card-title Dal Makhani
+            p.card-text Slow-cooked black lentils with cream &amp; butter
+            p.fw-bold.text-success &#x20B9; 260
+      // Desserts
+      .col-12.mt-5
+        h2.text-center.mb-4.border-bottom.pb-2 Desserts
+      .col-md-6.col-lg-4
+        .card.h-100.shadow-sm
+          img.card-img-top(src='https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', alt='Gulab Jamun')
+          .card-body
+            h5.card-title Gulab Jamun
+            p.card-text Soft milk solids balls soaked in rose syrup
+            p.fw-bold.text-success &#x20B9; 180
+footer.bg-dark.text-white.text-center.py-4
+  p.mb-0 &copy; 2026 Shrejii Restaurant. All rights reserved.
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', integrity='sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz', crossorigin='anonymous')

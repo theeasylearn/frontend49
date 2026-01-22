@@ -1,21 +1,37 @@
-include header.pug
-main
-  section
-    h2 Book Our Hall
-    p
-      | Our spacious hall is perfect for events, parties, and gatherings. Contact us to book!
-    form
-      label(for='name') Name:
-      input#name(type='text', name='name')
-      br
-      label(for='email') Email:
-      input#email(type='email', name='email')
-      br
-      label(for='date') Date:
-      input#date(type='date', name='date')
-      br
-      input(type='submit', value='Submit')
-    p
-      | Note: This is a static form for demonstration. In a real website, it would need backend processing.
-footer
-  p &copy; 2026 Shrejii Restaurant. All rights reserved.
+include header.pug 
+section.py-5
+  .container
+    .row.justify-content-center
+      .col-lg-8
+        .card.shadow-lg.border-0
+          .card-body.p-5
+            h1.text-center.mb-4 Book Our Banquet Hall
+            p.text-center.lead.mb-5
+              | Perfect venue for birthdays, anniversaries, corporate events, family get-togethers &amp; more (seats up to 120 guests)
+            form
+              .row.g-3
+                .col-md-6
+                  label.form-label(for='name') Full Name
+                  input#name.form-control(type='text', required='')
+                .col-md-6
+                  label.form-label(for='phone') Phone Number
+                  input#phone.form-control(type='tel', required='')
+                .col-md-6
+                  label.form-label(for='email') Email
+                  input#email.form-control(type='email', required='')
+                .col-md-6
+                  label.form-label(for='date') Event Date
+                  input#date.form-control(type='date', required='')
+                .col-12
+                  label.form-label(for='guests') Expected Number of Guests
+                  input#guests.form-control(type='number', min='10', max='150', required='')
+                .col-12
+                  label.form-label(for='message') Additional Requirements / Message
+                  textarea#message.form-control(rows='4')
+                .col-12.text-center.mt-4
+                  button.btn.btn-primary.btn-lg.px-5(type='submit') Submit Booking Request
+            p.text-center.text-muted.mt-4.small
+              | Note: This is a static demo form. In production, connect it to email/WhatsApp/booking system.
+footer.bg-dark.text-white.text-center.py-4
+  p.mb-0 &copy; 2026 Shrejii Restaurant. All rights reserved.
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', integrity='sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz', crossorigin='anonymous')
