@@ -3,27 +3,15 @@ section.py-5
   .container
     h1.text-center.display-4.fw-bold.mb-5 What Our Guests Say
     .row.g-4
-      .col-md-6.col-lg-4
-        .card.h-100.shadow-sm
-          .card-body
-            .mb-3 &starf;&starf;&starf;&starf;&starf;
-            p.card-text.fst-italic
-              | &quot;The best butter chicken I&apos;ve ever had! Service was excellent and ambiance very warm. Highly recommended!&quot;
-            p.fw-bold.text-end.mb-0 &mdash; Priya Patel
-      .col-md-6.col-lg-4
-        .card.h-100.shadow-sm
-          .card-body
-            .mb-3 &starf;&starf;&starf;&starf;&starf;
-            p.card-text.fst-italic
-              | &quot;We booked the hall for our anniversary &mdash; perfect arrangement, delicious food, and very cooperative staff. Thank you Shrejii!&quot;
-            p.fw-bold.text-end.mb-0 &mdash; Rajesh &amp; Family
-      .col-md-6.col-lg-4
-        .card.h-100.shadow-sm
-          .card-body
-            .mb-3 &starf;&starf;&starf;&starf;&starf;
-            p.card-text.fst-italic
-              | &quot;Paneer tikka and dal makhani were outstanding. Clean place, quick service. Will definitely come again.&quot;
-            p.fw-bold.text-end.mb-0 &mdash; Karan Mehta
+      each row in data 
+        .col-md-6.col-lg-4
+          .card.h-100.shadow-sm
+            .card-body
+              .mb-3 &starf;&starf;&starf;&starf;&starf;
+              p.card-text.fst-italic
+                | &quot;#{row.detail}!&quot;
+              p.fw-bold.text-end.mb-0 &mdash; #{row.name}
+
 footer.bg-dark.text-white.text-center.py-4
   p.mb-0 &copy; 2026 Shrejii Restaurant. All rights reserved.
 script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', integrity='sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz', crossorigin='anonymous')
