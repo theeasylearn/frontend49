@@ -1,6 +1,11 @@
 var express = require('express');
 var path = require('path');
+var bodyParser = require('body-parser');
 var app = express();
+//define middleware (required to access input via post/put/delete method)
+app.use(express.urlencoded({ 'extended': true }));
+app.use(bodyParser.json());
+
 var connection = require('./connection');
 app.set('view engine', 'pug');
 app.set('views', 'views');
@@ -163,6 +168,27 @@ app.get('/bookhall', function (request, response) {
     response.render('bookhall');
 });
 
+app.post('/bookhall', function (request, response) {
+    var { fullname, phone, email, eventdate, noofguest, message } = request.body;
+    if (fullname === undefined || phone === undefined || email === undefined || eventdate === undefined || noofguest === undefined || message === undefined) {
+        response.render('bookhall');
+    }
+    else {
+        let sql = "INSERT INTO `event_bookings`(`full_name`, `phone_number`, `email`, `event_date`, `expected_number_of_guests`, `additional_requirements`) VALUES (?,?,?,?,?,?)";
+        data = [fullname, phone, email, eventdate, noofguest, message];
+        connection.con.query(sql, data, function (error, result) {
+            if (error != null) {
+                response.render('error');
+            }
+            else {
+                response.render('bookhall',{
+                    message: 'your request has been submitted, we will contact you soon'
+                });
+            }
+        });
+    }
+});
+
 app.get('/home', function (request, response) {
     response.render('home');
 });
@@ -170,8 +196,7 @@ app.get('/home', function (request, response) {
 app.get('/testimonials', function (request, response) {
     //fetch all rows from testimonials table of frontend49 database and pass it into pug file
     let sql = "SELECT * FROM testimonials order by id desc";
-    connection.con.query(sql, function (error, result) 
-    {
+    connection.con.query(sql, function (error, result) {
         if (error != null) {
             response.render('error');
         }
@@ -184,7 +209,17 @@ app.get('/testimonials', function (request, response) {
 });
 
 app.get('/menu', function (request, response) {
-    response.render('menu');
+    let sql = "select * from food_menu order by id desc";
+    connection.con.query(sql, function (error, result) {
+        if (error != null) {
+            response.render('error');
+        }
+        else {
+            response.render('menu', {
+                data: result
+            });
+        }
+    });
 });
 
 app.listen(5000);

@@ -8,28 +8,31 @@ section.py-5
             h1.text-center.mb-4 Book Our Banquet Hall
             p.text-center.lead.mb-5
               | Perfect venue for birthdays, anniversaries, corporate events, family get-togethers &amp; more (seats up to 120 guests)
-            form
+            form(method='post',action='/bookhall')
               .row.g-3
                 .col-md-6
                   label.form-label(for='name') Full Name
-                  input#name.form-control(type='text', required='')
+                  input#name.form-control(type='text', required='',name='fullname')
                 .col-md-6
                   label.form-label(for='phone') Phone Number
-                  input#phone.form-control(type='tel', required='')
+                  input#phone.form-control(type='tel', required='',name='phone')
                 .col-md-6
                   label.form-label(for='email') Email
-                  input#email.form-control(type='email', required='')
+                  input#email.form-control(type='email', required='',name='email')
                 .col-md-6
                   label.form-label(for='date') Event Date
-                  input#date.form-control(type='date', required='')
+                  input#date.form-control(type='date', required='',name='eventdate')
                 .col-12
                   label.form-label(for='guests') Expected Number of Guests
-                  input#guests.form-control(type='number', min='10', max='150', required='')
+                  input#guests.form-control(type='number', min='10', max='150', required='',name='noofguest')
                 .col-12
                   label.form-label(for='message') Additional Requirements / Message
-                  textarea#message.form-control(rows='4')
+                  textarea#message.form-control(rows='4',name='message')
                 .col-12.text-center.mt-4
                   button.btn.btn-primary.btn-lg.px-5(type='submit') Submit Booking Request
+                .col-12.text-center.mt-4
+                  if message
+                    h4=message
             p.text-center.text-muted.mt-4.small
               | Note: This is a static demo form. In production, connect it to email/WhatsApp/booking system.
 footer.bg-dark.text-white.text-center.py-4
