@@ -2,6 +2,7 @@ var { dbPromise } = require('./db_connection');
 var condition = { name: 'NODE JS' };
 dbPromise.then((database) => {
     //delete documents
+    
     database.collection('data').deleteOne(condition, (error, result) => {
         if (error != null)
             console.log(error.message);
