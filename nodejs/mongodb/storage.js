@@ -22,6 +22,8 @@ function update(request, response) {
     else {
         var condition = { _id: ObjectId(_id) }
         var newObject = request.body;
+        delete newObject._id;
+
         dbPromise.then((database) => {
             //update documents
             database.collection('company').updateOne(condition, { $set: newObject }, (error, res) => {
@@ -59,9 +61,7 @@ function deleteDocument(request, response) {
         });
         // console.log('delete document');
     }
-
 }
-
 function select(request, response) {
     // console.log('1');
     dbPromise.then((database) => {
@@ -82,7 +82,6 @@ function select(request, response) {
     });
 
 }
-
 module.exports.insert = insert;
 module.exports.update = update;
 module.exports.deleteDocument = deleteDocument;
