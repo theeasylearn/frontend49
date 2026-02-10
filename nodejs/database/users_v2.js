@@ -1,6 +1,7 @@
 var connection = require('./connection');
 var security = require('./security.js');
 var MyEmail = require('./MyEmail.js');
+const jwt = require('jsonwebtoken');
 //post route 
 function register(request, response) {
     var { email, mobile, password } = request.body;
@@ -32,39 +33,50 @@ function register(request, response) {
 
     }
 }
-function login(request, response) {
+function login(request, response, jwtSecret) {
     let email = request.body.email;
-    let password = request.body.password
+    let password = request.body.password;
+
     if (email === undefined || password === undefined) {
-        response.json([{ 'error': 'input missing' }]);
+        return response.json([{ 'error': 'input missing' }]);
     }
-    else {
-        let sql = "select id,password from users where email=?"
-        let values = [email];
-        connection.con.query(sql, values, function (error, result) {
-            if (error) {
-                response.json([{ 'error': 'oops, something went wrong, please try after sometimes' }]);
-            }
-            else {
-                if (result.length == 0) {
-                    response.json([{ 'error': 'no' }, { 'success': 'no' }, { 'message': 'invalid email address' }]);
-                }
-                else {
-                    let hashedPassword = result[0]['password'];
-                    security.comparePassword(password, hashedPassword).then((isPasswordMatched) => {
-                        if (isPasswordMatched == false) {
-                            response.json([{ 'error': 'no' }, { 'success': 'no' }, { 'message': 'invalid password' }]);
-                        }
-                        else {
-                            response.json([{ 'error': 'no' }, { 'success': 'yes' }, { 'message': 'login successful' }, { 'id': result[0]['id'] }]);
-                        }
-                    });
 
-                }
+    let sql = "select id, password from users where email=?";
+    let values = [email];
+
+    connection.con.query(sql, values, function (error, result) {
+        if (error) {
+            console.log(error);
+            return response.json([{ 'error': 'oops, something went wrong, please try after sometimes' }]);
+        }
+
+        if (result.length === 0) {
+            return response.json([{ 'error': 'no' }, { 'success': 'no' }, { 'message': 'invalid email address' }]);
+        }
+
+        let hashedPassword = result[0]['password'];
+        let userId = result[0]['id'];
+
+        security.comparePassword(password, hashedPassword).then((isPasswordMatched) => {
+            if (!isPasswordMatched) {
+                return response.json([{ 'error': 'no' }, { 'success': 'no' }, { 'message': 'invalid password' }]);
             }
+
+            // Generate JWT
+            const payload = { id: userId };
+            const token = jwt.sign(payload, jwtSecret, {
+                expiresIn: '1h'           // you can change to '15m', '24h', etc.
+            });
+
+            response.json([
+                { 'error': 'no' },
+                { 'success': 'yes' },
+                { 'message': 'login successful' },
+                { 'token': token },
+                { 'id': userId }
+            ]);
         });
-    }
-
+    });
 }
 function change_password(request, response) {
     let { id, password, new_password } = request.body;
