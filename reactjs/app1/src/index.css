@@ -13,3 +13,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.maths 
+{
+  background-color: blue;
+  padding:10px;
+  color:white;
+  width: 30%;
+  list-style-position: inside;
+}
+.maths-item 
+{
+    border-bottom: 1px solid white;
+    line-height: 150%;
+}
