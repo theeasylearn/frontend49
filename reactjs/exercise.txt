@@ -8,3 +8,12 @@ set - 1
 3) create JSX that will display your resume. use variable to display name, dob, address, gender, mobile, email, education etc. 
 4) apply attractive formatting to resume created in previous example using css.  
 submission :- midnight 23-feb-2026
+
+4) create reactjs code to display register screen (email,mobile,password, confirm Password,Gender,Dob )
+submission :- midnight 25-feb-2026
+
+5) create reactjs code to your resume using boostrap framwork 
+submission :- midnight 25-feb-2026
+
+5) modify reactjs example no 6 day name of week using decision making statement  
+submission :- midnight 25-feb-2026
