@@ -17,3 +17,8 @@ submission :- midnight 25-feb-2026
 
 5) modify reactjs example no 6 day name of week using decision making statement  
 submission :- midnight 25-feb-2026
+
+6) create one page website for restaurant using boostrap 5. and display it using function component. (do not use AI) 
+refer https://shrijisgardenrestaurant.com/.
+must have 7 different sections 
+submission :- midnight 27-feb-2026
