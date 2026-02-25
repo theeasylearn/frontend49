@@ -22,3 +22,13 @@ submission :- midnight 25-feb-2026
 refer https://shrijisgardenrestaurant.com/.
 must have 7 different sections 
 submission :- midnight 27-feb-2026
+
+7) make all component resusable using props  in example 8_functional_components.js just like portfolio and portfolioItem.
+submission :- midnight 28-feb-2026
+
+8) redevelop exercise no 6. all component should be resusable using props 
+submission :- midnight 28-feb-2026
+
+
+
+
