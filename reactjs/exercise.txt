@@ -29,6 +29,12 @@ submission :- midnight 28-feb-2026
 8) redevelop exercise no 6. all component should be resusable using props 
 submission :- midnight 28-feb-2026
 
+9) create class component to provide interface to update score of batter in cricket match. (as per explanation in class lecture)
+submission :- midnight 2-mar-2026
+
+10) update score in above example using state variable 
+submission :- midnight 2-mar-2026
+
 
 
 
