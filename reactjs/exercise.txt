@@ -34,7 +34,3 @@ submission :- midnight 2-mar-2026
 
 10) update score in above example using state variable 
 submission :- midnight 2-mar-2026
-
-
-
-
