@@ -34,3 +34,12 @@ submission :- midnight 2-mar-2026
 
 10) update score in above example using state variable 
 submission :- midnight 2-mar-2026
+
+11) update score in above example using state variable & app life cycle
+submission :- midnight 09-mar-2026
+
+12) create EMI calculator using boostrap, state, variable and input from users. 
+submission :- midnight 09-mar-2026
+
+13) create gst calculator using boostrap, state, variable and input from users. 
+submission :- midnight 09-mar-2026
