@@ -2,76 +2,45 @@ import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 const root = ReactDOM.createRoot(document.getElementById('root'));
-//create class 
-class SimpleInterestCalculator extends React.Component {
+class BMICalculator extends React.Component {
     constructor(props) {
         super(props);
-        //create state object with as must key value pair as no of inputs 
-        this.state =
-        {
-            amount: '',
-            rate: '',
-            year: '',
-            interest: ''
-            //this variable will be used to store result (interest)
-
-        }
-    }
-    //create arrow function (that will update state variable) for each and every input 
-    updateAmount = (event) => {
-        this.setState({
-            amount: event.target.value
-        })
-    }
-
-    updateRate = (event) => {
-        this.setState({
-            rate: event.target.value
-        })
-    }
-
-    updateYear = (event) => {
-        this.setState({
-            year: event.target.value
-        })
-    }
-    
-    calculateInterest = (event) => {
-        event.preventDefault(); //required to prevent reloading of the webpage
-        console.log(this.state); //whole state object
-        this.setState({
-            interest: (this.state.amount * this.state.rate * this.state.year ) / 100
-        });
     }
     render() {
-        return (<div className="container mt-5">
+        return (<div className="container py-5">
             <div className="row justify-content-center">
                 <div className="col-md-6">
-                    <div className="card shadow">
-                        <div className="card-header text-center bg-primary text-white">
-                            <h4>Simple Interest Calculator</h4>
-                        </div>
-                        <div className="card-body">
-                            <form method="post" onSubmit={this.calculateInterest}>
+                    <div className="card bmi-card">
+                        <div className="card-body p-4">
+                            <h3 className="text-center mb-4">BMI Calculator</h3>
+                            <form>
+                           
                                 <div className="mb-3">
-                                    <label className="form-label">Principal Amount</label>
-                                    <input type="number" name="principal" className="form-control" required onBlur={this.updateAmount} />
-                                </div>
-                                <div className="mb-3">
-                                    <label className="form-label">Rate of Interest (%)</label>
-                                    <input type="number" name="rate" step="0.01" className="form-control" required
-                                        onBlur={this.updateRate} />
+                                    <label className="form-label">Height (foot)</label>
+                                    <input type="number" className="form-control" placeholder="Enter foot" />
                                 </div>
                                 <div className="mb-3">
-                                    <label className="form-label">Time (Years)</label>
-                                    <input type="number" name="time" step="0.01" className="form-control" required
-                                        onBlur={this.updateYear} />
+                                    <label className="form-label">Height (remaining inches)</label>
+                                    <input type="number" className="form-control" placeholder="Enter inches" />
                                 </div>
-                                <div className="d-grid">
-                                    <button type="submit" className="btn btn-primary">Calculate</button>
+                                <div className="mb-3">
+                                    <label className="form-label">Weight (kg)</label>
+                                    <input type="number" className="form-control" placeholder="Enter weight" />
                                 </div>
-                                <h3>Simple interest is {this.state.interest}</h3>
+                                <div className="d-grid mb-4">
+                                    <button className="btn btn-primary btn-lg">Calculate BMI</button>
+                                </div>
                             </form>
+                            <div className="result-box">
+                                <h5>Your BMI</h5>
+                                <h2 className="text-primary">--</h2>
+                                <div className="bmi-scale mt-3">
+                                    {/* <span className="badge bg-warning text-dark">Underweight</span>
+                                    <span className="badge bg-success">Normal</span>
+                                    <span className="badge bg-info text-dark">Overweight</span>
+                                    <span className="badge bg-danger">Obese</span> */}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -80,4 +49,4 @@ class SimpleInterestCalculator extends React.Component {
         );
     }
 }
-root.render(<SimpleInterestCalculator />);
+root.render(<BMICalculator />);
