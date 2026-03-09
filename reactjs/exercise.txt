@@ -43,3 +43,6 @@ submission :- midnight 09-mar-2026
 
 13) create gst calculator using boostrap, state, variable and input from users. 
 submission :- midnight 09-mar-2026
+
+14) modify example no 16 and provide logout operations accordingly hide menus.
+submission :- midnight 12-mar-2026

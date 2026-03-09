@@ -5,6 +5,47 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 class ConditionalRendering extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            isLoggedIn : false
+        }
+    }
+
+    doLogin = () => {
+        this.setState({
+            isLoggedIn: !this.state.isLoggedIn
+        });
+    }
+    GuestLink = () => {
+        return (<>
+            <li className="nav-item">
+                <a className="nav-link fw-bold" href="#">Register</a>
+            </li>
+            <li className="nav-item">
+                <button 
+                type='button' 
+                onClick={this.doLogin}
+                className="nav-link fw-bold active text-white" href="#">Login</button>
+            </li>
+            <li className="nav-item">
+                <a className="nav-link fw-bold" href="#">Forgot Password</a>
+            </li>
+        </>)
+    }
+    UserLink = () => {
+        return (<>
+            <li className="nav-item">
+                <a className="nav-link fw-bold" href="#">Change Password</a>
+            </li>
+            <li className="nav-item">
+                <a className="nav-link fw-bold" href="#">Logout</a>
+            </li>
+            <li className="nav-item">
+                <a className="nav-link fw-bold" href="#">Cart</a>
+            </li>
+            <li className="nav-item">
+                <a className="nav-link fw-bold" href="#">Checkout</a>
+            </li>
+        </>)
     }
     render() {
         return (<nav className="navbar navbar-expand-lg  bg-body-tertiary shadow">
@@ -21,27 +62,8 @@ class ConditionalRendering extends React.Component {
                         <li className="nav-item">
                             <a className="nav-link fw-bold" href="#">Trending Products</a>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link fw-bold" href="#">Register</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link fw-bold active text-white" href="#">Login</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link fw-bold" href="#">Change Password</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link fw-bold" href="#">Forgot Password</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link fw-bold" href="#">Logout</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link fw-bold" href="#">Cart</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link fw-bold" href="#">Checkout</a>
-                        </li>
+                        {(this.state.isLoggedIn == false) && this.GuestLink()}
+                        {(this.state.isLoggedIn == true) && this.UserLink()}
                     </ul>
                 </div>
             </div>
