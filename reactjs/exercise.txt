@@ -46,3 +46,12 @@ submission :- midnight 09-mar-2026
 
 14) modify example no 16 and provide logout operations accordingly hide menus.
 submission :- midnight 12-mar-2026
+
+
+15) create an example that will display all the days of march-2026 in calendar format using list 
+submission :- midnight 14-mar-2026
+
+16) create an example to display india t20 2026 team player detail using list and map 
+    Player Name, Age, Photo, Run, Average, wicket, Econ, 50s 
+submission :- midnight 14-mar-2026
+
