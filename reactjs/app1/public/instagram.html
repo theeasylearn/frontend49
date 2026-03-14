@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Post • China Stands With Iran</title>
+    <!-- Bootstrap 5.3.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        /* Poster styling - exact match to screenshot */
+        .poster {
+            background: #000;
+            color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            max-width: 100%;
+        }
+
+        .poster-header {
+            background: #ffd700;
+            color: #000;
+            padding: 20px 15px;
+            text-align: center;
+        }
+
+        .poster-header h1 {
+            font-size: 2.4rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .poster-header h2 {
+            font-size: 2rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .poster-images {
+            display: flex;
+        }
+
+        .poster-images img {
+            width: 50%;
+            height: 420px;
+            object-fit: cover;
+        }
+
+        /* Khamenei circular overlay */
+        .khamenei-circle {
+            position: absolute;
+            bottom: 22%;
+            left: 6%;
+            width: 160px;
+            height: 160px;
+            border: 8px solid #fff;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+            z-index: 2;
+        }
+
+        .khamenei-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .poster-footer {
+            padding: 25px 20px 30px;
+            background: #000;
+        }
+
+        .poster-footer .main-text {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #ffd700;
+            line-height: 1.3;
+        }
+
+        .aid-box {
+            background: #e30613;
+            color: #fff;
+            font-size: 1.65rem;
+            font-weight: 800;
+            padding: 18px 25px;
+            border-radius: 6px;
+            margin-top: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(227, 6, 19, 0.4);
+        }
+
+        /* Instagram post styling */
+        .ig-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        .ig-header {
+            padding: 12px 16px;
+            background: #fff;
+        }
+
+        .ig-username {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .ig-caption {
+            font-size: 1.05rem;
+            line-height: 1.4;
+            color: #262626;
+        }
+
+        .comment {
+            font-size: 0.95rem;
+        }
+
+        .comment-username {
+            font-weight: 600;
+        }
+
+        .ig-icons {
+            font-size: 1.5rem;
+            color: #262626;
+        }
+
+        .verified {
+            color: #0095f6;
+        }
+
+        .like-count {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-10">
+                <div class="row g-4">
+
+                    <!-- LEFT: THE POSTER (exact visual replica) -->
+                    <div class="col-lg-6">
+                        <img src="https://picsum.photos/id/201/800/600?random=2" alt="Xi Jinping speaking at podium"
+                            class="img-fluid">
+                    </div>
+
+                    <!-- RIGHT: INSTAGRAM POST INTERFACE -->
+                    <div class="col-lg-6">
+                        <div class="ig-card bg-white">
+
+                            <!-- IG Post Header -->
+                            <div class="ig-header d-flex align-items-center">
+                                <img src="https://picsum.photos/id/64/48/48"
+                                    class="rounded-circle border border-2 border-white shadow-sm" width="48" height="48"
+                                    alt="achhevichar">
+                                <div class="ms-3 flex-grow-1">
+                                    <span class="ig-username">achhevichar</span>
+                                    <span class="verified ms-1">✔</span>
+                                </div>
+                                <button class="btn btn-link text-dark p-0">
+                                    <i class="bi bi-three-dots fs-4"></i>
+                                </button>
+                            </div>
+
+                            <!-- Caption (exact text from screenshot) -->
+                            <div class="px-4 pt-2 pb-3 border-bottom">
+                                <p class="ig-caption mb-2">
+                                    this is post heading
+                                </p>
+                                <div class="text-primary small">
+                                    #China #Iran #HumanitarianAid #WorldNews #GlobalPolitics
+                                </div>
+                            </div>
+
+                            <!-- Comments Section -->
+                            <div class="px-4 py-3" style="max-height: 420px; overflow-y: auto;">
+
+                                <!-- Comment 1 -->
+                                <div class="d-flex mb-3">
+                                    <img src="https://picsum.photos/id/64/36/36" class="rounded-circle me-3" width="36"
+                                        height="36" alt="">
+                                    <div class="flex-grow-1 comment">
+                                        <span class="comment-username">amson_panesar</span>
+                                        <p>this is nice</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <!-- Action bar + likes -->
+                            <div class="px-4 py-3 border-top bg-white">
+                                <div class="ig-icons d-flex justify-content-between mb-2">
+                                    <div>
+                                        <i class="bi bi-heart me-3"></i>
+
+                                    </div>
+                                    <i class="bi bi-bookmark"></i>
+                                </div>
+
+
+                            </div>
+
+                            <!-- Add comment box -->
+                            <div class="card-footer bg-white border-top p-3">
+                                <div class="d-flex align-items-center">
+
+                                    <input type="text" class="form-control border-0 bg-transparent"
+                                        placeholder="Add a comment..." style="font-size: 1rem;">
+                                    <button class="btn btn-link text-primary fw-semibold">Post</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
