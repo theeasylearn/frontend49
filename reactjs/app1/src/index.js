@@ -5,9 +5,46 @@ import { useState } from 'react';
 function Instagram() {
     //create state variable for each and every input 
 
-    let [isliked,setIsLiked] = useState(false);
-    let [isboookmarked,setIsBookmarked] = useState(false);
+    let [isliked, setIsLiked] = useState(false);
+    let [isboookmarked, setIsBookmarked] = useState(false);
+    // create state variable to store current comment
+    let [message, setMessage] = useState('');
+    //create state array to store all comments 
+    let [comments, setComments] = useState([]);
 
+    //create function to delete comment 
+    let deleteComment = function (item) {
+        // setComments([]);do not delete all comments 
+        //delete specific comment 
+        let temp = comments.filter((current) => {
+            if (current !== item) {
+                console.log(current, item);
+                return current
+            }
+        });
+        setComments(temp);
+    }
+    //create function to display single comment 
+
+    let DisplayComment = function (props) {
+        return (<div className="d-flex mb-3">
+            <img src="https://picsum.photos/id/64/36/36" className="rounded-circle me-3" width={36} height={36} alt />
+            <div className="flex-grow-1 comment">
+                <div className='d-flex justify-content-between'>
+                    <span className="comment-username">Ram sharma</span>
+                    <i onClick={() => deleteComment(props.value)} class="bi bi-trash fs-1"></i>
+                </div>
+                <p>{props.value}</p>
+            </div>
+        </div>)
+    }
+
+    let insertComment = function (event) {
+        event.preventDefault();
+        //add message into comment 
+        setComments([...comments, message]);
+        setMessage('');
+    }
     return (<div className="container py-5">
         <div className="row justify-content-center">
             <div className='card shadow'>
@@ -43,20 +80,18 @@ function Instagram() {
                                     {/* Comments Section */}
                                     <div className="card-body">
                                         <div className="px-4 py-3" style={{ "max-height": "420px", "overflow-y": "auto" }}>
-                                            {/* Comment 1 */}
-                                            <div className="d-flex mb-3">
-                                                <img src="https://picsum.photos/id/64/36/36" className="rounded-circle me-3" width={36} height={36} alt />
-                                                <div className="flex-grow-1 comment">
-                                                    <span className="comment-username">amson_panesar</span>
-                                                    <p>this is nice</p>
-                                                </div>
-                                            </div>
+                                            {comments.map((item) => {
+                                                return <DisplayComment value={item} />
+                                            })}
+
+
                                         </div>
                                         {/* Action bar + likes */}
                                         <div className="px-4 py-3 border-top bg-white">
                                             <div className="ig-icons d-flex justify-content-between mb-2">
                                                 <div>
-                                                    <i className="bi bi-heart me-3" />
+                                                    <i onClick={() => setIsLiked(!isliked)} className={(isliked === true) ? "bi bi-heart-fill text-danger fs-2" : "bi bi-heart fs-2"} /> <br />
+                                                    {(isliked === true) ? "Liked" : "unliked"}
                                                 </div>
                                                 <i className="bi bi-bookmark" />
                                             </div>
@@ -64,8 +99,10 @@ function Instagram() {
                                         {/* Add comment box */}
                                         <div className="card-footer bg-light border-top p-3">
                                             <div className="d-flex align-items-center">
-                                                <input type="text" className="form-control border-2 bg-transparent" placeholder="Add a comment..." style={{ "font-size": "1rem" }} />
-                                                <button className="btn btn-link text-primary fw-semibold border-2">Post</button>
+                                                <form method='post' onSubmit={insertComment}>
+                                                    <input type="text" className="form-control border-2 bg-transparent" placeholder="Add a comment..." style={{ "font-size": "1rem" }} required onChange={(e) => setMessage(e.target.value)} value={message} />
+                                                    <button type='submit' className="btn btn-link text-primary fw-semibold border-2">Post</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
