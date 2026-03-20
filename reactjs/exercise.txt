@@ -58,3 +58,12 @@ submission :- midnight 14-mar-2026
 17) apply feature to set & remove bookmark on example no 20 
 submission :- midnight 18-mar-2026
 
+18) create example to calculate EMI from given loan amount, years and rate using functional components and useState 
+submission :- midnight 23-mar-2026
+
+19) create example to calculate single line depreciation value of product from purchase Amount, shelf life and wreckage value using functional and useState.
+submission :- midnight 23-mar-2026
+
+20) create example that will display food dish using attractive inline style using functional component.
+submission :- midnight 23-mar-2026
+
