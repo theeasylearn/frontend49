@@ -67,3 +67,7 @@ submission :- midnight 23-mar-2026
 20) create example that will display food dish using attractive inline style using functional component.
 submission :- midnight 23-mar-2026
 
+
+21) create example using styled components that will display Book with below details
+Name, Author, Price, Rating, category, language 
+submission :- midnight 26-mar-2026
