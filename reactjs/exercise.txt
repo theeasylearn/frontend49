@@ -71,3 +71,12 @@ submission :- midnight 23-mar-2026
 21) create example using styled components that will display Book with below details
 Name, Author, Price, Rating, category, language 
 submission :- midnight 26-mar-2026
+
+21) create Route for each every of IPL 2026. each route should redirect user to functional component of corresponding IPL team which returns team name and other details. use react router dom. 
+submission :- midnight 27-mar-2026
+
+22) create Route for each every continent . each route should redirect user to class component of corresponding continent  which returns continent name and other details. use react router dom. 
+submission :- midnight 27-mar-2026
+
+
+
