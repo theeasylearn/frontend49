@@ -39,7 +39,7 @@ export default function Navbar() {
       <div className="container-fluid bg-light">
         <div className="container px-0">
           <nav className="navbar navbar-light navbar-expand-xl">
-            <a href="/" className="navbar-brand">
+            <Link href="/" className="navbar-brand">
               <h1 className="text-primary display-4">RoopRang</h1>
             </a>
             <button className="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -47,14 +47,14 @@ export default function Navbar() {
             </button>
             <div className="collapse navbar-collapse bg-light py-3" id="navbarCollapse">
               <div className="navbar-nav mx-auto border-top">
-                <a href="/" className="nav-item nav-link">Home</a>
-                <a href="/about" className="nav-item nav-link">About us</a>
-                <a href="/services" className="nav-item nav-link">Services</a>
-                <a href="/products" className="nav-item nav-link">Products</a>
-                <a href="/courses" className="nav-item nav-link">Courses</a>
-                <a href="/gallery" className="nav-item nav-link">Gallery</a>
-                <a href="/testimonials" className="nav-item nav-link">Testimonials</a>
-                <a href="/contact" className="nav-item nav-link">Contact Us</a>
+                <Link to="/" className="nav-item nav-link">Home</link>
+                <Link to="/about" className="nav-item nav-link">About us</link>
+                <Link to="/services" className="nav-item nav-link">Services</link>
+                <Link to="/products" className="nav-item nav-link">Products</link>
+                <Link to="/courses" className="nav-item nav-link">Courses</link>
+                <Link to="/gallery" className="nav-item nav-link">Gallery</link>
+                <Link to="/testimonials" className="nav-item nav-link">Testimonials</link>
+                <Link to="/contact" className="nav-item nav-link">Contact Us</link>
               </div>
             </div>
           </nav>
