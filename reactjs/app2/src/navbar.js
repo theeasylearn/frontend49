@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom';
+
 export default function Navbar() {
   return (
     <div className="container-fluid sticky-top px-0">
@@ -41,20 +43,20 @@ export default function Navbar() {
           <nav className="navbar navbar-light navbar-expand-xl">
             <Link href="/" className="navbar-brand">
               <h1 className="text-primary display-4">RoopRang</h1>
-            </a>
+            </Link>
             <button className="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
               <span className="fa fa-bars text-primary"></span>
             </button>
             <div className="collapse navbar-collapse bg-light py-3" id="navbarCollapse">
               <div className="navbar-nav mx-auto border-top">
-                <Link to="/" className="nav-item nav-link">Home</link>
-                <Link to="/about" className="nav-item nav-link">About us</link>
-                <Link to="/services" className="nav-item nav-link">Services</link>
-                <Link to="/products" className="nav-item nav-link">Products</link>
-                <Link to="/courses" className="nav-item nav-link">Courses</link>
-                <Link to="/gallery" className="nav-item nav-link">Gallery</link>
-                <Link to="/testimonials" className="nav-item nav-link">Testimonials</link>
-                <Link to="/contact" className="nav-item nav-link">Contact Us</link>
+                <Link to="/" className="nav-item nav-link">Home</Link>
+                <Link to="/aboutus" className="nav-item nav-link">About us</Link>
+                <Link to="/services" className="nav-item nav-link">Services</Link>
+                <Link to="/products" className="nav-item nav-link">Products</Link>
+                <Link to="/courses" className="nav-item nav-link">Courses</Link>
+                <Link to="/gallery" className="nav-item nav-link">Gallery</Link>
+                <Link to="/testimonials" className="nav-item nav-link">Testimonials</Link>
+                <Link to="/contactus" className="nav-item nav-link">Contact Us</Link>
               </div>
             </div>
           </nav>

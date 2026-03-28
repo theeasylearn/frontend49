@@ -9,6 +9,7 @@ import Services from './services';
 import Testimonials from './testimonials'
 import Gallery from './gallery'
 import Home from './home'
+import PageNotFound from './404';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 function MyRoute()
 {
@@ -22,6 +23,8 @@ function MyRoute()
             <Route path='/services' element={<Services />} />
             <Route path='/testimonials' element={<Testimonials />} />
             <Route path='/gallery' element={<Gallery />} />
+            {/* create route for page not found */}
+            <Route path='*' element={<PageNotFound />} />
         </Routes>
     </BrowserRouter>)
 }
