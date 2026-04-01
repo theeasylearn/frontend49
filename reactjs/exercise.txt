@@ -78,5 +78,13 @@ submission :- midnight 27-mar-2026
 22) create Route for each every continent . each route should redirect user to class component of corresponding continent  which returns continent name and other details. use react router dom. 
 submission :- midnight 27-mar-2026
 
+23) create functional components to fetch data from below url using fetch api and display it in table format using bootstrap. user should also able to delete album 
+https://jsonplaceholder.typicode.com/albums
+submission :- midnight 03-april-2026
+
+23) create functional components to fetch data from below url using axios package and display it in responsive layout using card and columns, use bootstrap. user should also able to delete album  
+https://jsonplaceholder.typicode.com/users
+submission :- midnight 03-april-2026
+
 
 

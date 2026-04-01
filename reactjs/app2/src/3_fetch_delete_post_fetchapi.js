@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import axios from 'axios';
+
 
 //function components
 function DisplayPosts() {
@@ -30,23 +30,13 @@ function DisplayPosts() {
     useEffect(() => {
         if (posts.length === 0) {
             let apiAddress = "https://jsonplaceholder.typicode.com/posts";
-            // fetch(apiAddress)
-            //     .then((response) => response.json())
-            //     .then((data) => {
-            //         console.log(data);
-            //         setPosts(data);
-            //     })
-            //     .catch((error) => console.log(error));
-            axios({
-                method: 'get',
-                responseType: 'json',
-                url: apiAddress
-            }).then((response) => {
-                console.log(response.data);
-                setPosts(response.data);
-            }).catch((error) => {
-                alert('oops something went wrong');
-            });
+            fetch(apiAddress)
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    setPosts(data);
+                })
+                .catch((error) => console.log(error));
         }
     });
     return (<div className="container mt-5">
