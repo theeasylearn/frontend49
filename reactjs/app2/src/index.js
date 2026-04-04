@@ -1,89 +1,54 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import axios from 'axios';
-
-//function components
-function DisplayPosts() {
-    let [posts, setPosts] = useState([]);
-
-    let deletePost = function (postid) {
-        //alert(postid);
-        let temp = posts.filter((item) => {
-            //console.log(item, postid);
-            if (item.id !== postid)
-                return item;
-        });
-        setPosts(temp);
-    }
-    //create state array
-    //functional components
-    let Post = function (props) {
-        return (<tr>
-            <td>{props.postid}</td>
-            <td>{props.userid}</td>
-            <td>{props.title}</td>
-            <td>{props.detail}</td>
-            <td><button onClick={() => deletePost(props.postid)} type="button" className='btn btn-danger'>Delete</button></td>
-        </tr>);
-    }
-    //use useEffect Hook
-    useEffect(() => {
-        if (posts.length === 0) {
-            let apiAddress = "https://jsonplaceholder.typicode.com/posts";
-            // fetch(apiAddress)
-            //     .then((response) => response.json())
-            //     .then((data) => {
-            //         console.log(data);
-            //         setPosts(data);
-            //     })
-            //     .catch((error) => console.log(error));
-            axios({
-                method: 'get',
-                responseType: 'json',
-                url: apiAddress
-            }).then((response) => {
-                console.log(response.data);
-                setPosts(response.data);
-            }).catch((error) => {
-                alert('oops something went wrong');
-            });
-        }
-    });
-    return (<div className="container mt-5">
-        <div className="row">
-            <div className="col-lg-12">
-                <div className="card shadow">
-                    <div className="card-header text-bg-primary text-white">
-                        <h4 className="mb-0">Posts Data</h4>
-                    </div>
-                    <div className="card-body">
-                        <div className="table-responsive">
-                            <table className="table table-bordered table-striped table-hover">
-                                <thead className="table-dark">
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>User ID</th>
-                                        <th>Title</th>
-                                        <th>Body</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {posts.map((item) => {
-                                        return <Post postid={item.id} userid={item.userId}
-                                            title={item.title} detail={item.body} />
-                                    })}
-                                </tbody>
-                            </table>
+function Template() {
+    return (<div>
+        <div className="navigation">
+            <header className="menu-style-7 position-relative">
+                <div className="navbar-container navbar-sidebar-7">
+                    <div className="navbar-wrapper">
+                        <div className="container-lg">
+                            <nav className="main-navbar d-lg-flex justify-content-between align-items-center">
+                                <div className="desktop-logo d-lg-block">
+                                    <a href="#0"><img src="assets/images/logo.svg" alt="Logo" /></a>
+                                </div>
+                                <div className="navbar-menu-toggle d-lg-block">
+                                    <button id="toggle-menu-6" className="menu-toggle">
+                                        <span className="toggle-icon" />
+                                        <span className="toggle-icon" />
+                                        <span className="toggle-icon" />
+                                    </button>
+                                </div>
+                                <div className="navbar-menu">
+                                    <ul className="main-menu">
+                                        <div className="navbar-close d-lg-none text-right mb-3">
+                                            <a href="#0" id="menu-close">
+                                                <i className="mdi mdi-close" />
+                                            </a>
+                                        </div>
+                                        <li><a href="#">Sample Link</a></li>
+                                        <li><a href="#">Sample Link</a></li>
+                                        <li><a href="#">Sample Link</a></li>
+                                        <li><a href="#">Sample Link</a></li>
+                                        <li><a href="#">Sample Link</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
                         </div>
                     </div>
-
+                </div>
+                <div className="overlay-7" />
+            </header>
+        </div>
+        <section className="footer-style-3 pt-100 pb-100">
+            <div className="container">
+                <div className="footer-copyright text-center">
+                    <p>Developed by frontend49@theeasylern.com</p>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
     );
 }
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-root.render(<DisplayPosts />);
+root.render(<Template />);
