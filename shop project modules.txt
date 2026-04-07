@@ -43,7 +43,7 @@ Types of users
     buyers /register users (class)
 	-----------------------------------------------	
         register, login, logout, change password, recover account
-        browse products (shop), manage cart, place orders 
+        browse category, products (shop), Product Detail, manage cart, place orders 
 
         (excercise)
 			wishlist
