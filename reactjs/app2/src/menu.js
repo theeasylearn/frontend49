@@ -1,4 +1,5 @@
 //create functional component 
+import { Link } from "react-router-dom";
 export default function SiteMenu()
 {
     return ( <div className="navigation">
@@ -24,11 +25,15 @@ export default function SiteMenu()
                                                 <i className="mdi mdi-close" />
                                             </a>
                                         </div>
-                                        <li><a href="#">Sample Link</a></li>
-                                        <li><a href="#">Sample Link</a></li>
-                                        <li><a href="#">Sample Link</a></li>
-                                        <li><a href="#">Sample Link</a></li>
-                                        <li><a href="#">Sample Link</a></li>
+                                        <li><Link to='/' >Home</Link></li>
+                                        <li><Link to='/category' >Shop</Link></li>
+                                        <li><Link to='/register' >Register</Link></li>
+                                        <li><Link to='/login' >Login</Link></li>
+                                        <li><Link to='/changepassword' >Change Password</Link></li>
+                                        <li><Link to='/forgotpassword' >Forgot Password</Link></li>
+                                        <li><Link to='/cart' >Cart</Link></li>
+                                        <li><Link to='/checkout' >Checkout</Link></li>
+                                        <li><Link to='/logout' >Logout</Link></li>
                                     </ul>
                                 </div>
                             </nav>
