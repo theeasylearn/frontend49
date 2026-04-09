@@ -49,10 +49,8 @@ app.post(CATEGORY_ROUTE, function (request, response) {
             else {
                 response.json([{ 'error': 'no' }, { 'success': 'yes' }, { 'message': 'category inserted' }]);
             }
-
         });
     }
-
 });
 //update existing category
 app.put(CATEGORY_ROUTE, function (request, response) {
