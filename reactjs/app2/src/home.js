@@ -1,7 +1,21 @@
 import Navbar from "./navbar";
 import Footer from "./footer";
 import BackToTop from "./backtotop";
+import { useEffect, useState } from "react";
+import axios from 'axios';
+import { ToastContainer } from 'react-toastify';
+import { showError } from "./message";
+import { getBaseImageURL, getBaseURL } from "./common";
+import { Link } from "react-router-dom";
+
 export default function Home() {
+  
+  useEffect(() => {
+      //call 3 different apis 
+      getCategories();
+      getTrendingProducts();
+      getFreshProducts();
+  });
   return (
     <>
       <Navbar />

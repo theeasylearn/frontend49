@@ -25,6 +25,7 @@ function MyRouter() {
             <Route path='/forgotpassword' element={<ForgotPassword />} />
             <Route path='/category' element={<Category />} />
             <Route path='/product' element={<Product />} />
+            <Route path='/product/:categoryid' element={<Product />} />
             <Route path='/productdetail' element={<ProductDetail />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/checkout' element={<Checkout />} />
