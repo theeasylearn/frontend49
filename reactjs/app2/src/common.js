@@ -7,3 +7,4 @@ export function getBaseURL() {
 export function getBaseImageURL() {
     return getBase() + "images/";
 }
+export const COOKIES_NAME = 'THEEASYLEARN';
