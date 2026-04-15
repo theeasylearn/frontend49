@@ -7,7 +7,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 export default function Login() {
     //create cookies 
-    const [cookies, setCookie, removeCookie] = useCookies([COOKIES_NAME]);
+    const [cookies, setCookie, removeCookie] = useCookies(COOKIES_NAME);
     //declare state variable for each input
     let [email, setEmail] = useState('');
     let [password, setPassword] = useState('');

@@ -1,28 +1,33 @@
 //create functional component 
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import { COOKIES_NAME } from './common';
 function GuestLink() {
-    const [cookies, setCookie, removeCookie] = useCookies([COOKIES_NAME]);
-
+    const [cookies] = useCookies(['id']); // ✅ watch the 'id' cookie
     if (cookies['id'] === undefined) {
-        return (<>
-            <li><Link to='/register' >Register</Link></li>
-            <li><Link to='/login' >Login</Link></li>
-            <li><Link to='/forgotpassword' >Forgot Password</Link></li>
-        </>);
+        return (
+            <>
+                <li><Link to='/register'>Register</Link></li>
+                <li><Link to='/login'>Login</Link></li>
+                <li><Link to='/forgotpassword'>Forgot Password</Link></li>
+            </>
+        );
     }
+    return null; // ✅ explicit null instead of implicit undefined
 }
+
 function UserLink() {
-    
+    const [cookies] = useCookies(['id']); // ✅ watch the 'id' cookie
     if (cookies['id'] !== undefined) {
-        return (<>
-            <li><Link to='/changepassword' >Change Password</Link></li>
-            <li><Link to='/cart' >Cart</Link></li>
-            <li><Link to='/checkout' >Checkout</Link></li>
-            <li><Link to='/logout' >Logout</Link></li>
-        </>)
+        return (
+            <>
+                <li><Link to='/changepassword'>Change Password</Link></li>
+                <li><Link to='/cart'>Cart</Link></li>
+                <li><Link to='/checkout'>Checkout</Link></li>
+                <li><Link to='/logout'>Logout</Link></li>
+            </>
+        );
     }
+    return null;
 }
 export default function SiteMenu() {
     return (<div className="navigation">

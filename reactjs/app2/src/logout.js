@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";
 import { showMessage } from "./message";
 export default function Logout() {
     var navigate = useNavigate('');
-    const [cookies, setCookie, removeCookie] = useCookies([COOKIES_NAME]);
+    const [cookies, setCookie, removeCookie] = useCookies(COOKIES_NAME);
     //DELETE COOKIE
     removeCookie('id');
     useEffect(() => {
