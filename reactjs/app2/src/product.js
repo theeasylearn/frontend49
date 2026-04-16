@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
-import { showError } from "./message";
+import { showError, showMessage } from "./message";
 import { getBaseImageURL, getBaseURL } from "./common";
 import { Link, useParams } from "react-router-dom";
+import { useCookies } from "react-cookie";
 export default function Product() {
 
     let [data, setData] = useState([]); //state array
     let [isDataFetched, setIsDataFetched] = useState(false);
     let { categoryid } = useParams();
+    let [cookies] = useCookies(['id']);
     //call api inside useeffect hook (this hook has function which will execute after return statement execute)
     useEffect(() => {
         if (isDataFetched === false) {
@@ -22,12 +24,7 @@ export default function Product() {
 
             axios(options).then((response) => {
                 console.log(response.data);
-                /*
-                [
-                    {"error":"no"},
-                    {"total":3},
-                    {"id":"1","categoryid":"1","title":"Acer Laptop","price":"100","stock":"60","weight":"1000","size":"15 inch","photo":"acer.jpg","detail":"WINDOWS 10 4 GB DDR3 RAM 128 gb ssd hard disk","islive":"1","isdeleted":"0","categorytitle":"laptop"},{"id":"2","categoryid":"1","title":"dell laptop","price":"200","stock":"67","weight":"1000","size":"15 inch","photo":"dell.jpg","detail":"WINDOWS 10 8 GB DDR3 RAM 512 gb ssd hard disk","islive":"1","isdeleted":"0","categorytitle":"laptop"},{"id":"178","categoryid":"1","title":"","price":"0","stock":"0","weight":"0","size":"","photo":"wmremove-transformed.jpeg","detail":"","islive":"1","isdeleted":"0","categorytitle":"laptop"}]
-                */
+               
                 let error = response.data[0]['error'];
                 if (error !== 'no') {
                     showError(error);
@@ -40,6 +37,7 @@ export default function Product() {
                     else {
                         response.data.splice(0, 2); //remove 2 object from beginning 
                         setData(response.data);
+                        setIsDataFetched(true);
                     }
                 }
             }).catch((error) => {
@@ -47,7 +45,26 @@ export default function Product() {
             });
         }
     });
-
+    let addToCart = function (productid) {
+        console.log("add to cart", productid);
+        let apiAddress = getBaseURL() + "add_to_cart.php?productid=" + productid + "&usersid=" + cookies['id'];
+        let option = {
+            url: apiAddress,
+            method: 'get',
+            responseType: 'json'
+        }
+        axios(option).then((response) => {
+            console.log(response.data);
+            let error = response.data[0]['error'];
+            if (error !== 'no') {
+                showError(error);
+            }
+            else {
+                let message = response.data[1]['message'];
+                showMessage(message);
+            }
+        });
+    }
     return (
         <div className="container">
             <ToastContainer />
@@ -81,10 +98,9 @@ export default function Product() {
                                 </h4>
                                 <p>{item.stock} Item in left in stock</p>
                                 <span className="price">{item.price}</span>
-                                <a href="javascript:void(0)" className="main-btn primary-btn">
-                                    <img src="assets/images/icon-svg/cart-4.svg" alt />
+                                <button onClick={(e) => addToCart(item.id)} type="button" className="main-btn primary-btn">
                                     Add to Cart
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>);
