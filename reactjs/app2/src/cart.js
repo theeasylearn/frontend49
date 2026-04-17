@@ -4,6 +4,7 @@ import { showError, showMessage } from "./message";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
+import { Link } from "react-router-dom";
 export default function Cart() {
     let [cookies] = useCookies(['id']);
     //create state array for storing data which is coming from api
@@ -49,6 +50,42 @@ export default function Cart() {
             });
         }
     });
+    let deleteFromCart = function (cartid) {
+        let apiAddress = getBaseURL() + "delete_from_cart.php?cartid=" + cartid;
+        console.log(apiAddress);
+        let options = {
+            url: apiAddress,
+            method: 'get',
+        };
+        axios(options).then((response) => {
+            console.log(response.data);
+            let error = response.data[0]['error'];
+            if (error !== 'no') {
+                showError(error);
+            }
+            else {
+                let message = response.data[1]['message'];
+                showMessage(message);
+                //remove deleted item from data array
+                let newData = data.filter((item) => {
+                    if (item.cartid !== cartid) {
+                        return item;
+                    }
+                });
+
+                setData(newData);
+                //create local variable for storing total payable amount    
+                let totalPayable = 0;
+                //calculate total payable amount    
+                newData.forEach((item) => {
+                    totalPayable += (item.price * item.quantity);
+                });
+                setTotalPayable(totalPayable);
+            }
+        }).catch((error) => {
+            showError();
+        });
+    };
     let displayCartItem = function (item) {
         return (<tr>
             <td width="20%">
@@ -77,47 +114,13 @@ export default function Cart() {
                         <a className="favorite" href="javascript:void(0)"><i className="mdi mdi-heart-outline" /></a>
                     </li>
                     <li>
-                        <a className="delete" href="javascript:void(0)"><i className="mdi mdi-delete" /></a>
+                        <button onClick={(e) => deleteFromCart(item.cartid)} className="delete" href="javascript:void(0)"><i className="mdi mdi-delete" /></button>
                     </li>
                 </ul>
             </td>
         </tr>)
     }
-    let deleteFromCart = function (cartid) {
-        let apiAddress = getBaseURL() + "delete_from_cart.php?cartid=" + cartid;
-        let options = {
-            url: apiAddress,
-            method: 'get',
-        };
-        axios(options).then((response) => {
-            console.log(response.data);
-            let error = response.data[0]['error'];
-            if (error !== 'no') {
-                showError(error);
-            }
-            else {
-                let message = response.data[1]['message'];
-                showMessage(message);
-                //remove deleted item from data array
-                let newData = data.filter((item) => {
-                    if (item.id !== cartid) {
-                        return item;
-                    }
-                });
-                
-                setData(newData);
-                //create local variable for storing total payable amount    
-                let totalPayable = 0;
-                //calculate total payable amount    
-                newData.forEach((item) => {
-                    totalPayable += (item.price * item.quantity);
-                });
-                setTotalPayable(totalPayable);
-            }
-        }).catch((error) => {
-            showError();
-        });
-    };
+
     return (
         <div className="container">
             <ToastContainer />
@@ -155,11 +158,11 @@ export default function Cart() {
                                         </div>
                                         <div className="checkout-btn d-sm-flex justify-content-between">
                                             <div className="single-btn">
-                                                <a href="javascript:void(0)" className="main-btn primary-btn-border">continue
-                                                    shopping</a>
+                                                <Link to='/checkout' className="main-btn primary-btn-border">continue
+                                                    shopping</Link>
                                             </div>
                                             <div className="single-btn">
-                                                <button type="button" onClick={(e) => deleteFromCart(item.id)} className="main-btn primary-btn">Checkout</button>
+                                                <button type="button" className="main-btn primary-btn">Checkout</button>
                                             </div>
                                         </div>
                                     </div>
