@@ -94,7 +94,7 @@ export default function Product() {
                                     
                                 </ul>
                                 <h4 className="title">
-                                    <a href="product-details-page.html">{item.title}</a>
+                                    <Link to={"/productdetail/" + item.id}>{item.title}</Link>
                                 </h4>
                                 <p>{item.stock} Item in left in stock</p>
                                 <span className="price">{item.price}</span>

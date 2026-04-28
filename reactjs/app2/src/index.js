@@ -29,7 +29,7 @@ function MyRouter() {
                     <Route path='/category' element={<Category />} />
                     <Route path='/product' element={<Product />} />
                     <Route path='/product/:categoryid' element={<Product />} />
-                    <Route path='/productdetail' element={<ProductDetail />} />
+                    <Route path='/productdetail/:productid' element={<ProductDetail />} />
                     <Route path='/cart' element={<Cart />} />
                     <Route path='/checkout' element={<Checkout />} />
                     <Route path='/logout' element={<Logout />} />

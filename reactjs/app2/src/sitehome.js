@@ -1,9 +1,52 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from 'axios';
+import { showError } from "./message";
+import { getBaseImageURL, getBaseURL } from "./common";
+import { ToastContainer } from "react-toastify";
+
 export default function Home() {
+
+  let [categories, setCategories] = useState([]);
+  let [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    // Fetch Categories
+    if (categories.length === 0) {
+      let catApiAddress = getBaseURL() + "category.php";
+      axios({ url: catApiAddress, method: 'get', responseType: 'json' }).then((response) => {
+        let error = response.data[0]['error'];
+        if (error === 'no') {
+          let total = response.data[1]['total'];
+          if (total > 0) {
+            response.data.splice(0, 2);
+            setCategories(response.data);
+          }
+        }
+      });
+    }
+
+    // Fetch Products
+    if (products.length === 0) {
+      let prodApiAddress = getBaseURL() + "product.php";
+      axios({ url: prodApiAddress, method: 'get', responseType: 'json' }).then((response) => {
+        let error = response.data[0]['error'];
+        if (error === 'no') {
+          let total = response.data[1]['total'];
+          if (total > 0) {
+            response.data.splice(0, 2);
+            setProducts(response.data);
+          }
+        }
+      });
+    }
+  });
+
   return (
     <>
-      {/* CATEGORIES SECTION - unchanged */}
+      {/* CATEGORIES SECTION */}
       <div className="container py-5">
+        <ToastContainer />
         <div className="d-flex justify-content-between align-items-end mb-4">
           <h2 className="display-5 fw-bold">Shop by Category</h2>
           <Link to="/category" className="btn btn-link text-decoration-none fs-5">
@@ -12,23 +55,24 @@ export default function Home() {
         </div>
 
         <div className="row g-4">
-          {/* Category cards remain as before (they already link to /category) */}
-          <div className="col-lg-3 col-md-4 col-6">
-            <Link to="/category" className="text-decoration-none">
-              <div className="card h-100 shadow border-0 overflow-hidden">
-                <img src="https://picsum.photos/id/1005/400/300" className="card-img-top" alt="Skincare" />
-                <div className="card-body text-center py-4">
-                  <h5 className="card-title fw-semibold">Skincare</h5>
-                  <p className="text-muted small mb-0">Face packs, serums &amp; creams</p>
-                </div>
+          {categories.map((item) => {
+            return (
+              <div className="col-lg-3 col-md-4 col-6" key={item.id}>
+                <Link to={"/category/" + item.id} className="text-decoration-none">
+                  <div className="card h-100 shadow border-0 overflow-hidden">
+                    <img src={getBaseImageURL() + "category/" + item.photo} className="card-img-top" alt={item.title} />
+                    <div className="card-body text-center py-4">
+                      <h5 className="card-title fw-semibold">{item.title}</h5>
+                    </div>
+                  </div>
+                </Link>
               </div>
-            </Link>
-          </div>
-          {/* ... other 3 category cards unchanged ... */}
+            )
+          })}
         </div>
       </div>
 
-      {/* TRENDING PRODUCTS - NOW CLICKABLE */}
+      {/* TRENDING PRODUCTS */}
       <div className="container-fluid bg-light py-5">
         <div className="container">
           <div className="d-flex justify-content-between align-items-end mb-4">
@@ -42,86 +86,29 @@ export default function Home() {
           </div>
 
           <div className="row g-4">
-            {/* Card 1 - Now clickable */}
-            <div className="col-md-6 col-lg-3">
-              <Link to="/productdetail" className="text-decoration-none">
-                <div className="card shadow h-100 border-0">
-                  <img src="img/product-1.jpeg" className="card-img-top" alt="Herbal Glow Face Pack" />
-                  <div className="card-body text-center">
-                    <h5 className="card-title">Herbal Glow Face Pack</h5>
-                    <ul className="list-group list-group-flush mb-3">
-                      <li className="list-group-item">Price: ₹450</li>
-                      <li className="list-group-item">Weight: 100 g</li>
-                    </ul>
-                    <p className="card-text text-muted small">
-                      Sandalwood, turmeric &amp; aloe vera for natural glow.
-                    </p>
-                  </div>
+            {products.slice(0, 3).map((item) => {
+              return (
+                <div key={item.id} className="col-md-6 col-lg-4">
+                  <Link to={"/productdetail/" + item.id} className="text-decoration-none">
+                    <div className="card shadow h-100 border-0">
+                      <img src={getBaseImageURL() + "product/" + item.photo} className="card-img-top" alt={item.title} />
+                      <div className="card-body text-center">
+                        <h5 className="card-title">{item.title}</h5>
+                        <ul className="list-group list-group-flush mb-3">
+                          <li className="list-group-item">Price: ₹{item.price}</li>
+                          <li className="list-group-item">Stock: {item.stock}</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
-              </Link>
-            </div>
-
-            {/* Card 2 */}
-            <div className="col-md-6 col-lg-3">
-              <Link to="/productdetail" className="text-decoration-none">
-                <div className="card shadow h-100 border-0">
-                  <img src="https://picsum.photos/id/1005/400/300" className="card-img-top" alt="Lavender Essential Oil" />
-                  <div className="card-body text-center">
-                    <h5 className="card-title">Lavender Calm Essential Oil</h5>
-                    <ul className="list-group list-group-flush mb-3">
-                      <li className="list-group-item">Price: ₹320</li>
-                      <li className="list-group-item">Volume: 15 ml</li>
-                    </ul>
-                    <p className="card-text text-muted small">
-                      Pure lavender oil for stress relief and better sleep.
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            </div>
-
-            {/* Card 3 */}
-            <div className="col-md-6 col-lg-3">
-              <Link to="/productdetail" className="text-decoration-none">
-                <div className="card shadow h-100 border-0">
-                  <img src="https://picsum.photos/id/133/400/300" className="card-img-top" alt="Aloe Vera Gel" />
-                  <div className="card-body text-center">
-                    <h5 className="card-title">Pure Aloe Vera Gel</h5>
-                    <ul className="list-group list-group-flush mb-3">
-                      <li className="list-group-item">Price: ₹280</li>
-                      <li className="list-group-item">Weight: 200 g</li>
-                    </ul>
-                    <p className="card-text text-muted small">
-                      Soothing gel for sunburns and glowing skin.
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            </div>
-
-            {/* Card 4 */}
-            <div className="col-md-6 col-lg-3">
-              <Link to="/productdetail" className="text-decoration-none">
-                <div className="card shadow h-100 border-0">
-                  <img src="https://picsum.photos/id/201/400/300" className="card-img-top" alt="Rose Water Toner" />
-                  <div className="card-body text-center">
-                    <h5 className="card-title">Organic Rose Water Toner</h5>
-                    <ul className="list-group list-group-flush mb-3">
-                      <li className="list-group-item">Price: ₹390</li>
-                      <li className="list-group-item">Volume: 200 ml</li>
-                    </ul>
-                    <p className="card-text text-muted small">
-                      Hydrating toner that balances skin pH instantly.
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            </div>
+              )
+            })}
           </div>
         </div>
       </div>
 
-      {/* NEW PRODUCTS - NOW CLICKABLE */}
+      {/* NEW PRODUCTS */}
       <div className="container py-5">
         <div className="d-flex justify-content-between align-items-end mb-4">
           <div>
@@ -134,81 +121,24 @@ export default function Home() {
         </div>
 
         <div className="row g-4">
-          {/* New Card 1 */}
-          <div className="col-md-6 col-lg-3">
-            <Link to="/productdetail" className="text-decoration-none">
-              <div className="card shadow h-100 border-0">
-                <img src="https://picsum.photos/id/870/400/300" className="card-img-top" alt="Charcoal Face Mask" />
-                <div className="card-body text-center">
-                  <h5 className="card-title">Activated Charcoal Mask</h5>
-                  <ul className="list-group list-group-flush mb-3">
-                    <li className="list-group-item">Price: ₹520</li>
-                    <li className="list-group-item">Weight: 75 g</li>
-                  </ul>
-                  <p className="card-text text-muted small">
-                    Deep cleansing mask with neem &amp; charcoal.
-                  </p>
-                </div>
+          {products.slice(3, 6).map((item) => {
+            return (
+              <div key={item.id} className="col-md-6 col-lg-4">
+                <Link to={"/productdetail/" + item.id} className="text-decoration-none">
+                  <div className="card shadow h-100 border-0">
+                    <img src={getBaseImageURL() + "product/" + item.photo} className="card-img-top" alt={item.title} />
+                    <div className="card-body text-center">
+                      <h5 className="card-title">{item.title}</h5>
+                      <ul className="list-group list-group-flush mb-3">
+                        <li className="list-group-item">Price: ₹{item.price}</li>
+                        <li className="list-group-item">Stock: {item.stock}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </Link>
               </div>
-            </Link>
-          </div>
-
-          {/* New Card 2 */}
-          <div className="col-md-6 col-lg-3">
-            <Link to="/productdetail" className="text-decoration-none">
-              <div className="card shadow h-100 border-0">
-                <img src="https://picsum.photos/id/1009/400/300" className="card-img-top" alt="Vitamin C Serum" />
-                <div className="card-body text-center">
-                  <h5 className="card-title">20% Vitamin C Serum</h5>
-                  <ul className="list-group list-group-flush mb-3">
-                    <li className="list-group-item">Price: ₹680</li>
-                    <li className="list-group-item">Volume: 30 ml</li>
-                  </ul>
-                  <p className="card-text text-muted small">
-                    Brightening serum with hyaluronic acid.
-                  </p>
-                </div>
-              </div>
-            </Link>
-          </div>
-
-          {/* New Card 3 */}
-          <div className="col-md-6 col-lg-3">
-            <Link to="/productdetail" className="text-decoration-none">
-              <div className="card shadow h-100 border-0">
-                <img src="https://picsum.photos/id/106/400/300" className="card-img-top" alt="Turmeric Face Oil" />
-                <div className="card-body text-center">
-                  <h5 className="card-title">Turmeric Glow Face Oil</h5>
-                  <ul className="list-group list-group-flush mb-3">
-                    <li className="list-group-item">Price: ₹410</li>
-                    <li className="list-group-item">Volume: 50 ml</li>
-                  </ul>
-                  <p className="card-text text-muted small">
-                    Anti-aging oil for radiant skin.
-                  </p>
-                </div>
-              </div>
-            </Link>
-          </div>
-
-          {/* New Card 4 */}
-          <div className="col-md-6 col-lg-3">
-            <Link to="/productdetail" className="text-decoration-none">
-              <div className="card shadow h-100 border-0">
-                <img src="https://picsum.photos/id/133/400/300" className="card-img-top" alt="Neem Body Lotion" />
-                <div className="card-body text-center">
-                  <h5 className="card-title">Neem &amp; Coconut Body Lotion</h5>
-                  <ul className="list-group list-group-flush mb-3">
-                    <li className="list-group-item">Price: ₹360</li>
-                    <li className="list-group-item">Volume: 250 ml</li>
-                  </ul>
-                  <p className="card-text text-muted small">
-                    Soothing lotion for dry &amp; itchy skin.
-                  </p>
-                </div>
-              </div>
-            </Link>
-          </div>
+            )
+          })}
         </div>
       </div>
 
