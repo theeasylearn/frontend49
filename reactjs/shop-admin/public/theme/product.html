@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="AdminKit">
+	<link rel="preconnect" href="https://fonts.gstatic.com/">
+	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+	<title>Product</title>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
+	<link href="css/light.css" rel="stylesheet">
+</head>
+<body>
+	<div class="wrapper">
+		<nav id="sidebar" class="sidebar js-sidebar">
+			<div class="sidebar-content js-simplebar">
+				<div class="p-3 text-white fw-semibold">Welcome Administrator</div>
+				<ul class="sidebar-nav">
+					<li class="sidebar-item"><a class="sidebar-link" href="index.html">Dashboard</a></li>
+					<li class="sidebar-item"><a class="sidebar-link" href="category.html">Category</a></li>
+					<li class="sidebar-item active"><a class="sidebar-link" href="product.html">Product</a></li>
+					<li class="sidebar-item"><a class="sidebar-link" href="users.html">Users</a></li>
+					<li class="sidebar-item"><a class="sidebar-link" href="orders.html">Orders</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div class="main">
+			<nav class="navbar navbar-expand navbar-light navbar-bg"><a class="sidebar-toggle js-sidebar-toggle"><i class="hamburger align-self-center"></i></a></nav>
+			<main class="content">
+				<div class="container-fluid p-0">
+					<div class="d-flex justify-content-between align-items-center mb-3">
+						<h1 class="h3 mb-0">Product List</h1>
+						<a class="btn btn-primary" href="insert-product.html">Add Product</a>
+					</div>
+					<div class="card">
+						<div class="card-header text-bg-primary"><h3 class="mb-0 text-white">All Products</h3></div>
+						<div class="card-body">
+							<table class="table table-bordered table-striped mb-0">
+								<thead>
+									<tr><th>ID</th><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Is Live</th><th>Actions</th></tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td><td>Handwash</td><td>Soap</td><td>120</td><td>20</td><td><span class="badge bg-success">1</span></td>
+										<td>
+											<a class="btn btn-sm btn-warning" href="edit-product.html?productid=1">Edit</a>
+											<a class="btn btn-sm btn-danger" href="delete-product.html?productid=1">Delete</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+	<script src="js/app.js"></script>
+	<script>
+		const API_BASE = "https://theeasylearnacademy.com/shop/ws/";
+		const tbody = document.querySelector("tbody");
+
+		function toArray(payload) {
+			if (Array.isArray(payload)) return payload;
+			if (Array.isArray(payload.data)) return payload.data;
+			if (Array.isArray(payload.records)) return payload.records;
+			return [];
+		}
+
+		async function loadProducts() {
+			tbody.innerHTML = "<tr><td colspan='7'>Loading...</td></tr>";
+			try {
+				const res = await fetch(API_BASE + "product.php");
+				const json = await res.json();
+				const rows = toArray(json);
+				if (!rows.length) {
+					tbody.innerHTML = "<tr><td colspan='7'>No products found.</td></tr>";
+					return;
+				}
+				tbody.innerHTML = rows.map((row) => {
+					const id = row.id || row.productid || "";
+					const name = row.name || "-";
+					const category = row.category || row.categoryid || "-";
+					const price = row.price || "-";
+					const stock = row.stock || "-";
+					const islive = String(row.islive ?? "0");
+					return `<tr>
+						<td>${id}</td><td>${name}</td><td>${category}</td><td>${price}</td><td>${stock}</td>
+						<td><span class="badge ${islive === "1" ? "bg-success" : "bg-secondary"}">${islive}</span></td>
+						<td>
+							<a class="btn btn-sm btn-warning" href="edit-product.html?productid=${id}">Edit</a>
+							<a class="btn btn-sm btn-danger" href="delete-product.html?productid=${id}">Delete</a>
+						</td>
+					</tr>`;
+				}).join("");
+			} catch (err) {
+				tbody.innerHTML = `<tr><td colspan='7'>Failed to load products: ${err.message}</td></tr>`;
+			}
+		}
+
+		loadProducts();
+	</script>
+</body>
+</html>
