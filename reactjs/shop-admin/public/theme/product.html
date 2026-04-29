@@ -38,7 +38,7 @@
 						<div class="card-body">
 							<table class="table table-bordered table-striped mb-0">
 								<thead>
-									<tr><th>ID</th><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Is Live</th><th>Actions</th></tr>
+									<tr><th>ID</th><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Is Live</th><th width="20%">Actions</th></tr>
 								</thead>
 								<tbody>
 									<tr>
@@ -46,6 +46,7 @@
 										<td>
 											<a class="btn btn-sm btn-warning" href="edit-product.html?productid=1">Edit</a>
 											<a class="btn btn-sm btn-danger" href="delete-product.html?productid=1">Delete</a>
+											<a href="view-product.html" class="btn btn-sm btn-primary">View </a>
 										</td>
 									</tr>
 								</tbody>
@@ -57,49 +58,6 @@
 		</div>
 	</div>
 	<script src="js/app.js"></script>
-	<script>
-		const API_BASE = "https://theeasylearnacademy.com/shop/ws/";
-		const tbody = document.querySelector("tbody");
-
-		function toArray(payload) {
-			if (Array.isArray(payload)) return payload;
-			if (Array.isArray(payload.data)) return payload.data;
-			if (Array.isArray(payload.records)) return payload.records;
-			return [];
-		}
-
-		async function loadProducts() {
-			tbody.innerHTML = "<tr><td colspan='7'>Loading...</td></tr>";
-			try {
-				const res = await fetch(API_BASE + "product.php");
-				const json = await res.json();
-				const rows = toArray(json);
-				if (!rows.length) {
-					tbody.innerHTML = "<tr><td colspan='7'>No products found.</td></tr>";
-					return;
-				}
-				tbody.innerHTML = rows.map((row) => {
-					const id = row.id || row.productid || "";
-					const name = row.name || "-";
-					const category = row.category || row.categoryid || "-";
-					const price = row.price || "-";
-					const stock = row.stock || "-";
-					const islive = String(row.islive ?? "0");
-					return `<tr>
-						<td>${id}</td><td>${name}</td><td>${category}</td><td>${price}</td><td>${stock}</td>
-						<td><span class="badge ${islive === "1" ? "bg-success" : "bg-secondary"}">${islive}</span></td>
-						<td>
-							<a class="btn btn-sm btn-warning" href="edit-product.html?productid=${id}">Edit</a>
-							<a class="btn btn-sm btn-danger" href="delete-product.html?productid=${id}">Delete</a>
-						</td>
-					</tr>`;
-				}).join("");
-			} catch (err) {
-				tbody.innerHTML = `<tr><td colspan='7'>Failed to load products: ${err.message}</td></tr>`;
-			}
-		}
-
-		loadProducts();
-	</script>
+	
 </body>
 </html>
