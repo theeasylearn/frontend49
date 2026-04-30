@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="AdminKit">
+    <link rel="preconnect" href="https://fonts.gstatic.com/">
+    <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+    <title>Blank Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
+    <link href="css/light.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav id="sidebar" class="sidebar js-sidebar">
+            <div class="sidebar-content js-simplebar">
+                <div class="p-3 text-white fw-semibold">
+                    Welcome Administrator
+                </div>
+                <ul class="sidebar-nav">
+                    <li class="sidebar-item active">
+                        <a class="sidebar-link" href="#">
+                            <i class="align-middle" data-feather="list"></i> <span class="align-middle">Sample
+                                Link</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="main">
+            <nav class="navbar navbar-expand navbar-light navbar-bg">
+                <a class="sidebar-toggle js-sidebar-toggle">
+                    <i class="hamburger align-self-center"></i>
+                </a>
+            </nav>
+
+            <main class="content">
+                <div class="container-fluid p-0">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header text-bg-primary">
+                                    <h3 class="h3 mb-3 text-white">Order Detail</h3>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th width="25%">Order ID</th>
+                                            <td width="25%">12345</td>
+                                            <th width="25%">Customer Name</th>
+                                            <td width="25%"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Order Date</th>
+                                            <td>2023-10-01</td>
+                                            <th>Address</th>
+                                            <td></td>
+
+                                        </tr>
+                                        <tr>
+                                            <th>Amount</th>
+                                            <td>$199.99</td>
+                                            <th>City</th>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Order Status</th>
+                                            <td>
+                                                <form action="">
+                                                    <table>
+                                                        <tr>
+                                                            <td><select name="order_status" id="order_status"
+                                                                    class="form-select form-select-sm">
+                                                                    <option value="pending">Pending</option>
+                                                                    <option value="processing">Processing</option>
+                                                                    <option value="shipped">Shipped</option>
+                                                                    <option value="delivered">Delivered</option>
+                                                                    <option value="cancelled">Cancelled</option>
+                                                                </select>
+                                                            </td>
+                                                            <td><button type="submit"
+                                                                    class="btn btn-sm btn-primary ms-2">Update</button>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </form>
+                                            </td>
+                                            <th>Pincode</th>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Payment status</th>
+                                            <td></td>
+                                            <th>Remarks</th>
+                                            <td></td>
+                                        </tr>
+
+                                    </table>
+                                    <table class="table table-bordered table-sm table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th width="10%">Product ID</th>
+                                                <th>Product Name</th>
+                                                <th width="20%">Product Image</th>
+                                                <th>Quantity</th>
+                                                <th>Price</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>IPhone 17 pro max</td>
+                                                <td></td>
+                                                <td class="text-end">125000</td>
+                                                <td class="text-end">1</td>
+                                                <td class="text-end">1,25,000</td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot></tfoot>
+                                        <tr>
+                                            <th colspan="5" class="text-right">Total:</th>
+                                            <td class="text-end">1,25,000</td>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                    <p class="text-end">
+                                        <a href="print-order.html" class="btn btn-sm btn-primary">Print Invoice</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
