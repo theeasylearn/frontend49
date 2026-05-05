@@ -1,5 +1,6 @@
 import React from "react";
 import Menu from './menu';
+import { Link } from "react-router-dom";
 
 export default class Product extends React.Component {
     constructor(props) {
@@ -17,7 +18,7 @@ export default class Product extends React.Component {
 				<div className="container-fluid p-0">
 					<div className="d-flex justify-content-between align-items-center mb-3">
 						<h1 className="h3 mb-0">Product List</h1>
-						<a className="btn btn-primary" href="insert-product.html">Add Product</a>
+						<Link className="btn btn-primary" to="/insert-product">Add Product</Link>
 					</div>
 					<div className="card">
 						<div className="card-header text-bg-primary"><h3 className="mb-0 text-white">All Products</h3></div>
@@ -30,9 +31,9 @@ export default class Product extends React.Component {
 									<tr>
 										<td>1</td><td>Handwash</td><td>Soap</td><td>120</td><td>20</td><td><span className="badge bg-success">1</span></td>
 										<td>
-											<a className="btn btn-sm btn-warning" href="edit-product.html?productid=1">Edit</a>
+											<Link className="btn btn-sm btn-warning" to="/edit-product">Edit</Link>
 											<a className="btn btn-sm btn-danger" href="delete-product.html?productid=1">Delete</a>
-											<a href="view-product.html" className="btn btn-sm btn-primary">View </a>
+											<Link to="/view-product" className="btn btn-sm btn-primary">View </Link>
 										</td>
 									</tr>
 								</tbody>

@@ -1,5 +1,6 @@
 import React from "react";
 import Menu from './menu';
+import { Link } from "react-router-dom";
 export default class Category extends React.Component {
     constructor(props) {
         super(props);
@@ -15,7 +16,7 @@ export default class Category extends React.Component {
                     <div className="container-fluid p-0">
                         <div className="d-flex justify-content-between align-items-center mb-3">
                             <h1 className="h3 mb-0">Category List</h1>
-                            <a className="btn btn-primary" href="insert-category.html">Add Category</a>
+                            <Link className="btn btn-primary" to="/insert-category">Add Category</Link>
                         </div>
                         <div className="card">
                             <div className="card-header text-bg-primary">
@@ -30,7 +31,7 @@ export default class Category extends React.Component {
                                         <tr>
                                             <td>1</td><td>Soap</td><td>soap.jpg</td><td><span className="badge bg-success">Yes</span></td>
                                             <td>
-                                                <a className="btn btn-sm btn-warning" href="edit-category.html?id=1">Edit</a>
+                                                <Link className="btn btn-sm btn-warning" to="/edit-category">Edit</Link>
                                                 <a className="btn btn-sm btn-danger" href="delete-category.html?id=1">Delete</a>
                                             </td>
                                         </tr>

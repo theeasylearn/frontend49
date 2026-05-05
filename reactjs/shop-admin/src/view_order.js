@@ -1,5 +1,6 @@
 import React from "react";
 import Menu from './menu';
+import { Link } from "react-router-dom";
 
 export default class ViewOrder extends React.Component {
     constructor(props) {
@@ -104,7 +105,7 @@ export default class ViewOrder extends React.Component {
                                         </tfoot>
                                     </table>
                                     <p className="text-end">
-                                        <a href="print-order.html" className="btn btn-sm btn-primary">Print Invoice</a>
+                                        <Link to="/print-orders" className="btn btn-sm btn-primary">Print Invoice</Link>
                                     </p>
                                 </div>
                             </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import Menu from './menu';
-
+import { Link } from "react-router-dom";
 export default class Orders extends React.Component {
     constructor(props) {
         super(props);
@@ -30,7 +30,7 @@ export default class Orders extends React.Component {
 										<td></td>
 										<td></td>
 										<td>
-											<a href="view-order.html" className="btn btn-sm btn-primary">View Order</a>
+											<Link to="/view-orders" className="btn btn-sm btn-primary">View Order</Link>
 										</td>
 									</tr>
 								</tbody>

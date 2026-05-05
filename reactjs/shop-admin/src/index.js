@@ -16,27 +16,33 @@ import Product from './product'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Login from './login';
 import ForgotPassword from './forgot_password';
+import PageNotFound from './page_not_found';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 function MyRouter() {
     return (<BrowserRouter>
         <Routes>
             <Route path='/' element={<Login />} index  />
-            <Route path='/forgot-password' element={<ForgotPassword />}  />
-            <Route path='/dasboard' element={<Dashboard />}  />
-            <Route path='/categories' element={<Category />}  />
-            <Route path='/change-password' element={<ChangePassword />}  />
-            <Route path='/edit-category' element={<EditCategory />}  />
-            <Route path='/edit-product' element={<EditProduct />}  />
-            <Route path='/insert-category' element={<InsertCategory />}  />
-            <Route path='/insert-product' element={<InsertProduct />}  />
+            <Route path='/dashboard' element={<Dashboard />}  />
             <Route path='/orders' element={<Orders />}  />
-            <Route path='/print-orders' element={<PrintOrder />}  />
-            <Route path='/view-orders' element={<ViewOrder />}  />
             <Route path='/products' element={<Product />}  />
+            <Route path='/categories' element={<Category />}  />
             <Route path='/users' element={<Users />}  />
+            <Route path='/change-password' element={<ChangePassword />}  />
+            
+            
+            <Route path='/forgot-password' element={<ForgotPassword />}  />
+            
+            <Route path='/insert-category' element={<InsertCategory />}  />
+            <Route path='/edit-category' element={<EditCategory />}  />
+            
+            <Route path='/edit-product' element={<EditProduct />}  />
+            <Route path='/insert-product' element={<InsertProduct />}  />
             <Route path='/view-product' element={<ViewProduct />}  />
             
-            
+            <Route path='/print-orders' element={<PrintOrder />}  />
+            <Route path='/view-orders' element={<ViewOrder />}  />
+            {/* define 404 route which will run when user tries to open non-existing route */}
+            <Route path='*' element={<PageNotFound />} />
         </Routes>
     </BrowserRouter>);
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 export default class ForgotPassword extends React.Component {
     constructor(props) {
         super(props);
@@ -31,7 +32,7 @@ export default class ForgotPassword extends React.Component {
                                             <div className="single-form my-3">
                                                 <button className="btn btn-warning w-100">Recover my account</button>
                                             </div>
-                                            <a href="" className="btn btn-link">Login</a>
+                                            <Link to="/" className="btn btn-link">Login</Link>
                                         </form>
                                     </div>
                                 </div>
