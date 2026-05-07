@@ -1,0 +1,10 @@
+function getBase() {
+    return "https://theeasylearnacademy.com/shop/";
+}
+export function getBaseURL() {
+    return getBase() + "ws/";
+}
+export function getBaseImageURL() {
+    return getBase() + "images/";
+}
+export const COOKIES_NAME = 'THEEASYLEARN';

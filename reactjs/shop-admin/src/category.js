@@ -1,12 +1,69 @@
 import React from "react";
 import Menu from './menu';
 import { Link } from "react-router-dom";
+import { getBaseURL } from "./common";
+import axios from 'axios';
+import { showError } from "./message";
+import { ToastContainer } from "react-toastify";
+
 export default class Category extends React.Component {
+
     constructor(props) {
         super(props);
+        console.log('constructor called');
+        //create state array
+        this.state = {
+            categories: []
+        }
+    }
+
+    componentDidMount() {
+        //use componentDidMount to call api to fetch data from server 
+        // componentDidMount method is callback method, run only once just after render() method execute 1st time 
+        console.log("componentDidMount method is called.");
+        //api call 
+        let apiAddress = getBaseURL() + "category.php";
+        let options = {
+            url: apiAddress,
+            method: 'get',
+            responseType: 'json'
+        };
+
+        axios(options).then((response) => {
+            //code in this block will only execute after data is successfully fetch from server
+            console.log("response received from api ", response.data);
+            let error = response.data[0]['error'];
+            if (error !== 'no') {
+                //there is error in api response
+                showError(error);
+            }
+            else {
+                //there is no error
+                //fetch total
+                if (response.data[1]['total'] === 0) {
+                    showError('no category found');
+                }
+                else {
+                    //1st delete 2 object from beginning 
+                    response.data.splice(0, 2);
+                    //copy data into state array
+                    this.setState({
+                        categories: response.data
+                    });
+                }
+            }
+        }).catch((error) => {
+            //code in this block will execute only if data could not be fetched from server. it is error there could be mostly 2 reasons for it.
+            // 1) you are offline 
+            // 2) server is offline or api address is wrong
+            showError();
+
+        });
     }
     render() {
+        console.log("render method is called");
         return (<div className="wrapper">
+            <ToastContainer />
             <Menu />
             <div className="main">
                 <nav className="navbar navbar-expand navbar-light navbar-bg">
