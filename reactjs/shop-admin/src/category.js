@@ -1,7 +1,7 @@
 import React from "react";
 import Menu from './menu';
 import { Link } from "react-router-dom";
-import { getBaseURL } from "./common";
+import { getBaseURL, getBaseImageURL } from "./common";
 import axios from 'axios';
 import { showError } from "./message";
 import { ToastContainer } from "react-toastify";
@@ -85,13 +85,22 @@ export default class Category extends React.Component {
                                         <tr><th width="5%">ID</th><th>Title</th><th>Photo</th><th>Is Live</th><th width="15%">Actions</th></tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td><td>Soap</td><td>soap.jpg</td><td><span className="badge bg-success">Yes</span></td>
-                                            <td>
-                                                <Link className="btn btn-sm btn-warning" to="/edit-category">Edit</Link>
-                                                <a className="btn btn-sm btn-danger" href="delete-category.html?id=1">Delete</a>
-                                            </td>
-                                        </tr>
+                                        {this.state.categories.map((item) => {
+                                            return (<tr>
+                                                <td>{item.id}</td>
+                                                <td>{item.title}</td>
+                                                <td>
+            <img src={getBaseImageURL() + "category/" + item.photo} className="img-fluid" />
+                                                </td>
+                                                <td>
+                                                    {(item.islive === '1')?<span className="badge bg-success">Yes</span>:<span className="badge bg-danger">No</span>}
+                                                </td>
+                                                <td>
+                                                    <Link className="btn btn-sm btn-warning" to="/edit-category">Edit</Link>
+                                                    <a className="btn btn-sm btn-danger" href="delete-category.html?id=1">Delete</a>
+                                                </td>
+                                            </tr>)
+                                        })}
                                     </tbody>
                                 </table>
                             </div>
