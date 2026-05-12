@@ -93,7 +93,7 @@ export default class Product extends React.Component {
 													<td>
 														<Link className="btn btn-sm btn-warning" to="/edit-product">Edit</Link>
 														<a className="btn btn-sm btn-danger" href="delete-product.html?productid=1">Delete</a>
-														<Link to="/view-product" className="btn btn-sm btn-primary">View </Link>
+			<Link to={"/view-product/" + item.id} className="btn btn-sm btn-primary">View </Link>
 													</td>
 												</tr>)
 										})}
