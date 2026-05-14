@@ -43,7 +43,7 @@ function MyRouter() {
                     <Route path='/view-product/:id' element={<ViewProduct />} />
 
                     <Route path='/print-orders' element={<PrintOrder />} />
-                    <Route path='/view-orders' element={<ViewOrder />} />
+                    <Route path='/view-orders/:orderid' element={<ViewOrder />} />
                     {/* define 404 route which will run when user tries to open non-existing route */}
                     <Route path='*' element={<PageNotFound />} />
                 </Routes>

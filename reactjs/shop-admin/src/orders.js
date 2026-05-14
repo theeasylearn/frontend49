@@ -67,7 +67,7 @@ export default class Orders extends React.Component {
 			<td>{city}</td>
 			<td>{orderstatus}</td>
 			<td>
-				<Link to="/view-orders" className="btn btn-sm btn-primary">View Order</Link>
+				<Link to={"/view-orders/" + id} className="btn btn-sm btn-primary">View Order</Link>
 			</td>
 		</tr>);
 	}

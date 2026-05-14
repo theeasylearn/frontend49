@@ -2,18 +2,66 @@ import React from "react";
 import Menu from './menu';
 import usingHooks from './wrapper_functions';
 import { showError } from "./message";
+import { ToastContainer } from "react-toastify";
+import axios from "axios";
+import { getBaseURL, getBaseImageURL } from "./common";
 //http://localhost:3000/view-product/5
 class ViewProduct extends React.Component {
     constructor(props) {
         super(props);
+        //create state array
+        this.state = {
+            products: []
+        };
     }
     componentDidMount() {
-        const id = this.props.params;
-        console.log("Fetching product ID:",id);
+        const { id } = this.props.params;
+        console.log("Fetching product ID:", id);
+        const apiAddress = getBaseURL() + "product.php?productid=" + id;
+        console.log(apiAddress);
+        let options = {
+            url: apiAddress,
+            method: 'get',
+            responseType: 'json'
+        };
+
+        axios(options).then((response) => {
+            //code in this block will only execute after data is successfully fetch from server
+            console.log("response received from api ", response.data);
+            let error = response.data[0]['error'];
+            if (error !== 'no') {
+                //there is error in api response
+                showError(error);
+            }
+            else {
+                //there is no error
+                //fetch total
+                if (response.data[1]['total'] === 0) {
+                    showError('no product found');
+                }
+                else {
+                    //1st delete 2 object from beginning 
+                    response.data.splice(0, 2);
+                    //copy data into state array
+                    this.setState({
+                        products: response.data
+                    }, () => {
+                        console.log('data stored into state array product');
+                        console.log(this.state.products);
+                    });
+                }
+            }
+        }).catch((error) => {
+            //code in this block will execute only if data could not be fetched from server. it is error there could be mostly 2 reasons for it.
+            // 1) you are offline 
+            // 2) server is offline or api address is wrong
+            showError();
+
+        });
     }
     render() {
         return (<div className="wrapper">
-            <showError />
+            <ToastContainer />
             <Menu />
             <div className="main">
                 <nav className="navbar navbar-expand navbar-light navbar-bg">
@@ -46,47 +94,56 @@ class ViewProduct extends React.Component {
                                     {/* Product Details */}
                                     <div className="col-lg-7">
 
-                                        <table className="table table-bordered border-3 border-dark m-0">
-                                            <tr>
-                                                <td className="fw-bold bg-light" style={{ width: "180px" }}>ID</td>
-                                                <td>PROD-001234</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="fw-bold bg-light">Name</td>
-                                                <td>Wireless Headphones Pro</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="fw-bold bg-light">Price</td>
-                                                <td className="fw-bold text-success">$89.99</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="fw-bold bg-light">Stock</td>
-                                                <td>247 in stock</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="fw-bold bg-light">Weight</td>
-                                                <td>285 g</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="fw-bold bg-light">Size</td>
-                                                <td>Medium</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="fw-bold bg-light">Category</td>
-                                                <td>Electronics → Audio</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="fw-bold bg-light">Detail</td>
-                                                <td>Premium noise-cancelling wireless headphones with 40-hour battery life.
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td className="fw-bold bg-light">Islive</td>
-                                                <td>
-                                                    <span className="badge bg-success fs-5 px-4 py-2">✅ Active</span>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                        { this.state.products.length > 0 && this.state.products.map((item) => {
+                                            return (<table className="table table-bordered border-3 border-dark m-0">
+                                                <tr>
+                                                    <td className="fw-bold bg-light" style={{ width: "180px" }}>ID</td>
+                                                    <td>{item.id}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="fw-bold bg-light">Name</td>
+                                                    <td>{item.title}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="fw-bold bg-light">Price</td>
+                                                    <td className="fw-bold text-success">
+                                                        {item.price}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="fw-bold bg-light">Stock</td>
+                                                    <td>
+                                                        {item.stock}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="fw-bold bg-light">Weight</td>
+                                                    <td>{item.weight}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="fw-bold bg-light">Size</td>
+                                                    <td>{item.size}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="fw-bold bg-light">Category</td>
+                                                    <td>{item.categorytitle}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="fw-bold bg-light">Detail</td>
+                                                    <td>
+                                                        {item.detail}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="fw-bold bg-light">Islive</td>
+                                                    <td>
+                                                        {item.islive === '1' ? <span className="badge bg-success fs-5 px-4 py-2">✅ Active</span> : <span className="badge bg-danger fs-5 px-4 py-2">✅ Not Active</span>}
+                                                    </td>
+                                                </tr>
+                                            </table>);
+                                        })
+
+                                        }
 
                                     </div>
                                 </div>
