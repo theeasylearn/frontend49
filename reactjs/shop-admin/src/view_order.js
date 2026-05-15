@@ -81,22 +81,22 @@ class ViewOrder extends React.Component {
                                                 return (<table className="table table-bordered">
                                                     <tr>
                                                         <th width="25%">Order ID</th>
-                                                        <td width="25%">12345</td>
+                                                        <td width="25%">{item.id}</td>
                                                         <th width="25%">Customer Name</th>
-                                                        <td width="25%"></td>
+                                                        <td width="25%">{item.fullname}</td>
                                                     </tr>
                                                     <tr>
                                                         <th>Order Date</th>
-                                                        <td>2023-10-01</td>
+                                                        <td>{item.billdate}</td>
                                                         <th>Address</th>
-                                                        <td></td>
+                                                        <td>{item.address1} {item.address2}</td>
 
                                                     </tr>
                                                     <tr>
                                                         <th>Amount</th>
-                                                        <td>$199.99</td>
+                                                        <td>{item.amount}</td>
                                                         <th>City</th>
-                                                        <td></td>
+                                                        <td>{item.city}</td>
                                                     </tr>
                                                     <tr>
                                                         <th>Order Status</th>
@@ -104,14 +104,15 @@ class ViewOrder extends React.Component {
                                                             <form action="">
                                                                 <table>
                                                                     <tr>
-                                                                        <td><select name="order_status" id="order_status"
-                                                                            className="form-select form-select-sm">
-                                                                            <option value="pending">Pending</option>
-                                                                            <option value="processing">Processing</option>
-                                                                            <option value="shipped">Shipped</option>
-                                                                            <option value="delivered">Delivered</option>
-                                                                            <option value="cancelled">Cancelled</option>
-                                                                        </select>
+                                                                        <td>
+    <select name="order_status" id="order_status"
+    className="form-select form-select-sm">
+    <option value="1" selected={(item.orderstatus === '1')}>Pending</option>
+    <option value="2" selected={(item.orderstatus === '2')}>Processing</option>
+    <option value="3" selected={(item.orderstatus === '3')}>Shipped</option>
+    <option value="4" selected={(item.orderstatus === '4')}>Delivered</option>
+    <option value="5" selected={(item.orderstatus === '5')}>Cancelled</option>
+    </select>
                                                                         </td>
                                                                         <td><button type="submit"
                                                                             className="btn btn-sm btn-primary ms-2">Update</button>
@@ -121,13 +122,15 @@ class ViewOrder extends React.Component {
                                                             </form>
                                                         </td>
                                                         <th>Pincode</th>
-                                                        <td></td>
+                                                        <td>{item.pincode}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Payment status</th>
-                                                        <td></td>
+                                                        <th>Payment Mode</th>
+                                                        <td>
+{(item.paymentmode === '0'?"Cash on Delivery":"Online")}
+</td>
                                                         <th>Remarks</th>
-                                                        <td></td>
+                                                        <td>{item.remarks}</td>
                                                     </tr>
 
                                                 </table>)
@@ -140,7 +143,7 @@ class ViewOrder extends React.Component {
                                                 <tr>
                                                     <th width="10%">Product ID</th>
                                                     <th>Product Name</th>
-                                                    <th width="20%">Product Image</th>
+                                                   
                                                     <th>Quantity</th>
                                                     <th>Price</th>
                                                     <th>Total</th>
@@ -150,7 +153,7 @@ class ViewOrder extends React.Component {
                                                 <tr>
                                                     <td>1</td>
                                                     <td>IPhone 17 pro max</td>
-                                                    <td></td>
+                                                    
                                                     <td className="text-end">125000</td>
                                                     <td className="text-end">1</td>
                                                     <td className="text-end">1,25,000</td>
