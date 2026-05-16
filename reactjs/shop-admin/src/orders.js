@@ -8,6 +8,7 @@ import { showError, showMessage } from "./message";
 export default class Orders extends React.Component {
 	constructor(props) {
 		super(props);
+		this.status = ['Pending','Processing','Shipped','Delivered','Cancelled']
 		//create state array
 		this.state = {
 			orders: []
@@ -65,7 +66,7 @@ export default class Orders extends React.Component {
 			<td>{fullname}</td>
 			<td>{amount}</td>
 			<td>{city}</td>
-			<td>{orderstatus}</td>
+			<td>{this.status[orderstatus]}</td>
 			<td>
 				<Link to={"/view-orders/" + id} className="btn btn-sm btn-primary">View Order</Link>
 			</td>

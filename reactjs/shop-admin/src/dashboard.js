@@ -1,12 +1,54 @@
 // create class component 
 import React from "react";
 import Menu from "./menu";
+import usingHooks from "./wrapper_functions";
+import { getBaseURL } from "./common";
+import axios from "axios";
+import { ToastContainer } from "react-toastify";
+import { showError } from "./message";
+
 export default class Dashboard extends React.Component {
     constructor(props) {
         super(props);
+        this.setState({
+            summery:[]  
+        });
+    }
+    componentDidMount() {
+        let apiAddress = getBaseURL() + "summery.php";
+        let options = {
+            url: apiAddress,
+            method: 'get',
+            responseType: 'json'
+        };
+
+        axios(options).then((response) => {
+            //code in this block will only execute after data is successfully fetch from server
+            console.log("response received from api ", response.data);
+            let error = response.data[0]['error'];
+            if (error !== 'no') {
+                //there is error in api response
+                showError(error);
+            }
+            else {
+                response.data.splice(0, 1);
+                //copy data into state array
+                this.setState({
+                    summery: response.data
+                });
+
+            }
+        }).catch((error) => {
+            //code in this block will execute only if data could not be fetched from server. it is error there could be mostly 2 reasons for it.
+            // 1) you are offline 
+            // 2) server is offline or api address is wrong
+            showError();
+
+        });
     }
     render() {
         return (<div className="wrapper">
+            <ToastContainer />
             <Menu />
             <div className="main">
                 <nav className="navbar navbar-expand navbar-light navbar-bg">
@@ -26,7 +68,7 @@ export default class Dashboard extends React.Component {
                                                 <h5 className="card-title">Daily Sales</h5>
                                             </div>
                                         </div>
-                                        <h1 className="mt-1 mb-3">47,500</h1>
+                                        <h1 className="mt-1 mb-3">{this.state!= null && this.state.summery[0]['daily']}</h1>
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +80,7 @@ export default class Dashboard extends React.Component {
                                                 <h5 className="card-title">Weekly Sales</h5>
                                             </div>
                                         </div>
-                                        <h1 className="mt-1 mb-3">147,500</h1>
+                                        <h1 className="mt-1 mb-3">{this.state!= null && this.state.summery[0]['weekly']}</h1>
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +92,7 @@ export default class Dashboard extends React.Component {
                                                 <h5 className="card-title">Monthly Sales</h5>
                                             </div>
                                         </div>
-                                        <h1 className="mt-1 mb-3">247,500</h1>
+                                        <h1 className="mt-1 mb-3">{this.state!= null && this.state.summery[0]['monthly']}</h1>
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +104,7 @@ export default class Dashboard extends React.Component {
                                                 <h5 className="card-title">Yearly Sales</h5>
                                             </div>
                                         </div>
-                                        <h1 className="mt-1 mb-3">47,50000</h1>
+                                        <h1 className="mt-1 mb-3">{this.state!= null && this.state.summery[0]['yearly']}</h1>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +118,7 @@ export default class Dashboard extends React.Component {
                                                 <h5 className="card-title text-white">Category</h5>
                                             </div>
                                         </div>
-                                        <h1 className="mt-1 mb-3">10</h1>
+                                        <h1 className="mt-1 mb-3">{this.state!= null && this.state.summery[0]['categories']}</h1>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +130,7 @@ export default class Dashboard extends React.Component {
                                                 <h5 className="card-title text-white">Product</h5>
                                             </div>
                                         </div>
-                                        <h1 className="mt-1 mb-3">5</h1>
+                                        <h1 className="mt-1 mb-3">{this.state!= null && this.state.summery[0]['products']}</h1>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +142,7 @@ export default class Dashboard extends React.Component {
                                                 <h5 className="card-title text-white">Orders</h5>
                                             </div>
                                         </div>
-                                        <h1 className="mt-1 mb-3">500</h1>
+                                        <h1 className="mt-1 mb-3">{this.state!= null && this.state.summery[0]['orders']}</h1>
                                     </div>
                                 </div>
                             </div>
