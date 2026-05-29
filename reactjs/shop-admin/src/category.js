@@ -3,7 +3,7 @@ import Menu from './menu';
 import { Link } from "react-router-dom";
 import { getBaseURL, getBaseImageURL } from "./common";
 import axios from 'axios';
-import { showError } from "./message";
+import { showError, showMessage } from "./message";
 import { ToastContainer } from "react-toastify";
 
 export default class Category extends React.Component {
@@ -60,6 +60,28 @@ export default class Category extends React.Component {
 
         });
     }
+
+
+    deleteCategory = (categoryID) => {
+        //alert(categoryID);
+        var apiAddress = getBaseURL() + "delete_category.php?id=" + categoryID;
+        var options = {
+            method: 'get',
+            responseType: 'json',
+            url: apiAddress,
+        };
+        axios(options).then((response) => {
+            let error = response.data[0]['error'];
+            if (error !== 'no')
+                showError(error)
+            else {
+                var message = response.data[1]['message'];
+                showMessage(message);
+            }
+        }).catch((error) => {
+            showError(error);
+        });
+    }
     render() {
         console.log("render method is called");
         return (<div className="wrapper">
@@ -90,14 +112,14 @@ export default class Category extends React.Component {
                                                 <td>{item.id}</td>
                                                 <td>{item.title}</td>
                                                 <td>
-            <img src={getBaseImageURL() + "category/" + item.photo} className="img-fluid" />
+                                                    <img src={getBaseImageURL() + "category/" + item.photo} className="img-fluid" />
                                                 </td>
                                                 <td>
-                                                    {(item.islive === '1')?<span className="badge bg-success">Yes</span>:<span className="badge bg-danger">No</span>}
+                                                    {(item.islive === '1') ? <span className="badge bg-success">Yes</span> : <span className="badge bg-danger">No</span>}
                                                 </td>
                                                 <td>
                                                     <Link className="btn btn-sm btn-warning" to="/edit-category">Edit</Link>
-                                                    <a className="btn btn-sm btn-danger" href="delete-category.html?id=1">Delete</a>
+                                                    <button type="button" onClick={() => this.deleteCategory(item.id)} className="btn btn-sm btn-danger">Delete</button>
                                                 </td>
                                             </tr>)
                                         })}

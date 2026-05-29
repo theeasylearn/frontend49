@@ -2,10 +2,11 @@ import React from "react";
 import Menu from './menu';
 import { getBaseURL } from "./common";
 import axios from 'axios';
-import { showError } from "./message";
+import { showError, showMessage } from "./message";
 import { ToastContainer } from "react-toastify";
+import usingHooks from "./wrapper_functions";
 
-export default class InsertProduct extends React.Component {
+class InsertProduct extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -67,7 +68,54 @@ export default class InsertProduct extends React.Component {
 	insertProduct = (e) => {
 		console.log(this.state); //to confirm all input is stored in state variable
 		e.preventDefault();
-		
+		//api calling
+		var apiAddress = getBaseURL() + "insert_product.php";
+		var form = new FormData();
+		/* 1.	name (required): Product name 
+2.	photo (required): Product photo (file upload) 
+3.	price (required): Product price 
+4.	stock (required): Product stock quantity 
+5.	detail (required): Product details 
+6.	categoryid (required): Category ID 
+7.	islive (required): Product live status (0 or 1)
+*/
+		form.append('name', this.state.name);
+		form.append('photo', this.state.photo);
+		form.append('price', this.state.price);
+		form.append('stock', this.state.stock);
+		form.append('detail', this.state.detail);
+		form.append('categoryid', this.state.categoryid);
+		form.append('islive', this.state.islive);
+
+		var option = {
+			method: 'post',
+			responseType: 'json',
+			url: apiAddress,
+			data: form
+		}
+		axios(option).then((response) => {
+			console.log(response.data);
+			let error = response.data[0]['error'];
+			if (error !== 'no')
+				showError(error);
+			else {
+				//no error 
+				let success = response.data[1]['success'];
+				let message = response.data[2]['message'];
+				if (success === 'no')
+					showError(message);
+				else {
+					showMessage(message);
+					setTimeout(() => {
+						//let us change screen after 2000 milliseconds (2 seconds)
+						this.props.navigate('/products');
+					}, 2000)
+				}
+
+			}
+		}).catch((error) => {
+			showError();
+		});
 	}
 	render() {
 		return (<div className="wrapper">
@@ -93,7 +141,7 @@ export default class InsertProduct extends React.Component {
 											<select
 												onChange={(e) => this.updateValue(e)}
 												value={this.state.category}
-												className="form-select" name="category" id="category" required>
+												className="form-select" name="categoryid" id="category" required>
 												<option value="">Select category</option>
 												{this.state.categories.map((item) => {
 													return <option value={item.id}>{item.title}</option>
@@ -172,3 +220,5 @@ export default class InsertProduct extends React.Component {
 		</div>)
 	}
 }
+
+export default usingHooks(InsertProduct);
